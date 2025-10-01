@@ -1,0 +1,411 @@
+{
+  "app": {
+    "title": "CryptoTools",
+    "description": "全面的加密工具",
+    "footer": "为开发者提供的安全加密工具",
+    "welcome": "您需要哪种加密工具？",
+    "welcomeDescription": "直接在浏览器中工作的快速、安全的加密工具。所有操作都在本地处理，完全保护您的隐私。",
+    "footerDescription": "所有加密操作都在您的浏览器中本地执行。您的隐私和数据得到完全保护。",
+    "badges": {
+      "security": "安全认证",
+      "realtime": "实时处理"
+    },
+    "features": {
+      "security": {
+        "title": "完全安全",
+        "description": "所有加密操作都在您的浏览器中本地处理。数据不会传输到服务器。"
+      },
+      "realtime": {
+        "title": "实时处理",
+        "description": "在您输入时即可看到实时结果。快速直观的用户体验。"
+      },
+      "multilingual": {
+        "title": "多语言支持",
+        "description": "完美支持中文、韩语和英语，为每种语言提供优化的用户界面。"
+      }
+    }
+  },
+  "navigation": {
+    "home": "首页",
+    "base64": "Base64",
+    "hash": "哈希",
+    "symmetric": "对称加密",
+    "asymmetric": "非对称加密",
+    "advanced": "高级加密"
+  },
+  "common": {
+    "encrypt": "加密",
+    "decrypt": "解密",
+    "encode": "编码",
+    "decode": "解码",
+    "clear": "清除",
+    "copy": "复制",
+    "download": "下载",
+    "upload": "上传",
+    "input": "输入",
+    "output": "输出",
+    "key": "密钥",
+    "algorithm": "算法",
+    "mode": "模式",
+    "generate": "生成",
+    "verify": "验证",
+    "back": "返回工具",
+    "start": "开始使用",
+    "realTimeProcessing": "实时处理",
+    "outputFormat": "输出格式",
+    "saltOptional": "盐值（可选）",
+    "outputSize": "输出大小",
+    "bits": "位",
+    "notRecommended": "⚠️ 不建议用于安全",
+    "processing": "处理中...",
+    "realTime": "实时",
+    "length": "长度",
+    "characters": "字符",
+    "experimental": "experimental",
+    "selectFile": "选择文件",
+    "changeFile": "更改文件",
+    "removeFile": "移除文件"
+  },
+  "actions": {
+    "encrypt": "加密",
+    "decrypt": "解密",
+    "copy": "复制",
+    "clear": "清除",
+    "processing": "处理中...",
+    "encode": "编码",
+    "decode": "解码"
+  },
+  "base64": {
+    "title": "Base64编码器/解码器",
+    "description": "将文本转换为Base64或反之",
+    "textInput": "输入要编码/解码的文本",
+    "imageUpload": "上传要转换为Base64的图像",
+    "result": "结果",
+    "actions": {
+      "encoded": "Base64 encoding completed",
+      "decoded": "Base64 decoding completed",
+      "fileConverted": "File converted to Base64",
+      "downloaded": "File downloaded"
+    },
+    "errors": {
+      "inputRequired": "Please enter text to encode",
+      "base64Required": "Please enter Base64 string to decode",
+      "encodingFailed": "Encoding failed",
+      "decodingFailed": "Decoding failed",
+      "fileConversionFailed": "File conversion failed",
+      "noContent": "No content to download",
+      "downloadFailed": "Download failed",
+      "unknownError": "Unknown error"
+    },
+    "placeholders": {
+      "encode": "Enter text to encode...",
+      "decode": "Enter Base64 string..."
+    }
+  },
+  "hash": {
+    "title": "哈希函数",
+    "description": "使用各种算法生成哈希值",
+    "algorithms": {
+      "sha1": "SHA-1",
+      "sha224": "SHA-224",
+      "sha256": "SHA-256",
+      "sha384": "SHA-384",
+      "sha512": "SHA-512",
+      "sha3-224": "SHA3-224",
+      "sha3-256": "SHA3-256",
+      "sha3-384": "SHA3-384",
+      "sha3-512": "SHA3-512",
+      "blake2b": "BLAKE2b",
+      "blake2s": "BLAKE2s"
+    },
+    "actions": {
+      "completed": "哈希生成成功",
+      "fileHashed": "文件哈希生成成功",
+      "verified": "哈希值匹配！ ✅",
+      "verificationFailed": "哈希值不匹配。 ❌",
+      "selectFileAndGenerateHash": "选择文件生成哈希",
+      "generateHash": "生成哈希",
+      "compareHashes": "比较哈希",
+      "generate": "生成哈希"
+    },
+    "labels": {
+      "algorithm": "算法",
+      "outputFormat": "输出格式",
+      "fileInput": "文件输入",
+      "textPlaceholder": "请输入要哈希的文本...",
+      "resultPlaceholder": "哈希结果将显示在此处"
+    },
+    "errors": {
+      "inputRequired": "请输入要哈希的文本",
+      "unsupportedAlgorithm": "不支持的算法",
+      "fileHashFailed": "文件哈希生成失败",
+      "verificationFailed": "哈希验证失败"
+    },
+    "placeholders": {
+      "salt": "输入盐值...",
+      "textToHash": "输入要生成哈希的文本..."
+    },
+    "prompts": {
+      "firstHash": "输入第一个哈希值:",
+      "secondHash": "输入第二个哈希值:"
+    },
+    "result": "哈希结果"
+  },
+  "symmetric": {
+    "title": "对称加密",
+    "description": "使用对称算法加密和解密数据",
+    "algorithms": {
+      "aes": "AES",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "modes": {
+      "ecb": "ECB",
+      "cbc": "CBC",
+      "gcm": "GCM"
+    },
+    "labels": {
+      "algorithm": "Algorithm",
+      "mode": "Mode",
+      "keyLength": "Key Length",
+      "outputEncoding": "Output Encoding",
+      "padding": "Padding",
+      "key": "Key",
+      "iv": "IV (Initialization Vector)",
+      "nonce": "Nonce",
+      "aad": "Additional Data",
+      "rc4Drop": "RC4 Drop",
+      "plaintext": "Plaintext",
+      "ciphertext": "Ciphertext",
+      "encryptionInfo": "Encryption Info"
+    },
+    "placeholders": {
+      "key": "Enter encryption key or click 'Generate Key' button",
+      "iv": "Enter IV or click 'Generate IV' button",
+      "nonce": "Enter nonce (optional)",
+      "aad": "Enter additional authenticated data",
+      "input": "Enter text to encrypt/decrypt",
+      "output": "Result will appear here",
+      "encrypt": "Enter text to encrypt...",
+      "decrypt": "Enter ciphertext to decrypt..."
+    },
+    "actions": {
+      "encrypted": "Text encrypted successfully",
+      "decrypted": "Text decrypted successfully",
+      "generateKey": "Generate Key",
+      "generateIv": "Generate IV",
+      "copyInfo": "Copy Encryption Info"
+    },
+    "errors": {
+      "inputRequired": "请输入要加密的文本",
+      "ciphertextRequired": "请输入要解密的密文",
+      "keyRequired": "请输入解密密钥",
+      "keyGenerationFailed": "密钥生成失败",
+      "ivGenerationFailed": "IV生成失败",
+      "noInfo": "没有可用的加密信息",
+      "unsupportedAlgorithm": "不支持的算法"
+    }
+  },
+  "asymmetric": {
+    "title": "非对称加密",
+    "description": "公钥密码操作",
+    "algorithms": {
+      "rsa": "RSA",
+      "ecc": "ECC"
+    },
+    "keyGeneration": "密钥生成",
+    "publicKey": "公钥",
+    "privateKey": "私钥",
+    "notice": "All encryption operations are processed locally in your browser",
+    "rsa": {
+      "generated": "RSA key pair generated successfully",
+      "encrypted": "RSA encryption completed",
+      "decrypted": "RSA decryption completed",
+      "generate": "Generate RSA Keys",
+      "publicPlaceholder": "RSA Public Key (PEM format)",
+      "privatePlaceholder": "RSA Private Key (PEM format)"
+    },
+    "ecc": {
+      "generated": "ECC key pair generated successfully",
+      "encrypted": "ECC encryption completed",
+      "decrypted": "ECC decryption completed",
+      "generate": "Generate ECC Keys",
+      "publicPlaceholder": "ECC Public Key",
+      "privatePlaceholder": "ECC Private Key",
+      "recipientPlaceholder": "Recipient Public Key"
+    },
+    "elgamal": {
+      "generated": "ElGamal key pair generated successfully",
+      "encrypted": "ElGamal encryption completed",
+      "decrypted": "ElGamal decryption completed",
+      "generate": "Generate ElGamal Keys",
+      "bitLength": "Bit Length",
+      "publicPlaceholder": "ElGamal Public Key",
+      "privatePlaceholder": "ElGamal Private Key"
+    },
+    "placeholders": {
+      "input": "Enter text to encrypt/decrypt",
+      "output": "Result will appear here",
+      "publicKey": "Enter public key or generate a key pair...",
+      "privateKey": "Enter private key or generate a key pair...",
+      "textToEncrypt": "Enter text to encrypt",
+      "textToDecrypt": "Enter text to decrypt",
+      "textToSign": "Enter text to sign",
+      "textToVerify": "Enter text to verify",
+      "signatureToVerify": "Enter signature to verify..."
+    },
+    "tabs": {
+      "keyManagement": "Key Management",
+      "cryptoOperations": "Crypto Operations"
+    },
+    "labels": {
+      "keySizeBits": "Key Size (bits)",
+      "type": "Type",
+      "valid": "Valid",
+      "plaintext": "Plaintext",
+      "ciphertext": "Ciphertext",
+      "messageToSign": "Message to sign",
+      "messageToVerify": "Message to verify",
+      "signature": "Signature",
+      "algorithmInfo": "Algorithm Info"
+    },
+    "actions": {
+      "clearKeys": "Clear Keys",
+      "sign": "Sign",
+      "generateSignature": "Generate Signature",
+      "verifySignature": "Verify Signature"
+    },
+    "info": {
+      "rsa": {
+        "description": "Public key encryption system",
+        "usage": "Encryption/decryption, digital signature",
+        "security": "2048 bits or more recommended"
+      },
+      "ecc": {
+        "description": "Elliptic curve cryptography",
+        "usage": "Digital signature",
+        "security": "Same security as RSA with smaller key size"
+      },
+      "usage": "Usage",
+      "keySize": "Key size",
+      "security": "Security",
+      "curve": "Curve"
+    },
+    "alerts": {
+      "verificationSuccess": "Signature verification: Success",
+      "verificationFailed": "Signature verification: Failure"
+    },
+    "errors": {
+      "unsupportedAlgorithm": "不支持的算法"
+    }
+  },
+  "encoding": {
+    "title": "编码",
+    "description": "URL及其他编码工具",
+    "cards": {
+      "base64": {
+        "title": "Base64编码/解码",
+        "description": "将文本转换为Base64或反之",
+        "placeholder": "输入要编码/解码的文本",
+        "resultPlaceholder": "结果将显示在这里"
+      },
+      "url": {
+        "title": "URL编码/解码",
+        "description": "安全地编码或解码URL",
+        "placeholder": "输入要编码/解码的URL",
+        "resultPlaceholder": "结果将显示在这里"
+      },
+      "image": {
+        "title": "图像 → Base64",
+        "description": "将图像转换为Base64字符串",
+        "decodeButton": "Base64 → 图像",
+        "previewAlt": "预览图像",
+        "resultPlaceholder": "结果将显示在这里"
+      }
+    }
+  },
+  "files": {
+    "title": "文件",
+    "description": "文件流和加密",
+    "cardTitle": "文件加密和哈希",
+    "cardDescription": "加密、解密文件或生成哈希值",
+    "dragText": "拖拽或点击选择文件",
+    "dragDescription": "支持文本文件加密、解密和哈希",
+    "fileSelected": "文件已选择",
+    "largeFile": "大文件",
+    "normalFile": "普通文件",
+    "operation": "操作",
+    "algorithm": "算法",
+    "encryptionKey": "加密密钥",
+    "generateKey": "生成密钥",
+    "keySuccess": "密钥生成成功",
+    "keyPrefix": "密钥（前16个字符）",
+    "processing": "处理中...",
+    "result": "结果",
+    "processButton": "文件",
+    "clear": "清除",
+    "operations": {
+      "encrypt": "加密",
+      "decrypt": "解密",
+      "hash": "哈希"
+    },
+    "actions": {
+      "keyGenerated": "加密密钥已生成",
+      "encrypted": "文件加密完成",
+      "decrypted": "文件解密完成",
+      "hashed": "文件哈希完成"
+    },
+    "errors": {
+      "selectFile": "请选择文件",
+      "generateKeyFirst": "请先生成加密密钥",
+      "browserOnly": "密钥生成仅在浏览器环境中可用",
+      "cryptoNotSupported": "不支持Web Crypto API。请通过HTTPS访问",
+      "nonceNotFound": "未找到解密所需的nonce",
+      "fileReadFailed": "文件读取失败"
+    }
+  },
+  "theme": {
+    "toggle": "切换主题",
+    "label": "切换主题",
+    "light": "浅色模式",
+    "dark": "深色模式",
+    "system": "系统设置"
+  },
+  "actions": {
+    "encrypt": "加密",
+    "decrypt": "解密",
+    "copy": "复制",
+    "clear": "清除",
+    "processing": "处理中...",
+    "encode": "编码",
+    "decode": "解码"
+  },
+  "messages": {
+    "copied": "已复制到剪贴板"
+  },
+  "errors": {
+    "invalidInput": "无效输入",
+    "encryptionFailed": "加密失败",
+    "decryptionFailed": "解密失败",
+    "invalidKey": "无效密钥",
+    "keyRequired": "需要密钥",
+    "fileTooLarge": "文件过大",
+    "copyFailed": "复制到剪贴板失败",
+    "keyGenerationFailed": "密钥生成失败",
+    "publicKeyRequired": "需要公钥",
+    "privateKeyRequired": "需要私钥",
+    "parametersMissing": "参数缺失",
+    "inputRequired": "需要输入",
+    "rsaOnly": "目前仅支持RSA加密",
+    "ecdsaOnly": "目前仅支持ECDSA签名验证",
+    "signatureValid": "签名有效！ ✅",
+    "signatureInvalid": "签名无效！ ❌",
+    "messageRequired": "请输入要签名的消息",
+    "signatureRequired": "请输入签名",
+    "verificationFailed": "签名验证失败",
+    "keyPairGenerated": "密钥对生成成功",
+    "signatureGenerated": "签名生成成功",
+    "signingFailed": "签名失败",
+    "signatureGenerationFailed": "签名生成失败"
+  }
+}

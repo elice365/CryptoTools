@@ -1,0 +1,411 @@
+{
+  "app": {
+    "title": "CryptoTools",
+    "description": "包括的な暗号化ツール",
+    "footer": "開発者向け安全な暗号化ツール",
+    "welcome": "どの暗号化ツールが必要ですか？",
+    "welcomeDescription": "ブラウザで直接動作する高速で安全な暗号化ツールです。すべての操作はローカルで処理され、プライバシーが完全に保護されます。",
+    "footerDescription": "すべての暗号化操作はブラウザでローカルに実行されます。プライバシーとデータが完全に保護されます。",
+    "badges": {
+      "security": "セキュリティ認証",
+      "realtime": "リアルタイム処理"
+    },
+    "features": {
+      "security": {
+        "title": "完全なセキュリティ",
+        "description": "すべての暗号化操作はブラウザでローカルに処理されます。データがサーバーに送信されることはありません。"
+      },
+      "realtime": {
+        "title": "リアルタイム処理",
+        "description": "入力と同時にリアルタイムで結果を確認できます。高速で直感的なユーザー体験を提供します。"
+      },
+      "multilingual": {
+        "title": "多言語サポート",
+        "description": "日本語、韓国語、英語を完全サポートし、各言語に最適化されたユーザーインターフェースを提供します。"
+      }
+    }
+  },
+  "navigation": {
+    "home": "ホーム",
+    "base64": "Base64",
+    "hash": "ハッシュ",
+    "symmetric": "共通鍵暗号",
+    "asymmetric": "公開鍵暗号",
+    "advanced": "高度な暗号"
+  },
+  "common": {
+    "encrypt": "暗号化",
+    "decrypt": "復号化",
+    "encode": "エンコード",
+    "decode": "デコード",
+    "clear": "クリア",
+    "copy": "コピー",
+    "download": "ダウンロード",
+    "upload": "アップロード",
+    "input": "入力",
+    "output": "出力",
+    "key": "キー",
+    "algorithm": "アルゴリズム",
+    "mode": "モード",
+    "generate": "生成",
+    "verify": "検証",
+    "back": "ツールに戻る",
+    "start": "始める",
+    "realTimeProcessing": "リアルタイム処理",
+    "outputFormat": "出力形式",
+    "saltOptional": "ソルト（オプション）",
+    "outputSize": "出力サイズ",
+    "bits": "ビット",
+    "notRecommended": "⚠️ セキュリティ上推奨されません",
+    "processing": "処理中...",
+    "realTime": "リアルタイム",
+    "length": "長さ",
+    "characters": "文字",
+    "experimental": "experimental",
+    "selectFile": "ファイル選択",
+    "changeFile": "ファイル変更",
+    "removeFile": "ファイル削除"
+  },
+  "actions": {
+    "encrypt": "暗号化",
+    "decrypt": "復号",
+    "copy": "コピー",
+    "clear": "クリア",
+    "processing": "処理中...",
+    "encode": "エンコード",
+    "decode": "デコード"
+  },
+  "base64": {
+    "title": "Base64エンコーダー/デコーダー",
+    "description": "テキストをBase64に変換またはその逆",
+    "textInput": "エンコード/デコードするテキストを入力",
+    "imageUpload": "Base64に変換する画像をアップロード",
+    "result": "結果",
+    "actions": {
+      "encoded": "Base64 encoding completed",
+      "decoded": "Base64 decoding completed",
+      "fileConverted": "File converted to Base64",
+      "downloaded": "File downloaded"
+    },
+    "errors": {
+      "inputRequired": "Please enter text to encode",
+      "base64Required": "Please enter Base64 string to decode",
+      "encodingFailed": "Encoding failed",
+      "decodingFailed": "Decoding failed",
+      "fileConversionFailed": "File conversion failed",
+      "noContent": "No content to download",
+      "downloadFailed": "Download failed",
+      "unknownError": "Unknown error"
+    },
+    "placeholders": {
+      "encode": "Enter text to encode...",
+      "decode": "Enter Base64 string..."
+    }
+  },
+  "hash": {
+    "title": "ハッシュ関数",
+    "description": "様々なアルゴリズムでハッシュ値を生成",
+    "algorithms": {
+      "sha1": "SHA-1",
+      "sha224": "SHA-224",
+      "sha256": "SHA-256",
+      "sha384": "SHA-384",
+      "sha512": "SHA-512",
+      "sha3-224": "SHA3-224",
+      "sha3-256": "SHA3-256",
+      "sha3-384": "SHA3-384",
+      "sha3-512": "SHA3-512",
+      "blake2b": "BLAKE2b",
+      "blake2s": "BLAKE2s"
+    },
+    "actions": {
+      "completed": "ハッシュが生成されました",
+      "fileHashed": "ファイルハッシュが生成されました",
+      "verified": "ハッシュ値が一致します！ ✅",
+      "verificationFailed": "ハッシュ値が一致しません。 ❌",
+      "selectFileAndGenerateHash": "ファイルを選択してハッシュ生成",
+      "generateHash": "ハッシュ生成",
+      "compareHashes": "ハッシュ比較",
+      "generate": "ハッシュ生成"
+    },
+    "labels": {
+      "algorithm": "アルゴリズム",
+      "outputFormat": "出力形式",
+      "fileInput": "ファイル入力",
+      "textPlaceholder": "ハッシュするテキストを入力してください...",
+      "resultPlaceholder": "ハッシュ結果がここに表示されます"
+    },
+    "errors": {
+      "inputRequired": "ハッシュするテキストを入力してください",
+      "unsupportedAlgorithm": "サポートされていないアルゴリズム",
+      "fileHashFailed": "ファイルハッシュ生成失敗",
+      "verificationFailed": "ハッシュ検証に失敗しました"
+    },
+    "placeholders": {
+      "salt": "ソルトを入力...",
+      "textToHash": "ハッシュを生成するテキストを入力..."
+    },
+    "prompts": {
+      "firstHash": "最初のハッシュ値を入力してください:",
+      "secondHash": "2番目のハッシュ値を入力してください:"
+    },
+    "result": "ハッシュ結果"
+  },
+  "symmetric": {
+    "title": "共通鍵暗号",
+    "description": "共通鍵アルゴリズムを使用したデータの暗号化と復号化",
+    "algorithms": {
+      "aes": "AES",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "modes": {
+      "ecb": "ECB",
+      "cbc": "CBC",
+      "gcm": "GCM"
+    },
+    "labels": {
+      "algorithm": "アルゴリズム",
+      "mode": "モード",
+      "keyLength": "キー長",
+      "outputEncoding": "出力エンコーディング",
+      "padding": "パディング",
+      "key": "キー",
+      "iv": "初期化ベクトル",
+      "nonce": "ノンス",
+      "aad": "追加データ",
+      "rc4Drop": "RC4ドロップ",
+      "plaintext": "平文",
+      "ciphertext": "暗号文",
+      "encryptionInfo": "暗号化情報"
+    },
+    "placeholders": {
+      "key": "暗号化キーを入力するか、「キー生成」ボタンをクリックしてください",
+      "iv": "IVを入力するか、「IV生成」ボタンをクリックしてください",
+      "nonce": "ノンスを入力（オプション）",
+      "aad": "追加認証データを入力",
+      "input": "暗호화/復号化するテキストを入力",
+      "output": "結果がここに表示されます",
+      "encrypt": "暗号化するテキストを入力してください...",
+      "decrypt": "復号化する暗号文を入力してください..."
+    },
+    "actions": {
+      "encrypted": "テキストが暗号化されました",
+      "decrypted": "テキストが復号化されました",
+      "generateKey": "キー生成",
+      "generateIv": "IV生成",
+      "copyInfo": "暗号化情報をコピー"
+    },
+    "errors": {
+      "inputRequired": "暗号化するテキストを入力してください",
+      "ciphertextRequired": "復号化する暗号文を入力してください",
+      "keyRequired": "復号化キーを入力してください",
+      "keyGenerationFailed": "キーの生成に失敗しました",
+      "ivGenerationFailed": "IVの生成に失敗しました",
+      "noInfo": "暗号化情報がありません",
+      "unsupportedAlgorithm": "サポートされていないアルゴリズム"
+    }
+  },
+  "asymmetric": {
+    "title": "公開鍵暗号",
+    "description": "公開鍵暗号化操作",
+    "algorithms": {
+      "rsa": "RSA",
+      "ecc": "ECC"
+    },
+    "keyGeneration": "キー生成",
+    "publicKey": "公開キー",
+    "privateKey": "秘密キー",
+    "notice": "すべての暗号化操作はブラウザでローカルに処理されます",
+    "rsa": {
+      "generated": "RSAキーペアが生成されました",
+      "encrypted": "RSA暗号化が完了しました",
+      "decrypted": "RSA復号化が完了しました",
+      "generate": "RSAキーを生成",
+      "publicPlaceholder": "RSA公開キー（PEM形式）",
+      "privatePlaceholder": "RSA秘密キー（PEM形式）"
+    },
+    "ecc": {
+      "generated": "ECCキーペアが生成されました",
+      "encrypted": "ECC暗号化が完了しました",
+      "decrypted": "ECC復号化が完了しました",
+      "generate": "ECCキーを生成",
+      "publicPlaceholder": "ECC公開キー",
+      "privatePlaceholder": "ECC秘密キー",
+      "recipientPlaceholder": "受信者の公開キー"
+    },
+    "elgamal": {
+      "generated": "ElGamalキーペアが生成されました",
+      "encrypted": "ElGamal暗号化が完了しました",
+      "decrypted": "ElGamal復号化が完了しました",
+      "generate": "ElGamalキーを生成",
+      "bitLength": "ビット長",
+      "publicPlaceholder": "ElGamal公開キー",
+      "privatePlaceholder": "ElGamal秘密キー"
+    },
+    "placeholders": {
+      "input": "暗号化/復号化するテキストを入力",
+      "output": "結果がここに表示されます",
+      "publicKey": "公開キーを入力するか、キーペアを生成してください...",
+      "privateKey": "秘密キーを入力するか、キーペアを生成してください...",
+      "textToEncrypt": "暗号化するテキストを入力",
+      "textToDecrypt": "復号化するテキストを入力",
+      "textToSign": "署名するテキストを入力",
+      "textToVerify": "検証するテキストを入力",
+      "signatureToVerify": "検証する署名を入力してください..."
+    },
+    "tabs": {
+      "keyManagement": "キー管理",
+      "cryptoOperations": "暗号化操作"
+    },
+    "labels": {
+      "keySizeBits": "キーサイズ（ビット）",
+      "type": "タイプ",
+      "valid": "有効",
+      "plaintext": "平文",
+      "ciphertext": "暗号文",
+      "messageToSign": "署名するメッセージ",
+      "messageToVerify": "検証するメッセージ",
+      "signature": "署名",
+      "algorithmInfo": "アルゴリズム情報"
+    },
+    "actions": {
+      "clearKeys": "キーを消去",
+      "sign": "署名",
+      "generateSignature": "署名を生成",
+      "verifySignature": "署名を検証"
+    },
+    "info": {
+      "rsa": {
+        "description": "公開鍵暗号システム",
+        "usage": "暗号化/復号化、デジタル署名",
+        "security": "2048ビット以上を推奨"
+      },
+      "ecc": {
+        "description": "楕円曲線暗号",
+        "usage": "デジタル署名",
+        "security": "RSAより小さいキーサイズで同等のセキュリティ"
+      },
+      "usage": "用途",
+      "keySize": "キーサイズ",
+      "security": "セキュリティ",
+      "curve": "曲線"
+    },
+    "alerts": {
+      "verificationSuccess": "署名検証：成功",
+      "verificationFailed": "署名検証：失敗"
+    },
+    "errors": {
+      "unsupportedAlgorithm": "サポートされていないアルゴリズム"
+    }
+  },
+  "encoding": {
+    "title": "エンコーディング",
+    "description": "URLおよびその他のエンコーディングツール",
+    "cards": {
+      "base64": {
+        "title": "Base64エンコード/デコード",
+        "description": "テキストをBase64に変換またはその逆",
+        "placeholder": "エンコード/デコードするテキストを入力",
+        "resultPlaceholder": "結果がここに表示されます"
+      },
+      "url": {
+        "title": "URLエンコード/デコード",
+        "description": "URLを安全にエンコードまたはデコード",
+        "placeholder": "エンコード/デコードするURLを入力",
+        "resultPlaceholder": "結果がここに表示されます"
+      },
+      "image": {
+        "title": "画像 → Base64",
+        "description": "画像をBase64文字列に変換",
+        "decodeButton": "Base64 → 画像",
+        "previewAlt": "プレビュー画像",
+        "resultPlaceholder": "結果がここに表示されます"
+      }
+    }
+  },
+  "files": {
+    "title": "ファイル",
+    "description": "ファイルストリーミングと暗号化",
+    "cardTitle": "ファイル暗号化とハッシュ",
+    "cardDescription": "ファイルを暗号化、復号化、またはハッシュ値を生成します",
+    "dragText": "ファイルをドラッグまたはクリックして選択",
+    "dragDescription": "テキストファイルの暗号化、復号化、ハッシュをサポート",
+    "fileSelected": "ファイルが選択されました",
+    "largeFile": "大容量ファイル",
+    "normalFile": "通常ファイル",
+    "operation": "操作",
+    "algorithm": "アルゴリズム",
+    "encryptionKey": "暗号化キー",
+    "generateKey": "キー生成",
+    "keySuccess": "キーが正常に生成されました",
+    "keyPrefix": "キー（最初の16文字）",
+    "processing": "処理中...",
+    "result": "結果",
+    "processButton": "ファイル",
+    "clear": "クリア",
+    "operations": {
+      "encrypt": "暗号化",
+      "decrypt": "復号化",
+      "hash": "ハッシュ"
+    },
+    "actions": {
+      "keyGenerated": "暗号化キーが生成されました",
+      "encrypted": "ファイル暗号化完了",
+      "decrypted": "ファイル復号化完了",
+      "hashed": "ファイルハッシュ完了"
+    },
+    "errors": {
+      "selectFile": "ファイルを選択してください",
+      "generateKeyFirst": "まず暗号化キーを生成してください",
+      "browserOnly": "キー生成はブラウザ環境でのみ可能です",
+      "cryptoNotSupported": "Web Crypto APIがサポートされていません。HTTPS環境でアクセスしてください",
+      "nonceNotFound": "復号化のためのnonceが見つかりません",
+      "fileReadFailed": "ファイルの読み取りに失敗しました"
+    }
+  },
+  "theme": {
+    "toggle": "テーマを切り替え",
+    "label": "テーマを切り替え",
+    "light": "ライトモード",
+    "dark": "ダークモード",
+    "system": "システム設定"
+  },
+  "actions": {
+    "encrypt": "暗号化",
+    "decrypt": "復号化",
+    "copy": "コピー",
+    "clear": "クリア",
+    "processing": "処理中...",
+    "encode": "エンコード",
+    "decode": "デコード"
+  },
+  "messages": {
+    "copied": "クリップボードにコピーしました"
+  },
+  "errors": {
+    "invalidInput": "無効な入力",
+    "encryptionFailed": "暗号化に失敗",
+    "decryptionFailed": "復号化に失敗",
+    "invalidKey": "無効なキー",
+    "keyRequired": "キーが必要です",
+    "fileTooLarge": "ファイルが大きすぎます",
+    "copyFailed": "クリップボードへのコピーに失敗しました",
+    "keyGenerationFailed": "キー生成に失敗しました",
+    "publicKeyRequired": "公開キーが必要です",
+    "privateKeyRequired": "秘密キーが必要です",
+    "parametersMissing": "パラメータが不足しています",
+    "inputRequired": "入力が必要です",
+    "rsaOnly": "現在、RSA暗号化のみサポートされています",
+    "ecdsaOnly": "現在、ECDSA署名検証のみサポートされています",
+    "signatureValid": "署名は有効です！ ✅",
+    "signatureInvalid": "署名は無効です！ ❌",
+    "messageRequired": "署名するメッセージを入力してください",
+    "signatureRequired": "署名を入力してください",
+    "verificationFailed": "署名検証に失敗しました",
+    "keyPairGenerated": "キーペアが正常に生成されました",
+    "signatureGenerated": "署名が正常に生成されました",
+    "signingFailed": "署名に失敗しました",
+    "signatureGenerationFailed": "署名生成に失敗しました"
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "app": {
+    "title": "CryptoTools",
+    "description": "Comprehensive Cryptographic Tools",
+    "footer": "Secure Cryptographic Tools for Developers",
+    "welcome": "What cryptographic tool do you need?",
+    "welcomeDescription": "Fast and secure cryptographic tools that work directly in your browser. All operations are processed locally to completely protect your privacy.",
+    "footerDescription": "All cryptographic operations are performed locally in your browser. Your privacy and data are completely protected.",
+    "badges": {
+      "security": "Security Certified",
+      "realtime": "Real-time Processing"
+    },
+    "features": {
+      "security": {
+        "title": "Complete Security",
+        "description": "All cryptographic operations are processed locally in your browser. No data is transmitted to servers."
+      },
+      "realtime": {
+        "title": "Real-time Processing",
+        "description": "See results in real-time as you type. Fast and intuitive user experience."
+      },
+      "multilingual": {
+        "title": "Multilingual Support",
+        "description": "Perfect support for Korean and English with optimized user interface for each language."
+      }
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "base64": "Base64",
+    "hash": "Hash",
+    "symmetric": "Symmetric",
+    "asymmetric": "Asymmetric",
+    "advanced": "Advanced"
+  },
+  "common": {
+    "encrypt": "Encrypt",
+    "decrypt": "Decrypt",
+    "encode": "Encode",
+    "decode": "Decode",
+    "clear": "Clear",
+    "copy": "Copy",
+    "download": "Download",
+    "upload": "Upload",
+    "input": "Input",
+    "output": "Output",
+    "key": "Key",
+    "algorithm": "Algorithm",
+    "mode": "Mode",
+    "generate": "Generate",
+    "verify": "Verify",
+    "back": "Back to Tools",
+    "start": "Get Started",
+    "realTimeProcessing": "Real-time Processing",
+    "outputFormat": "Output Format",
+    "saltOptional": "Salt (optional)",
+    "outputSize": "Output size",
+    "bits": "bits",
+    "notRecommended": "⚠️ Not recommended for security",
+    "processing": "Processing...",
+    "realTime": "Real-time",
+    "length": "Length",
+    "characters": "characters",
+    "experimental": "experimental",
+    "selectFile": "Select File",
+    "changeFile": "Change File",
+    "removeFile": "Remove File"
+  },
+  "base64": {
+    "title": "Base64 Encoder/Decoder",
+    "description": "Convert text to Base64 and vice versa",
+    "textInput": "Enter text to encode/decode",
+    "imageUpload": "Upload image to convert to Base64",
+    "result": "Result",
+    "actions": {
+      "encoded": "Base64 encoding completed",
+      "decoded": "Base64 decoding completed",
+      "fileConverted": "File converted to Base64",
+      "downloaded": "File downloaded"
+    },
+    "errors": {
+      "inputRequired": "Please enter text to encode",
+      "base64Required": "Please enter Base64 string to decode",
+      "encodingFailed": "Encoding failed",
+      "decodingFailed": "Decoding failed",
+      "fileConversionFailed": "File conversion failed",
+      "noContent": "No content to download",
+      "downloadFailed": "Download failed",
+      "unknownError": "Unknown error"
+    },
+    "placeholders": {
+      "encode": "Enter text to encode...",
+      "decode": "Enter Base64 string..."
+    }
+  },
+  "hash": {
+    "title": "Hash Functions",
+    "description": "Generate hash values using various algorithms",
+    "algorithms": {
+      "sha1": "SHA-1",
+      "sha224": "SHA-224",
+      "sha256": "SHA-256",
+      "sha384": "SHA-384",
+      "sha512": "SHA-512",
+      "sha3-224": "SHA3-224",
+      "sha3-256": "SHA3-256",
+      "sha3-384": "SHA3-384",
+      "sha3-512": "SHA3-512",
+      "blake2b": "BLAKE2b",
+      "blake2s": "BLAKE2s"
+    },
+    "actions": {
+      "completed": "Hash generated successfully",
+      "fileHashed": "File hash generated successfully",
+      "verified": "Hash values match! ✅",
+      "verificationFailed": "Hash values do not match. ❌",
+      "selectFileAndGenerateHash": "Select a file to generate hash",
+      "generateHash": "Generate Hash",
+      "compareHashes": "Compare Hashes",
+      "generate": "Generate Hash"
+    },
+    "labels": {
+      "algorithm": "Algorithm",
+      "outputFormat": "Output Format",
+      "fileInput": "File Input",
+      "textPlaceholder": "Enter text to hash...",
+      "resultPlaceholder": "Hash result will appear here"
+    },
+    "errors": {
+      "inputRequired": "Please enter text to hash",
+      "unsupportedAlgorithm": "Unsupported algorithm",
+      "fileHashFailed": "File hash generation failed",
+      "verificationFailed": "Hash verification failed"
+    },
+    "placeholders": {
+      "salt": "Enter salt...",
+      "textToHash": "Enter text to generate hash..."
+    },
+    "prompts": {
+      "firstHash": "Enter the first hash value:",
+      "secondHash": "Enter the second hash value:"
+    },
+    "result": "Hash Result"
+  },
+  "symmetric": {
+    "title": "Symmetric Encryption",
+    "description": "Encrypt and decrypt data using symmetric algorithms",
+    "algorithms": {
+      "aes": "AES",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "modes": {
+      "ecb": "ECB",
+      "cbc": "CBC",
+      "gcm": "GCM"
+    },
+    "labels": {
+      "algorithm": "Algorithm",
+      "mode": "Mode",
+      "keyLength": "Key Length",
+      "outputEncoding": "Output Encoding",
+      "padding": "Padding",
+      "key": "Key",
+      "iv": "IV (Initialization Vector)",
+      "nonce": "Nonce",
+      "aad": "Additional Data",
+      "rc4Drop": "RC4 Drop",
+      "plaintext": "Plaintext",
+      "ciphertext": "Ciphertext",
+      "encryptionInfo": "Encryption Info"
+    },
+    "placeholders": {
+      "key": "Enter encryption key or click 'Generate Key' button",
+      "iv": "Enter IV or click 'Generate IV' button",
+      "nonce": "Enter nonce (optional)",
+      "aad": "Enter additional authenticated data",
+      "input": "Enter text to encrypt/decrypt",
+      "output": "Result will appear here",
+      "encrypt": "Enter text to encrypt...",
+      "decrypt": "Enter ciphertext to decrypt..."
+    },
+    "actions": {
+      "encrypted": "Text encrypted successfully",
+      "decrypted": "Text decrypted successfully",
+      "generateKey": "Generate Key",
+      "generateIv": "Generate IV",
+      "copyInfo": "Copy Encryption Info"
+    },
+    "errors": {
+      "inputRequired": "Please enter text to encrypt",
+      "ciphertextRequired": "Please enter ciphertext to decrypt",
+      "keyRequired": "Please enter decryption key",
+      "keyGenerationFailed": "Key generation failed",
+      "ivGenerationFailed": "IV generation failed",
+      "noInfo": "No encryption information available",
+      "unsupportedAlgorithm": "Unsupported algorithm"
+    }
+  },
+  "asymmetric": {
+    "title": "Asymmetric Encryption",
+    "description": "Public-key cryptography operations",
+    "algorithms": {
+      "rsa": "RSA",
+      "ecc": "ECC"
+    },
+    "keyGeneration": "Key Generation",
+    "publicKey": "Public Key",
+    "privateKey": "Private Key",
+    "notice": "All encryption operations are processed locally in your browser",
+    "rsa": {
+      "generated": "RSA key pair generated successfully",
+      "encrypted": "RSA encryption completed",
+      "decrypted": "RSA decryption completed",
+      "generate": "Generate RSA Keys",
+      "publicPlaceholder": "RSA Public Key (PEM format)",
+      "privatePlaceholder": "RSA Private Key (PEM format)"
+    },
+    "ecc": {
+      "generated": "ECC key pair generated successfully",
+      "encrypted": "ECC encryption completed",
+      "decrypted": "ECC decryption completed",
+      "generate": "Generate ECC Keys",
+      "publicPlaceholder": "ECC Public Key",
+      "privatePlaceholder": "ECC Private Key",
+      "recipientPlaceholder": "Recipient Public Key"
+    },
+    "elgamal": {
+      "generated": "ElGamal key pair generated successfully",
+      "encrypted": "ElGamal encryption completed",
+      "decrypted": "ElGamal decryption completed",
+      "generate": "Generate ElGamal Keys",
+      "bitLength": "Bit Length",
+      "publicPlaceholder": "ElGamal Public Key",
+      "privatePlaceholder": "ElGamal Private Key"
+    },
+    "placeholders": {
+      "input": "Enter text to encrypt/decrypt",
+      "output": "Result will appear here",
+      "publicKey": "Enter public key or generate a key pair...",
+      "privateKey": "Enter private key or generate a key pair...",
+      "textToEncrypt": "Enter text to encrypt",
+      "textToDecrypt": "Enter text to decrypt",
+      "textToSign": "Enter text to sign",
+      "textToVerify": "Enter text to verify",
+      "signatureToVerify": "Enter signature to verify..."
+    },
+    "tabs": {
+      "keyManagement": "Key Management",
+      "cryptoOperations": "Crypto Operations"
+    },
+    "labels": {
+      "keySizeBits": "Key Size (bits)",
+      "type": "Type",
+      "valid": "Valid",
+      "plaintext": "Plaintext",
+      "ciphertext": "Ciphertext",
+      "messageToSign": "Message to sign",
+      "messageToVerify": "Message to verify",
+      "signature": "Signature",
+      "algorithmInfo": "Algorithm Info"
+    },
+    "actions": {
+      "clearKeys": "Clear Keys",
+      "sign": "Sign",
+      "generateSignature": "Generate Signature",
+      "verifySignature": "Verify Signature"
+    },
+    "info": {
+      "rsa": {
+        "description": "Public key encryption system",
+        "usage": "Encryption/decryption, digital signature",
+        "security": "2048 bits or more recommended"
+      },
+      "ecc": {
+        "description": "Elliptic curve cryptography",
+        "usage": "Digital signature",
+        "security": "Same security as RSA with smaller key size"
+      },
+      "usage": "Usage",
+      "keySize": "Key size",
+      "security": "Security",
+      "curve": "Curve"
+    },
+    "alerts": {
+      "verificationSuccess": "Signature verification: Success",
+      "verificationFailed": "Signature verification: Failure"
+    },
+    "errors": {
+      "unsupportedAlgorithm": "Unsupported algorithm"
+    }
+  },
+  "encoding": {
+    "title": "Encoding",
+    "description": "URL and other encoding tools",
+    "cards": {
+      "base64": {
+        "title": "Base64 Encode/Decode",
+        "description": "Convert text to Base64 or vice versa",
+        "placeholder": "Enter text to encode/decode",
+        "resultPlaceholder": "Result will appear here"
+      },
+      "url": {
+        "title": "URL Encode/Decode",
+        "description": "Safely encode or decode URLs",
+        "placeholder": "Enter URL to encode/decode",
+        "resultPlaceholder": "Result will appear here"
+      },
+      "image": {
+        "title": "Image → Base64",
+        "description": "Convert images to Base64 strings",
+        "decodeButton": "Base64 → Image",
+        "previewAlt": "Preview image",
+        "resultPlaceholder": "Result will appear here"
+      }
+    }
+  },
+  "files": {
+    "title": "Files",
+    "description": "File streaming and encryption",
+    "cardTitle": "File Encryption and Hash",
+    "cardDescription": "Encrypt, decrypt files or generate hash values",
+    "dragText": "Drag or click to select a file",
+    "dragDescription": "Supports text file encryption, decryption and hashing",
+    "fileSelected": "File selected",
+    "largeFile": "Large file",
+    "normalFile": "Normal file",
+    "operation": "Operation",
+    "algorithm": "Algorithm",
+    "encryptionKey": "Encryption Key",
+    "generateKey": "Generate Key",
+    "keySuccess": "Key generated successfully",
+    "keyPrefix": "Key (first 16 chars)",
+    "processing": "Processing...",
+    "result": "Result",
+    "processButton": "File",
+    "clear": "Clear",
+    "operations": {
+      "encrypt": "Encrypt",
+      "decrypt": "Decrypt",
+      "hash": "Hash"
+    },
+    "actions": {
+      "keyGenerated": "Encryption key generated",
+      "encrypted": "File encryption completed",
+      "decrypted": "File decryption completed",
+      "hashed": "File hashing completed"
+    },
+    "errors": {
+      "selectFile": "Please select a file",
+      "generateKeyFirst": "Please generate encryption key first",
+      "browserOnly": "Key generation is only available in browser environment",
+      "cryptoNotSupported": "Web Crypto API is not supported. Please access via HTTPS",
+      "nonceNotFound": "Nonce not found for decryption",
+      "fileReadFailed": "Failed to read file"
+    }
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "label": "Toggle theme",
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "system": "System setting"
+  },
+  "actions": {
+    "encrypt": "Encrypt",
+    "decrypt": "Decrypt",
+    "copy": "Copy",
+    "clear": "Clear",
+    "processing": "Processing",
+    "encode": "Encode",
+    "decode": "Decode"
+  },
+  "messages": {
+    "copied": "Copied to clipboard"
+  },
+  "errors": {
+    "invalidInput": "Invalid input",
+    "encryptionFailed": "Encryption failed",
+    "decryptionFailed": "Decryption failed",
+    "invalidKey": "Invalid key",
+    "keyRequired": "Key is required",
+    "fileTooLarge": "File too large",
+    "copyFailed": "Failed to copy to clipboard",
+    "keyGenerationFailed": "Key generation failed",
+    "publicKeyRequired": "Public key is required",
+    "privateKeyRequired": "Private key is required",
+    "parametersMissing": "Parameters are missing",
+    "inputRequired": "Input is required",
+    "rsaOnly": "Currently only RSA encryption is supported",
+    "ecdsaOnly": "Currently only ECDSA signature verification is supported",
+    "signatureValid": "Signature is valid! ✅",
+    "signatureInvalid": "Signature is invalid! ❌",
+    "messageRequired": "Please enter message to sign",
+    "signatureRequired": "Please enter signature",
+    "verificationFailed": "Signature verification failed",
+    "keyPairGenerated": "Key pair generated successfully",
+    "signatureGenerated": "Signature generated successfully",
+    "signingFailed": "Signing failed",
+    "signatureGenerationFailed": "Signature generation failed"
+  }
+}

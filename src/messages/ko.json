@@ -1,0 +1,406 @@
+{
+  "app": {
+    "title": "CryptoTools",
+    "description": "포괄적인 암호화 도구",
+    "footer": "개발자를 위한 보안 암호화 도구",
+    "welcome": "어떤 암호화 도구가 필요하신가요?",
+    "welcomeDescription": "브라우저에서 바로 사용할 수 있는 안전하고 빠른 암호화 도구들을 제공합니다. 모든 연산은 로컬에서 처리되어 개인정보가 완전히 보호됩니다.",
+    "footerDescription": "모든 암호화 작업은 브라우저에서 로컬로 수행됩니다. 개인정보와 데이터가 완전히 보호됩니다.",
+    "badges": {
+      "security": "보안 인증",
+      "realtime": "실시간 처리"
+    },
+    "features": {
+      "security": {
+        "title": "완전한 보안",
+        "description": "모든 암호화 작업이 브라우저에서 로컬로 처리됩니다. 데이터가 서버로 전송되지 않습니다."
+      },
+      "realtime": {
+        "title": "실시간 처리",
+        "description": "타이핑과 동시에 실시간으로 결과를 확인할 수 있습니다. 빠르고 직관적인 사용자 경험을 제공합니다."
+      },
+      "multilingual": {
+        "title": "다국어 지원",
+        "description": "한국어와 영어를 완벽 지원하며, 각 언어에 최적화된 사용자 인터페이스를 제공합니다."
+      }
+    }
+  },
+  "navigation": {
+    "home": "홈",
+    "base64": "Base64",
+    "hash": "해시",
+    "symmetric": "대칭암호",
+    "asymmetric": "비대칭암호",
+    "advanced": "고급암호"
+  },
+  "common": {
+    "encrypt": "암호화",
+    "decrypt": "복호화",
+    "encode": "인코딩",
+    "decode": "디코딩",
+    "clear": "지우기",
+    "copy": "복사",
+    "download": "다운로드",
+    "upload": "업로드",
+    "input": "입력",
+    "output": "출력",
+    "key": "키",
+    "algorithm": "알고리즘",
+    "mode": "모드",
+    "generate": "생성",
+    "verify": "검증",
+    "realTimeProcessing": "실시간 처리",
+    "back": "도구 선택으로 돌아가기",
+    "start": "시작하기",
+    "outputFormat": "출력 형식",
+    "saltOptional": "솔트 (선택사항)",
+    "outputSize": "출력 크기",
+    "bits": "비트",
+    "notRecommended": "⚠️ 보안상 권장되지 않음",
+    "processing": "처리 중...",
+    "realTime": "실시간",
+    "length": "길이",
+    "characters": "문자",
+    "experimental": "실험적",
+    "selectFile": "파일 선택",
+    "changeFile": "파일 변경",
+    "removeFile": "파일 제거"
+  },
+  "actions": {
+    "encrypt": "암호화",
+    "decrypt": "복호화",
+    "copy": "복사",
+    "clear": "초기화",
+    "processing": "처리 중...",
+    "encode": "인코딩",
+    "decode": "디코딩"
+  },
+  "base64": {
+    "title": "Base64 인코더/디코더",
+    "description": "텍스트를 Base64로 변환하거나 그 반대로 변환",
+    "textInput": "인코딩/디코딩할 텍스트를 입력하세요",
+    "imageUpload": "Base64로 변환할 이미지를 업로드하세요",
+    "result": "결과",
+    "actions": {
+      "encoded": "Base64 인코딩이 완료되었습니다",
+      "decoded": "Base64 디코딩이 완료되었습니다",
+      "fileConverted": "파일이 Base64로 변환되었습니다",
+      "downloaded": "파일이 다운로드되었습니다"
+    },
+    "errors": {
+      "inputRequired": "입력 텍스트를 입력해주세요",
+      "base64Required": "Base64 문자열을 입력해주세요",
+      "encodingFailed": "인코딩 실패",
+      "decodingFailed": "디코딩 실패",
+      "fileConversionFailed": "파일 변환 실패",
+      "noContent": "다운로드할 내용이 없습니다",
+      "downloadFailed": "다운로드에 실패했습니다",
+      "unknownError": "알 수 없는 오류"
+    },
+    "placeholders": {
+      "encode": "인코딩할 텍스트를 입력하세요...",
+      "decode": "Base64 문자열을 입력하세요..."
+    }
+  },
+  "hash": {
+    "title": "해시 함수",
+    "description": "다양한 알고리즘을 사용하여 해시 값 생성",
+    "algorithms": {
+      "sha1": "SHA-1",
+      "sha224": "SHA-224",
+      "sha256": "SHA-256",
+      "sha384": "SHA-384",
+      "sha512": "SHA-512",
+      "sha3-224": "SHA3-224",
+      "sha3-256": "SHA3-256",
+      "sha3-384": "SHA3-384",
+      "sha3-512": "SHA3-512",
+      "blake2b": "BLAKE2b",
+      "blake2s": "BLAKE2s"
+    },
+    "actions": {
+      "completed": "해시가 생성되었습니다",
+      "fileHashed": "파일 해시가 생성되었습니다",
+      "verified": "해시 값이 일치합니다! ✅",
+      "verificationFailed": "해시 값이 일치하지 않습니다. ❌",
+      "selectFileAndGenerateHash": "파일을 선택하여 해시 생성",
+      "generateHash": "해시 생성",
+      "compareHashes": "해시 비교",
+      "generate": "해시 생성"
+    },
+    "labels": {
+      "algorithm": "알고리즘",
+      "outputFormat": "출력 형식",
+      "fileInput": "파일 입력",
+      "textPlaceholder": "해시할 텍스트를 입력하세요...",
+      "resultPlaceholder": "해시 결과가 여기에 표시됩니다"
+    },
+    "errors": {
+      "inputRequired": "해시할 텍스트를 입력해주세요",
+      "unsupportedAlgorithm": "지원하지 않는 알고리즘",
+      "fileHashFailed": "파일 해시 생성 실패",
+      "verificationFailed": "해시 비교에 실패했습니다"
+    },
+    "placeholders": {
+      "salt": "솔트 입력...",
+      "textToHash": "해시를 생성할 텍스트를 입력하세요..."
+    },
+    "prompts": {
+      "firstHash": "첫 번째 해시 값을 입력하세요:",
+      "secondHash": "두 번째 해시 값을 입력하세요:"
+    },
+    "result": "해시 결과"
+  },
+  "symmetric": {
+    "title": "대칭 암호화",
+    "description": "대칭 알고리즘을 사용한 데이터 암호화 및 복호화",
+    "algorithms": {
+      "aes": "AES",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "modes": {
+      "ecb": "ECB",
+      "cbc": "CBC",
+      "gcm": "GCM"
+    },
+    "labels": {
+      "algorithm": "알고리즘",
+      "mode": "모드",
+      "keyLength": "키 길이",
+      "outputEncoding": "출력 인코딩",
+      "padding": "패딩",
+      "key": "키",
+      "iv": "IV (초기화 벡터)",
+      "nonce": "논스",
+      "aad": "추가 데이터",
+      "rc4Drop": "RC4 드롭",
+      "plaintext": "평문",
+      "ciphertext": "암호문",
+      "encryptionInfo": "암호화 정보"
+    },
+    "placeholders": {
+      "key": "암호화 키를 입력하거나 '키 생성' 버튼을 클릭하세요",
+      "iv": "IV를 입력하거나 'IV 생성' 버튼을 클릭하세요",
+      "nonce": "논스를 입력하세요 (선택사항)",
+      "aad": "추가 인증 데이터를 입력하세요",
+      "input": "암호화/복호화할 텍스트를 입력하세요",
+      "output": "결과가 여기에 표시됩니다",
+      "encrypt": "암호화할 텍스트를 입력하세요...",
+      "decrypt": "복호화할 암호문을 입력하세요..."
+    },
+    "actions": {
+      "encrypted": "암호화가 완료되었습니다",
+      "decrypted": "복호화가 완료되었습니다",
+      "keyGenerated": "새로운 키가 생성되었습니다",
+      "ivGenerated": "새로운 IV가 생성되었습니다",
+      "infoCopied": "암호화 정보가 클립보드에 복사되었습니다",
+      "generateKey": "키 생성",
+      "generateIv": "IV 생성",
+      "copyInfo": "암호화 정보 복사"
+    },
+    "errors": {
+      "inputRequired": "암호화할 텍스트를 입력해주세요",
+      "ciphertextRequired": "복호화할 암호문을 입력해주세요",
+      "keyRequired": "복호화 키를 입력해주세요",
+      "keyGenerationFailed": "키 생성에 실패했습니다",
+      "ivGenerationFailed": "IV 생성에 실패했습니다",
+      "noInfo": "암호화 정보가 없습니다",
+      "unsupportedAlgorithm": "지원하지 않는 알고리즘"
+    }
+  },
+  "asymmetric": {
+    "title": "비대칭 암호화",
+    "description": "공개키 암호화 연산",
+    "algorithms": {
+      "rsa": "RSA",
+      "ecc": "ECC"
+    },
+    "keyGeneration": "키 생성",
+    "publicKey": "공개키",
+    "privateKey": "개인키",
+    "notice": "모든 암호화 작업은 브라우저에서 로컬로 처리됩니다",
+    "rsa": {
+      "generated": "RSA 키가 생성되었습니다",
+      "encrypted": "RSA 암호화가 완료되었습니다",
+      "decrypted": "RSA 복호화가 완료되었습니다",
+      "generate": "RSA 키 생성",
+      "publicPlaceholder": "RSA 공개키 (PEM 형식)",
+      "privatePlaceholder": "RSA 개인키 (PEM 형식)"
+    },
+    "ecc": {
+      "generated": "ECC 키가 생성되었습니다",
+      "encrypted": "ECC 암호화가 완료되었습니다",
+      "decrypted": "ECC 복호화가 완료되었습니다",
+      "generate": "ECC 키 생성",
+      "publicPlaceholder": "ECC 공개키",
+      "privatePlaceholder": "ECC 개인키",
+      "recipientPlaceholder": "수신자 공개키"
+    },
+    "elgamal": {
+      "generated": "ElGamal 키가 생성되었습니다",
+      "encrypted": "ElGamal 암호화가 완료되었습니다",
+      "decrypted": "ElGamal 복호화가 완료되었습니다",
+      "generate": "ElGamal 키 생성",
+      "bitLength": "비트 길이",
+      "publicPlaceholder": "ElGamal 공개키",
+      "privatePlaceholder": "ElGamal 개인키"
+    },
+    "placeholders": {
+      "input": "암호화/복호화할 텍스트를 입력하세요",
+      "output": "결과가 여기에 표시됩니다",
+      "publicKey": "공개키를 입력하거나 키 쌍을 생성하세요...",
+      "privateKey": "개인키를 입력하거나 키 쌍을 생성하세요...",
+      "textToEncrypt": "암호화할 텍스트를 입력하세요",
+      "textToDecrypt": "복호화할 텍스트를 입력하세요",
+      "textToSign": "서명할 텍스트를 입력하세요",
+      "textToVerify": "검증할 텍스트를 입력하세요",
+      "signatureToVerify": "검증할 서명을 입력하세요..."
+    },
+    "tabs": {
+      "keyManagement": "키 관리",
+      "cryptoOperations": "암호화 작업"
+    },
+    "labels": {
+      "keySizeBits": "키 크기 (비트)",
+      "type": "타입",
+      "valid": "유효",
+      "plaintext": "평문",
+      "ciphertext": "암호문",
+      "messageToSign": "서명할 메시지",
+      "messageToVerify": "검증할 메시지",
+      "signature": "서명",
+      "algorithmInfo": "알고리즘 정보"
+    },
+    "actions": {
+      "clearKeys": "키 지우기",
+      "sign": "서명",
+      "generateSignature": "서명 생성",
+      "verifySignature": "서명 검증"
+    },
+    "info": {
+      "rsa": {
+        "description": "공개키 암호화 시스템",
+        "usage": "암호화/복호화, 디지털 서명",
+        "security": "2048비트 이상 권장"
+      },
+      "ecc": {
+        "description": "타원곡선 암호화",
+        "usage": "디지털 서명",
+        "security": "RSA 대비 작은 키 크기로 동일한 보안"
+      },
+      "usage": "용도",
+      "keySize": "키 크기",
+      "security": "보안",
+      "curve": "곡선"
+    },
+    "alerts": {
+      "verificationSuccess": "서명 검증: 성공",
+      "verificationFailed": "서명 검증: 실패"
+    },
+    "errors": {
+      "unsupportedAlgorithm": "지원하지 않는 알고리즘"
+    }
+  },
+  "encoding": {
+    "title": "인코딩",
+    "description": "URL 및 기타 인코딩 도구",
+    "cards": {
+      "base64": {
+        "title": "Base64 인코딩/디코딩",
+        "description": "텍스트를 Base64로 변환하거나 그 반대로 변환",
+        "placeholder": "인코딩/디코딩할 텍스트를 입력하세요",
+        "resultPlaceholder": "결과가 여기에 표시됩니다"
+      },
+      "url": {
+        "title": "URL 인코딩/디코딩",
+        "description": "URL을 안전하게 인코딩하거나 디코딩",
+        "placeholder": "인코딩/디코딩할 URL을 입력하세요",
+        "resultPlaceholder": "결과가 여기에 표시됩니다"
+      },
+      "image": {
+        "title": "이미지 → Base64",
+        "description": "이미지를 Base64 문자열로 변환",
+        "decodeButton": "Base64 → 이미지",
+        "previewAlt": "미리보기 이미지",
+        "resultPlaceholder": "결과가 여기에 표시됩니다"
+      }
+    }
+  },
+  "files": {
+    "title": "파일",
+    "description": "파일 스트리밍 및 암호화",
+    "cardTitle": "파일 암호화 및 해시",
+    "cardDescription": "파일을 암호화, 복호화하거나 해시값을 생성합니다",
+    "dragText": "파일을 드래그하거나 클릭하여 선택",
+    "dragDescription": "텍스트 파일 암호화, 복호화 및 해시 지원",
+    "fileSelected": "파일 선택됨",
+    "largeFile": "대용량 파일",
+    "normalFile": "일반 파일",
+    "operation": "작업",
+    "algorithm": "알고리즘",
+    "encryptionKey": "암호화 키",
+    "generateKey": "키 생성",
+    "keySuccess": "키가 성공적으로 생성되었습니다",
+    "keyPrefix": "키 (처음 16자)",
+    "processing": "처리 중...",
+    "result": "결과",
+    "processButton": "파일",
+    "clear": "지우기",
+    "operations": {
+      "encrypt": "암호화",
+      "decrypt": "복호화",
+      "hash": "해시"
+    },
+    "actions": {
+      "keyGenerated": "암호화 키가 생성되었습니다",
+      "encrypted": "파일 암호화 완료",
+      "decrypted": "파일 복호화 완료",
+      "hashed": "파일 해시 완료"
+    },
+    "errors": {
+      "selectFile": "파일을 선택해주세요",
+      "generateKeyFirst": "먼저 암호화 키를 생성해주세요",
+      "browserOnly": "키 생성은 브라우저 환경에서만 가능합니다",
+      "cryptoNotSupported": "Web Crypto API가 지원되지 않습니다. HTTPS 환경에서 접속해주세요",
+      "nonceNotFound": "복호화를 위한 nonce를 찾을 수 없습니다",
+      "fileReadFailed": "파일 읽기 실패"
+    }
+  },
+
+  "theme": {
+    "toggle": "테마 변경",
+    "label": "테마 변경",
+    "light": "라이트 모드",
+    "dark": "다크 모드",
+    "system": "시스템 설정"
+  },
+  "messages": {
+    "copied": "클립보드에 복사되었습니다"
+  },
+  "errors": {
+    "invalidInput": "잘못된 입력",
+    "encryptionFailed": "암호화 실패",
+    "decryptionFailed": "복호화 실패",
+    "invalidKey": "잘못된 키",
+    "keyRequired": "키가 필요합니다",
+    "fileTooLarge": "파일이 너무 큼",
+    "copyFailed": "복사에 실패했습니다",
+    "keyGenerationFailed": "키 생성 실패",
+    "publicKeyRequired": "공개키가 필요합니다",
+    "privateKeyRequired": "개인키가 필요합니다",
+    "parametersMissing": "매개변수가 누락되었습니다",
+    "inputRequired": "입력이 필요합니다",
+    "rsaOnly": "현재 RSA 암호화만 지원됩니다",
+    "ecdsaOnly": "현재 ECDSA 서명 검증만 지원됩니다",
+    "signatureValid": "서명이 유효합니다! ✅",
+    "signatureInvalid": "서명이 유효하지 않습니다! ❌",
+    "messageRequired": "서명할 메시지를 입력해주세요",
+    "signatureRequired": "서명을 입력해주세요",
+    "verificationFailed": "서명 검증에 실패했습니다",
+    "keyPairGenerated": "키 쌍이 생성되었습니다",
+    "signatureGenerated": "서명이 생성되었습니다",
+    "signingFailed": "서명 실패",
+    "signatureGenerationFailed": "서명 생성 실패"
+  }
+}

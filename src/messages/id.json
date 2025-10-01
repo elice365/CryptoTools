@@ -1,0 +1,392 @@
+{
+  "app": {
+    "title": "CryptoTools",
+    "description": "Alat Kriptografi Komprehensif",
+    "footer": "Alat Kriptografi Aman untuk Pengembang",
+    "welcome": "Alat kriptografi apa yang Anda butuhkan?",
+    "welcomeDescription": "Alat kriptografi yang cepat dan aman yang bekerja langsung di browser Anda. Semua operasi diproses secara lokal untuk melindungi privasi Anda sepenuhnya.",
+    "footerDescription": "Semua operasi kriptografi dilakukan secara lokal di browser Anda. Privasi dan data Anda dilindungi sepenuhnya.",
+    "badges": {
+      "security": "Bersertifikat Keamanan",
+      "realtime": "Pemrosesan Real-time"
+    },
+    "features": {
+      "security": {
+        "title": "Keamanan Penuh",
+        "description": "Semua operasi kriptografi diproses secara lokal di browser Anda. Tidak ada data yang dikirim ke server."
+      },
+      "realtime": {
+        "title": "Pemrosesan Real-time",
+        "description": "Lihat hasil secara real-time saat Anda mengetik. Pengalaman pengguna yang cepat dan intuitif."
+      },
+      "multilingual": {
+        "title": "Dukungan Multibahasa",
+        "description": "Dukungan sempurna untuk Korea dan Inggris dengan antarmuka pengguna yang dioptimalkan untuk setiap bahasa."
+      }
+    }
+  },
+  "navigation": {
+    "home": "Beranda",
+    "base64": "Base64",
+    "hash": "Hash",
+    "symmetric": "Simetris",
+    "asymmetric": "Asimetris",
+    "advanced": "Lanjutan"
+  },
+  "common": {
+    "encrypt": "Enkripsi",
+    "decrypt": "Dekripsi",
+    "encode": "Encode",
+    "decode": "Decode",
+    "clear": "Hapus",
+    "copy": "Salin",
+    "download": "Unduh",
+    "upload": "Unggah",
+    "input": "Input",
+    "output": "Output",
+    "key": "Kunci",
+    "algorithm": "Algoritma",
+    "mode": "Mode",
+    "generate": "Generate",
+    "verify": "Verifikasi",
+    "back": "Kembali ke Alat",
+    "start": "Mulai",
+    "realTimeProcessing": "Pemrosesan Real-time",
+    "outputFormat": "Format Output",
+    "saltOptional": "Salt (opsional)",
+    "outputSize": "Ukuran output",
+    "bits": "bit",
+    "notRecommended": "⚠️ Tidak direkomendasikan untuk keamanan",
+    "processing": "Memproses...",
+    "realTime": "Real-time",
+    "length": "Panjang",
+    "characters": "karakter",
+    "experimental": "experimental",
+    "selectFile": "Pilih File",
+    "changeFile": "Ubah File",
+    "removeFile": "Hapus File"
+  },
+  "base64": {
+    "title": "Encoder/Decoder Base64",
+    "description": "Konversi teks ke Base64 dan sebaliknya",
+    "textInput": "Masukkan teks untuk encode/decode",
+    "imageUpload": "Unggah gambar untuk dikonversi ke Base64",
+    "result": "Hasil",
+    "actions": {
+      "encoded": "Encoding Base64 selesai",
+      "decoded": "Decoding Base64 selesai",
+      "fileConverted": "File dikonversi ke Base64",
+      "downloaded": "File diunduh"
+    },
+    "errors": {
+      "inputRequired": "Silakan masukkan teks untuk di-encode",
+      "base64Required": "Silakan masukkan string Base64 untuk di-decode",
+      "encodingFailed": "Encoding gagal",
+      "decodingFailed": "Decoding gagal",
+      "fileConversionFailed": "Konversi file gagal",
+      "noContent": "Tidak ada konten untuk diunduh",
+      "downloadFailed": "Unduhan gagal",
+      "unknownError": "Kesalahan tidak diketahui"
+    },
+    "placeholders": {
+      "encode": "Masukkan teks untuk di-encode...",
+      "decode": "Masukkan string Base64..."
+    }
+  },
+  "hash": {
+    "title": "Fungsi Hash",
+    "description": "Generate nilai hash menggunakan berbagai algoritma",
+    "algorithms": {
+      "sha1": "SHA-1",
+      "sha256": "SHA-256",
+      "sha384": "SHA-384",
+      "sha512": "SHA-512",
+      "blake2": "BLAKE2"
+    },
+    "actions": {
+      "completed": "Hash berhasil di-generate",
+      "fileHashed": "Hash file berhasil di-generate",
+      "verified": "Nilai hash cocok! ✅",
+      "verificationFailed": "Nilai hash tidak cocok. ❌",
+      "selectFileAndGenerateHash": "Pilih file untuk generate hash",
+      "generateHash": "Generate Hash",
+      "compareHashes": "Bandingkan Hash"
+    },
+    "errors": {
+      "inputRequired": "Silakan masukkan teks untuk di-hash",
+      "unsupportedAlgorithm": "Algoritma tidak didukung",
+      "fileHashFailed": "Generate hash file gagal",
+      "verificationFailed": "Verifikasi hash gagal"
+    },
+    "placeholders": {
+      "salt": "Masukkan salt...",
+      "textToHash": "Masukkan teks untuk generate hash..."
+    },
+    "prompts": {
+      "firstHash": "Masukkan nilai hash pertama:",
+      "secondHash": "Masukkan nilai hash kedua:"
+    },
+    "result": "Hasil Hash"
+  },
+  "symmetric": {
+    "title": "Enkripsi Simetris",
+    "description": "Enkripsi dan dekripsi data menggunakan algoritma simetris",
+    "algorithms": {
+      "aes": "AES",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "modes": {
+      "ecb": "ECB",
+      "cbc": "CBC",
+      "gcm": "GCM"
+    },
+    "labels": {
+      "algorithm": "Algoritma",
+      "mode": "Mode",
+      "keyLength": "Panjang Kunci",
+      "outputEncoding": "Encoding Output",
+      "padding": "Padding",
+      "key": "Kunci",
+      "iv": "IV (Initialization Vector)",
+      "nonce": "Nonce",
+      "aad": "Data Tambahan",
+      "rc4Drop": "RC4 Drop",
+      "plaintext": "Plaintext",
+      "ciphertext": "Ciphertext",
+      "encryptionInfo": "Encryption Info"
+    },
+    "placeholders": {
+      "key": "Masukkan kunci enkripsi",
+      "iv": "Masukkan initialization vector",
+      "nonce": "Masukkan nonce (opsional)",
+      "aad": "Masukkan authenticated data tambahan",
+      "input": "Masukkan teks untuk enkripsi/dekripsi",
+      "output": "Hasil akan muncul di sini",
+      "encrypt": "Enter text to encrypt...",
+      "decrypt": "Enter ciphertext to decrypt..."
+    },
+    "actions": {
+      "encrypted": "Teks berhasil dienkripsi",
+      "decrypted": "Teks berhasil didekripsi",
+      "generateKey": "Generate Key",
+      "generateIv": "Generate IV",
+      "copyInfo": "Copy Encryption Info"
+    },
+    "errors": {
+      "inputRequired": "Silakan masukkan teks untuk dienkripsi",
+      "ciphertextRequired": "Silakan masukkan ciphertext untuk didekripsi",
+      "keyRequired": "Silakan masukkan kunci dekripsi",
+      "keyGenerationFailed": "Generate kunci gagal",
+      "ivGenerationFailed": "Generate IV gagal",
+      "noInfo": "Tidak ada informasi enkripsi tersedia",
+      "unsupportedAlgorithm": "Algoritma tidak didukung"
+    }
+  },
+  "asymmetric": {
+    "title": "Enkripsi Asimetris",
+    "description": "Operasi kriptografi kunci publik",
+    "algorithms": {
+      "rsa": "RSA",
+      "ecc": "ECC"
+    },
+    "keyGeneration": "Generate Kunci",
+    "publicKey": "Kunci Publik",
+    "privateKey": "Kunci Privat",
+    "notice": "Semua operasi enkripsi diproses secara lokal di browser Anda",
+    "rsa": {
+      "generated": "Pasangan kunci RSA berhasil di-generate",
+      "encrypted": "Enkripsi RSA selesai",
+      "decrypted": "Dekripsi RSA selesai",
+      "generate": "Generate Kunci RSA",
+      "publicPlaceholder": "Kunci Publik RSA (format PEM)",
+      "privatePlaceholder": "Kunci Privat RSA (format PEM)"
+    },
+    "ecc": {
+      "generated": "Pasangan kunci ECC berhasil di-generate",
+      "encrypted": "Enkripsi ECC selesai",
+      "decrypted": "Dekripsi ECC selesai",
+      "generate": "Generate Kunci ECC",
+      "publicPlaceholder": "Kunci Publik ECC",
+      "privatePlaceholder": "Kunci Privat ECC",
+      "recipientPlaceholder": "Kunci Publik Penerima"
+    },
+    "elgamal": {
+      "generated": "Pasangan kunci ElGamal berhasil di-generate",
+      "encrypted": "Enkripsi ElGamal selesai",
+      "decrypted": "Dekripsi ElGamal selesai",
+      "generate": "Generate Kunci ElGamal",
+      "bitLength": "Panjang Bit",
+      "publicPlaceholder": "Kunci Publik ElGamal",
+      "privatePlaceholder": "Kunci Privat ElGamal"
+    },
+    "placeholders": {
+      "input": "Masukkan teks untuk enkripsi/dekripsi",
+      "output": "Hasil akan muncul di sini",
+      "publicKey": "Enter public key or generate a key pair...",
+      "privateKey": "Enter private key or generate a key pair...",
+      "textToEncrypt": "Enter text to encrypt",
+      "textToDecrypt": "Enter text to decrypt",
+      "textToSign": "Enter text to sign",
+      "textToVerify": "Enter text to verify",
+      "signatureToVerify": "Enter signature to verify..."
+    },
+    "tabs": {
+      "keyManagement": "Key Management",
+      "cryptoOperations": "Crypto Operations"
+    },
+    "labels": {
+      "keySizeBits": "Key Size (bits)",
+      "type": "Type",
+      "valid": "Valid",
+      "plaintext": "Plaintext",
+      "ciphertext": "Ciphertext",
+      "messageToSign": "Message to sign",
+      "messageToVerify": "Message to verify",
+      "signature": "Signature",
+      "algorithmInfo": "Algorithm Info"
+    },
+    "actions": {
+      "clearKeys": "Clear Keys",
+      "sign": "Sign",
+      "generateSignature": "Generate Signature",
+      "verifySignature": "Verify Signature"
+    },
+    "info": {
+      "rsa": {
+        "description": "Public key encryption system",
+        "usage": "Encryption/decryption, digital signature",
+        "security": "2048 bits or more recommended"
+      },
+      "ecc": {
+        "description": "Elliptic curve cryptography",
+        "usage": "Digital signature",
+        "security": "Same security as RSA with smaller key size"
+      },
+      "usage": "Usage",
+      "keySize": "Key size",
+      "security": "Security",
+      "curve": "Curve"
+    },
+    "alerts": {
+      "verificationSuccess": "Signature verification: Success",
+      "verificationFailed": "Signature verification: Failure"
+    },
+    "errors": {
+      "unsupportedAlgorithm": "Algoritma tidak didukung"
+    }
+  },
+  "encoding": {
+    "title": "Encoding",
+    "description": "URL dan alat encoding lainnya",
+    "cards": {
+      "base64": {
+        "title": "Encode/Decode Base64",
+        "description": "Konversi teks ke Base64 atau sebaliknya",
+        "placeholder": "Masukkan teks untuk encode/decode",
+        "resultPlaceholder": "Hasil akan muncul di sini"
+      },
+      "url": {
+        "title": "Encode/Decode URL",
+        "description": "Encode atau decode URL dengan aman",
+        "placeholder": "Masukkan URL untuk encode/decode",
+        "resultPlaceholder": "Hasil akan muncul di sini"
+      },
+      "image": {
+        "title": "Gambar → Base64",
+        "description": "Konversi gambar ke string Base64",
+        "decodeButton": "Base64 → Gambar",
+        "previewAlt": "Preview gambar",
+        "resultPlaceholder": "Hasil akan muncul di sini"
+      }
+    }
+  },
+  "files": {
+    "title": "File",
+    "description": "Streaming dan enkripsi file",
+    "cardTitle": "Enkripsi dan Hash File",
+    "cardDescription": "Enkripsi, dekripsi file atau generate nilai hash",
+    "dragText": "Seret atau klik untuk memilih file",
+    "dragDescription": "Mendukung enkripsi, dekripsi, dan hash file teks",
+    "fileSelected": "File dipilih",
+    "largeFile": "File besar",
+    "normalFile": "File normal",
+    "operation": "Operasi",
+    "algorithm": "Algoritma",
+    "encryptionKey": "Kunci Enkripsi",
+    "generateKey": "Generate Kunci",
+    "keySuccess": "Kunci berhasil di-generate",
+    "keyPrefix": "Kunci (16 karakter pertama)",
+    "processing": "Memproses...",
+    "result": "Hasil",
+    "processButton": "File",
+    "clear": "Hapus",
+    "operations": {
+      "encrypt": "Enkripsi",
+      "decrypt": "Dekripsi",
+      "hash": "Hash"
+    },
+    "actions": {
+      "keyGenerated": "Kunci enkripsi di-generate",
+      "encrypted": "Enkripsi file selesai",
+      "decrypted": "Dekripsi file selesai",
+      "hashed": "Hash file selesai"
+    },
+    "errors": {
+      "selectFile": "Silakan pilih file",
+      "generateKeyFirst": "Silakan generate kunci enkripsi terlebih dahulu",
+      "browserOnly": "Generate kunci hanya tersedia di lingkungan browser",
+      "cryptoNotSupported": "Web Crypto API tidak didukung. Silakan akses melalui HTTPS",
+      "nonceNotFound": "Nonce tidak ditemukan untuk dekripsi",
+      "fileReadFailed": "Gagal membaca file"
+    }
+  },
+  "test": {
+    "title": "Test API",
+    "description": "Pemeriksaan Status Web Crypto API"
+  },
+  "theme": {
+    "toggle": "Toggle tema",
+    "label": "Toggle tema",
+    "light": "Mode terang",
+    "dark": "Mode gelap",
+    "system": "Pengaturan sistem"
+  },
+  "actions": {
+    "encrypt": "Enkripsi",
+    "decrypt": "Dekripsi",
+    "copy": "Salin",
+    "clear": "Hapus",
+    "processing": "Memproses...",
+    "encode": "Enkode",
+    "decode": "Dekode"
+  },
+  "messages": {
+    "copied": "Disalin ke clipboard"
+  },
+  "errors": {
+    "invalidInput": "Input tidak valid",
+    "encryptionFailed": "Enkripsi gagal",
+    "decryptionFailed": "Dekripsi gagal",
+    "invalidKey": "Kunci tidak valid",
+    "keyRequired": "Kunci diperlukan",
+    "fileTooLarge": "File terlalu besar",
+    "copyFailed": "Gagal menyalin ke clipboard",
+    "keyGenerationFailed": "Generate kunci gagal",
+    "publicKeyRequired": "Kunci publik diperlukan",
+    "privateKeyRequired": "Kunci privat diperlukan",
+    "parametersMissing": "Parameter hilang",
+    "inputRequired": "Input diperlukan",
+    "rsaOnly": "Saat ini hanya enkripsi RSA yang didukung",
+    "ecdsaOnly": "Saat ini hanya verifikasi signature ECDSA yang didukung",
+    "signatureValid": "Signature valid! ✅",
+    "signatureInvalid": "Signature tidak valid! ❌",
+    "messageRequired": "Silakan masukkan pesan untuk ditandatangani",
+    "signatureRequired": "Silakan masukkan signature",
+    "verificationFailed": "Verifikasi signature gagal",
+    "keyPairGenerated": "Pasangan kunci berhasil di-generate",
+    "signatureGenerated": "Signature berhasil di-generate",
+    "signingFailed": "Penandatanganan gagal",
+    "signatureGenerationFailed": "Generate signature gagal"
+  }
+}

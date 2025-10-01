@@ -1,0 +1,411 @@
+{
+  "app": {
+    "title": "CryptoTools",
+    "description": "Комплексные криптографические инструменты",
+    "footer": "Безопасные криптографические инструменты для разработчиков",
+    "welcome": "Какой криптографический инструмент вам нужен?",
+    "welcomeDescription": "Быстрые и безопасные криптографические инструменты, работающие прямо в вашем браузере. Все операции обрабатываются локально для полной защиты вашей конфиденциальности.",
+    "footerDescription": "Все криптографические операции выполняются локально в вашем браузере. Ваша конфиденциальность и данные полностью защищены.",
+    "badges": {
+      "security": "Сертифицировано по безопасности",
+      "realtime": "Обработка в реальном времени"
+    },
+    "features": {
+      "security": {
+        "title": "Полная безопасность",
+        "description": "Все криптографические операции обрабатываются локально в вашем браузере. Данные не передаются на серверы."
+      },
+      "realtime": {
+        "title": "Обработка в реальном времени",
+        "description": "Результаты отображаются в реальном времени по мере ввода. Быстрый и интуитивный пользовательский опыт."
+      },
+      "multilingual": {
+        "title": "Многоязычная поддержка",
+        "description": "Полная поддержка корейского и английского языков с оптимизированным интерфейсом для каждого языка."
+      }
+    }
+  },
+  "navigation": {
+    "home": "Главная",
+    "base64": "Base64",
+    "hash": "Хэш",
+    "symmetric": "Симметричное",
+    "asymmetric": "Асимметричное",
+    "advanced": "Расширенное"
+  },
+  "common": {
+    "encrypt": "Шифровать",
+    "decrypt": "Расшифровать",
+    "encode": "Кодировать",
+    "decode": "Декодировать",
+    "clear": "Очистить",
+    "copy": "Копировать",
+    "download": "Скачать",
+    "upload": "Загрузить",
+    "input": "Ввод",
+    "output": "Вывод",
+    "key": "Ключ",
+    "algorithm": "Алгоритм",
+    "mode": "Режим",
+    "generate": "Генерировать",
+    "verify": "Проверить",
+    "back": "Назад к инструментам",
+    "start": "Начать",
+    "realTimeProcessing": "Обработка в реальном времени",
+    "outputFormat": "Формат вывода",
+    "saltOptional": "Соль (необязательно)",
+    "outputSize": "Размер вывода",
+    "bits": "бит",
+    "notRecommended": "⚠️ Не рекомендуется для безопасности",
+    "processing": "Обработка...",
+    "realTime": "Реальное время",
+    "length": "Длина",
+    "characters": "символов",
+    "experimental": "experimental",
+    "selectFile": "Выбрать файл",
+    "changeFile": "Изменить файл",
+    "removeFile": "Удалить файл"
+  },
+  "actions": {
+    "encrypt": "Шифровать",
+    "decrypt": "Расшифровать",
+    "copy": "Копировать",
+    "clear": "Очистить",
+    "processing": "Обработка...",
+    "encode": "Кодировать",
+    "decode": "Декодировать"
+  },
+  "base64": {
+    "title": "Кодировщик/Декодировщик Base64",
+    "description": "Преобразование текста в Base64 и обратно",
+    "textInput": "Введите текст для кодирования/декодирования",
+    "imageUpload": "Загрузите изображение для преобразования в Base64",
+    "result": "Результат",
+    "actions": {
+      "encoded": "Кодирование Base64 завершено",
+      "decoded": "Декодирование Base64 завершено",
+      "fileConverted": "Файл преобразован в Base64",
+      "downloaded": "Файл загружен"
+    },
+    "errors": {
+      "inputRequired": "Пожалуйста, введите текст для кодирования",
+      "base64Required": "Пожалуйста, введите строку Base64 для декодирования",
+      "encodingFailed": "Ошибка кодирования",
+      "decodingFailed": "Ошибка декодирования",
+      "fileConversionFailed": "Ошибка преобразования файла",
+      "noContent": "Нет содержимого для загрузки",
+      "downloadFailed": "Ошибка загрузки",
+      "unknownError": "Неизвестная ошибка"
+    },
+    "placeholders": {
+      "encode": "Введите текст для кодирования...",
+      "decode": "Введите строку Base64..."
+    }
+  },
+  "hash": {
+    "title": "Хэш-функции",
+    "description": "Генерация хэш-значений с использованием различных алгоритмов",
+    "algorithms": {
+      "sha1": "SHA-1",
+      "sha224": "SHA-224",
+      "sha256": "SHA-256",
+      "sha384": "SHA-384",
+      "sha512": "SHA-512",
+      "sha3-224": "SHA3-224",
+      "sha3-256": "SHA3-256",
+      "sha3-384": "SHA3-384",
+      "sha3-512": "SHA3-512",
+      "blake2b": "BLAKE2b",
+      "blake2s": "BLAKE2s"
+    },
+    "actions": {
+      "completed": "Хэш успешно сгенерирован",
+      "fileHashed": "Хэш файла успешно сгенерирован",
+      "verified": "Хэш-значения совпадают! ✅",
+      "verificationFailed": "Хэш-значения не совпадают. ❌",
+      "selectFileAndGenerateHash": "Выберите файл для генерации хэша",
+      "generateHash": "Генерировать хэш",
+      "compareHashes": "Сравнить хэши",
+      "generate": "Генерировать хэш"
+    },
+    "labels": {
+      "algorithm": "Алгоритм",
+      "outputFormat": "Формат вывода",
+      "fileInput": "Файл",
+      "textPlaceholder": "Введите текст для хэширования...",
+      "resultPlaceholder": "Результат хэширования появится здесь"
+    },
+    "errors": {
+      "inputRequired": "Пожалуйста, введите текст для хэширования",
+      "unsupportedAlgorithm": "Неподдерживаемый алгоритм",
+      "fileHashFailed": "Ошибка генерации хэша файла",
+      "verificationFailed": "Ошибка проверки хэша"
+    },
+    "placeholders": {
+      "salt": "Введите соль...",
+      "textToHash": "Введите текст для генерации хэша..."
+    },
+    "prompts": {
+      "firstHash": "Введите первое хэш-значение:",
+      "secondHash": "Введите второе хэш-значение:"
+    },
+    "result": "Результат хэша"
+  },
+  "symmetric": {
+    "title": "Симметричное шифрование",
+    "description": "Шифрование и дешифрование данных с использованием симметричных алгоритмов",
+    "algorithms": {
+      "aes": "AES",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "modes": {
+      "ecb": "ECB",
+      "cbc": "CBC",
+      "gcm": "GCM"
+    },
+    "labels": {
+      "algorithm": "Алгоритм",
+      "mode": "Режим",
+      "keyLength": "Длина ключа",
+      "outputEncoding": "Кодировка вывода",
+      "padding": "Заполнение",
+      "key": "Ключ",
+      "iv": "IV",
+      "nonce": "Nonce",
+      "aad": "Дополнительные данные",
+      "rc4Drop": "RC4 Drop",
+      "plaintext": "Plaintext",
+      "ciphertext": "Ciphertext",
+      "encryptionInfo": "Encryption Info"
+    },
+    "placeholders": {
+      "key": "Введите ключ шифрования",
+      "iv": "Введите вектор инициализации",
+      "nonce": "Введите nonce (необязательно)",
+      "aad": "Введите дополнительные аутентифицированные данные",
+      "input": "Введите текст для шифрования/дешифрования",
+      "output": "Результат появится здесь",
+      "encrypt": "Enter text to encrypt...",
+      "decrypt": "Enter ciphertext to decrypt..."
+    },
+    "actions": {
+      "encrypted": "Текст успешно зашифрован",
+      "decrypted": "Текст успешно расшифрован",
+      "generateKey": "Generate Key",
+      "generateIv": "Generate IV",
+      "copyInfo": "Copy Encryption Info"
+    },
+    "errors": {
+      "inputRequired": "Пожалуйста, введите текст для шифрования",
+      "ciphertextRequired": "Пожалуйста, введите шифротекст для дешифрования",
+      "keyRequired": "Пожалуйста, введите ключ дешифрования",
+      "keyGenerationFailed": "Ошибка генерации ключа",
+      "ivGenerationFailed": "Ошибка генерации IV",
+      "noInfo": "Информация о шифровании отсутствует",
+      "unsupportedAlgorithm": "Неподдерживаемый алгоритм"
+    }
+  },
+  "asymmetric": {
+    "title": "Асимметричное шифрование",
+    "description": "Операции криптографии с открытым ключом",
+    "algorithms": {
+      "rsa": "RSA",
+      "ecc": "ECC"
+    },
+    "keyGeneration": "Генерация ключей",
+    "publicKey": "Открытый ключ",
+    "privateKey": "Закрытый ключ",
+    "notice": "Все операции шифрования обрабатываются локально в вашем браузере",
+    "rsa": {
+      "generated": "Пара ключей RSA успешно сгенерирована",
+      "encrypted": "Шифрование RSA завершено",
+      "decrypted": "Дешифрование RSA завершено",
+      "generate": "Генерировать ключи RSA",
+      "publicPlaceholder": "Открытый ключ RSA (формат PEM)",
+      "privatePlaceholder": "Закрытый ключ RSA (формат PEM)"
+    },
+    "ecc": {
+      "generated": "Пара ключей ECC успешно сгенерирована",
+      "encrypted": "Шифрование ECC завершено",
+      "decrypted": "Дешифрование ECC завершено",
+      "generate": "Генерировать ключи ECC",
+      "publicPlaceholder": "Открытый ключ ECC",
+      "privatePlaceholder": "Закрытый ключ ECC",
+      "recipientPlaceholder": "Открытый ключ получателя"
+    },
+    "elgamal": {
+      "generated": "Пара ключей ElGamal успешно сгенерирована",
+      "encrypted": "Шифрование ElGamal завершено",
+      "decrypted": "Дешифрование ElGamal завершено",
+      "generate": "Генерировать ключи ElGamal",
+      "bitLength": "Длина в битах",
+      "publicPlaceholder": "Открытый ключ ElGamal",
+      "privatePlaceholder": "Закрытый ключ ElGamal"
+    },
+    "placeholders": {
+      "input": "Введите текст для шифрования/дешифрования",
+      "output": "Результат появится здесь",
+      "publicKey": "Enter public key or generate a key pair...",
+      "privateKey": "Enter private key or generate a key pair...",
+      "textToEncrypt": "Enter text to encrypt",
+      "textToDecrypt": "Enter text to decrypt",
+      "textToSign": "Enter text to sign",
+      "textToVerify": "Enter text to verify",
+      "signatureToVerify": "Enter signature to verify..."
+    },
+    "tabs": {
+      "keyManagement": "Key Management",
+      "cryptoOperations": "Crypto Operations"
+    },
+    "labels": {
+      "keySizeBits": "Key Size (bits)",
+      "type": "Type",
+      "valid": "Valid",
+      "plaintext": "Plaintext",
+      "ciphertext": "Ciphertext",
+      "messageToSign": "Message to sign",
+      "messageToVerify": "Message to verify",
+      "signature": "Signature",
+      "algorithmInfo": "Algorithm Info"
+    },
+    "actions": {
+      "clearKeys": "Clear Keys",
+      "sign": "Sign",
+      "generateSignature": "Generate Signature",
+      "verifySignature": "Verify Signature"
+    },
+    "info": {
+      "rsa": {
+        "description": "Public key encryption system",
+        "usage": "Encryption/decryption, digital signature",
+        "security": "2048 bits or more recommended"
+      },
+      "ecc": {
+        "description": "Elliptic curve cryptography",
+        "usage": "Digital signature",
+        "security": "Same security as RSA with smaller key size"
+      },
+      "usage": "Usage",
+      "keySize": "Key size",
+      "security": "Security",
+      "curve": "Curve"
+    },
+    "alerts": {
+      "verificationSuccess": "Signature verification: Success",
+      "verificationFailed": "Signature verification: Failure"
+    },
+    "errors": {
+      "unsupportedAlgorithm": "Неподдерживаемый алгоритм"
+    }
+  },
+  "encoding": {
+    "title": "Кодирование",
+    "description": "Инструменты кодирования URL и другие",
+    "cards": {
+      "base64": {
+        "title": "Кодирование/Декодирование Base64",
+        "description": "Преобразование текста в Base64 или обратно",
+        "placeholder": "Введите текст для кодирования/декодирования",
+        "resultPlaceholder": "Результат появится здесь"
+      },
+      "url": {
+        "title": "Кодирование/Декодирование URL",
+        "description": "Безопасное кодирование или декодирование URL",
+        "placeholder": "Введите URL для кодирования/декодирования",
+        "resultPlaceholder": "Результат появится здесь"
+      },
+      "image": {
+        "title": "Изображение → Base64",
+        "description": "Преобразование изображений в строки Base64",
+        "decodeButton": "Base64 → Изображение",
+        "previewAlt": "Предварительный просмотр изображения",
+        "resultPlaceholder": "Результат появится здесь"
+      }
+    }
+  },
+  "files": {
+    "title": "Файлы",
+    "description": "Потоковая обработка и шифрование файлов",
+    "cardTitle": "Шифрование и хэш файлов",
+    "cardDescription": "Шифрование, дешифрование файлов или генерация хэш-значений",
+    "dragText": "Перетащите или нажмите для выбора файла",
+    "dragDescription": "Поддерживает шифрование, дешифрование и хэширование текстовых файлов",
+    "fileSelected": "Файл выбран",
+    "largeFile": "Большой файл",
+    "normalFile": "Обычный файл",
+    "operation": "Операция",
+    "algorithm": "Алгоритм",
+    "encryptionKey": "Ключ шифрования",
+    "generateKey": "Генерировать ключ",
+    "keySuccess": "Ключ успешно сгенерирован",
+    "keyPrefix": "Ключ (первые 16 символов)",
+    "processing": "Обработка...",
+    "result": "Результат",
+    "processButton": "Файл",
+    "clear": "Очистить",
+    "operations": {
+      "encrypt": "Шифровать",
+      "decrypt": "Расшифровать",
+      "hash": "Хэш"
+    },
+    "actions": {
+      "keyGenerated": "Ключ шифрования сгенерирован",
+      "encrypted": "Шифрование файла завершено",
+      "decrypted": "Дешифрование файла завершено",
+      "hashed": "Хэширование файла завершено"
+    },
+    "errors": {
+      "selectFile": "Пожалуйста, выберите файл",
+      "generateKeyFirst": "Пожалуйста, сначала сгенерируйте ключ шифрования",
+      "browserOnly": "Генерация ключа доступна только в браузере",
+      "cryptoNotSupported": "Web Crypto API не поддерживается. Пожалуйста, используйте HTTPS",
+      "nonceNotFound": "Nonce не найден для дешифрования",
+      "fileReadFailed": "Ошибка чтения файла"
+    }
+  },
+  "theme": {
+    "toggle": "Переключить тему",
+    "label": "Переключить тему",
+    "light": "Светлая тема",
+    "dark": "Темная тема",
+    "system": "Системная настройка"
+  },
+  "actions": {
+    "encrypt": "Шифровать",
+    "decrypt": "Расшифровать",
+    "copy": "Копировать",
+    "clear": "Очистить",
+    "processing": "Обработка...",
+    "encode": "Кодировать",
+    "decode": "Декодировать"
+  },
+  "messages": {
+    "copied": "Скопировано в буфер обмена"
+  },
+  "errors": {
+    "invalidInput": "Неверный ввод",
+    "encryptionFailed": "Ошибка шифрования",
+    "decryptionFailed": "Ошибка дешифрования",
+    "invalidKey": "Неверный ключ",
+    "keyRequired": "Требуется ключ",
+    "fileTooLarge": "Файл слишком большой",
+    "copyFailed": "Ошибка копирования в буфер обмена",
+    "keyGenerationFailed": "Ошибка генерации ключа",
+    "publicKeyRequired": "Требуется открытый ключ",
+    "privateKeyRequired": "Требуется закрытый ключ",
+    "parametersMissing": "Отсутствуют параметры",
+    "inputRequired": "Требуется ввод",
+    "rsaOnly": "В настоящее время поддерживается только шифрование RSA",
+    "ecdsaOnly": "В настоящее время поддерживается только проверка подписи ECDSA",
+    "signatureValid": "Подпись действительна! ✅",
+    "signatureInvalid": "Подпись недействительна! ❌",
+    "messageRequired": "Пожалуйста, введите сообщение для подписи",
+    "signatureRequired": "Пожалуйста, введите подпись",
+    "verificationFailed": "Ошибка проверки подписи",
+    "keyPairGenerated": "Пара ключей успешно сгенерирована",
+    "signatureGenerated": "Подпись успешно сгенерирована",
+    "signingFailed": "Ошибка подписи",
+    "signatureGenerationFailed": "Ошибка генерации подписи"
+  }
+}
