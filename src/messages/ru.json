@@ -49,6 +49,8 @@
     "mode": "Режим",
     "generate": "Генерировать",
     "verify": "Проверить",
+    "publicKey": "Открытый ключ",
+    "privateKey": "Закрытый ключ",
     "back": "Назад к инструментам",
     "start": "Начать",
     "realTimeProcessing": "Обработка в реальном времени",
@@ -64,7 +66,13 @@
     "experimental": "experimental",
     "selectFile": "Выбрать файл",
     "changeFile": "Изменить файл",
-    "removeFile": "Удалить файл"
+    "removeFile": "Удалить файл",
+    "encoding": "Кодировка",
+    "enterText": "Введите текст...",
+    "hash": "Хэш",
+    "iv": "IV (вектор инициализации)",
+    "generateKeys": "Сгенерировать ключи",
+    "encryptionDecryption": "Шифрование и дешифрование"
   },
   "actions": {
     "encrypt": "Шифровать",
@@ -223,7 +231,8 @@
       "decrypted": "Дешифрование RSA завершено",
       "generate": "Генерировать ключи RSA",
       "publicPlaceholder": "Открытый ключ RSA (формат PEM)",
-      "privatePlaceholder": "Закрытый ключ RSA (формат PEM)"
+      "privatePlaceholder": "Закрытый ключ RSA (формат PEM)",
+      "description": "Криптосистема открытого ключа RSA — безопасное шифрование данных и цифровые подписи"
     },
     "ecc": {
       "generated": "Пара ключей ECC успешно сгенерирована",
@@ -232,7 +241,8 @@
       "generate": "Генерировать ключи ECC",
       "publicPlaceholder": "Открытый ключ ECC",
       "privatePlaceholder": "Закрытый ключ ECC",
-      "recipientPlaceholder": "Открытый ключ получателя"
+      "recipientPlaceholder": "Открытый ключ получателя",
+      "description": "Криптография на эллиптических кривых (ECC) — безопасность на уровне RSA при меньшем размере ключей"
     },
     "elgamal": {
       "generated": "Пара ключей ElGamal успешно сгенерирована",
@@ -371,15 +381,6 @@
     "dark": "Темная тема",
     "system": "Системная настройка"
   },
-  "actions": {
-    "encrypt": "Шифровать",
-    "decrypt": "Расшифровать",
-    "copy": "Копировать",
-    "clear": "Очистить",
-    "processing": "Обработка...",
-    "encode": "Кодировать",
-    "decode": "Декодировать"
-  },
   "messages": {
     "copied": "Скопировано в буфер обмена"
   },
@@ -407,5 +408,275 @@
     "signatureGenerated": "Подпись успешно сгенерирована",
     "signingFailed": "Ошибка подписи",
     "signatureGenerationFailed": "Ошибка генерации подписи"
+  },
+  "bgv": {
+    "title": "Гомоморфное шифрование BGV",
+    "description": "Гомоморфное шифрование BGV, поддерживающее операции с зашифрованными данными",
+    "features": {
+      "homomorphic": "Гомоморфные операции",
+      "compute": "Вычисление зашифрованного состояния"
+    },
+    "sections": {
+      "encryptionDecryption": "Шифрование и дешифрование",
+      "homomorphicOperations": "Гомоморфные операции"
+    },
+    "labels": {
+      "ciphertext1": "Шифротекст 1",
+      "ciphertext2": "Шифротекст 2",
+      "resultEncrypted": "Результат (зашифровано)"
+    },
+    "placeholders": {
+      "textOrCiphertext": "Введите текст или шифротекст...",
+      "firstCiphertext": "Введите первый шифротекст...",
+      "secondCiphertext": "Введите второй шифротекст..."
+    },
+    "actions": {
+      "generateKeys": "Сгенерировать ключи BGV",
+      "add": "Добавить",
+      "multiply": "Умножить"
+    },
+    "toasts": {
+      "keysGenerated": "Ключи BGV сгенерированы",
+      "keyGenerationFailed": "Сбой генерации ключа",
+      "textEncrypted": "Текст зашифрован",
+      "textDecrypted": "Текст расшифрован",
+      "pleaseGenerateKeysFirst": "Пожалуйста, сначала сгенерируйте ключи",
+      "pleaseEnterCiphertextToDecrypt": "Пожалуйста, введите шифротекст для дешифрования",
+      "pleaseEnterTwoCiphertextsToAdd": "Пожалуйста, введите два шифротекста для сложения",
+      "pleaseEnterTwoCiphertextsToMultiply": "Пожалуйста, введите два шифротекста для умножения",
+      "keysRequiredForParameters": "Для параметров требуются ключи",
+      "additionFailed": "Сбой сложения",
+      "multiplicationFailed": "Сбой умножения",
+      "ciphertextsAdded": "Шифротексты добавлены (гомоморфные)",
+      "ciphertextsMultiplied": "Шифротексты умножены (гомоморфные)"
+    }
+  },
+  "elgamal": {
+    "title": "Шифрование Эль-Гамаля",
+    "description": "Асимметричное шифрование Эль-Гамаля, основанное на проблеме дискретного логарифма",
+    "features": {
+      "asymmetric": "Асимметричные ключи"
+    },
+    "sections": {
+      "encryptionDecryption": "Шифрование и дешифрование"
+    },
+    "labels": {
+      "bitLength": "Длина бита"
+    },
+    "selects": {
+      "bits256": "256 бит",
+      "bits512": "512 бит",
+      "bits1024": "1024 бит",
+      "bits2048": "2048 бит"
+    },
+    "toasts": {
+      "keyGenerationError": "Ошибка генерации ключа:",
+      "pleaseGenerateKeysFirst": "Пожалуйста, сначала сгенерируйте ключи",
+      "pleaseEnterCiphertextToDecrypt": "Пожалуйста, введите шифротекст для дешифрования",
+      "encryptionError": "Ошибка шифрования:",
+      "decryptionError": "Ошибка дешифрования:"
+    }
+  },
+  "paillier": {
+    "title": "Шифрование Пайе",
+    "description": "Вероятностное шифрование Пайе с аддитивными гомоморфными свойствами",
+    "features": {
+      "probabilistic": "Вероятностное шифрование",
+      "additive": "Аддитивный гомоморфизм"
+    },
+    "sections": {
+      "encryptionDecryption": "Шифрование и дешифрование",
+      "encryptDecryptNumbers": "Шифрование и дешифрование чисел",
+      "homomorphicOperations": "Гомоморфные операции",
+      "performAdditiveOperations": "Выполнение аддитивных операций с зашифрованными числами"
+    },
+    "labels": {
+      "numberCiphertext": "Число / Шифротекст",
+      "ciphertext1": "Шифротекст 1",
+      "ciphertext2": "Шифротекст 2 (для сложения)",
+      "scalar": "Скаляр (для умножения)",
+      "resultEncrypted": "Результат (зашифровано)"
+    },
+    "placeholders": {
+      "enterNumberOrCiphertext": "Введите число или шифротекст...",
+      "enterFirstCiphertext": "Введите первый шифротекст...",
+      "enterSecondCiphertext": "Введите второй шифротекст...",
+      "enterScalarNumber": "Введите скалярное число..."
+    },
+    "actions": {
+      "generateKeys": "Сгенерировать ключи Пайе",
+      "addC1C2": "Добавить C1 + C2",
+      "multiplyC1Scalar": "Умножить C1 × Скаляр"
+    },
+    "toasts": {
+      "keysGenerated": "Ключи Пайе сгенерированы",
+      "keyGenerationError": "Ошибка генерации ключа:",
+      "keyGenerationFailed": "Сбой генерации ключа",
+      "pleaseGenerateKeysFirst": "Пожалуйста, сначала сгенерируйте ключи",
+      "numberEncrypted": "Число зашифровано",
+      "invalidNumberOrEncryptionFailed": "Неверное число или сбой шифрования",
+      "numberDecrypted": "Число расшифровано",
+      "pleaseEnterCiphertextToDecrypt": "Пожалуйста, введите шифротекст для дешифрования",
+      "pleaseEnterTwoCiphertextsToAdd": "Пожалуйста, введите два шифротекста для сложения",
+      "keysAreRequired": "Требуются ключи",
+      "additionFailed": "Сбой сложения",
+      "ciphertextsAdded": "Шифротексты добавлены (гомоморфные)",
+      "pleaseEnterCiphertextAndScalar": "Пожалуйста, введите шифротекст и скаляр",
+      "multiplicationFailed": "Сбой умножения",
+      "ciphertextMultiplied": "Шифротекст умножен на скаляр (гомоморфный)"
+    }
+  },
+  "pqc": {
+    "title": "Постквантовая криптография",
+    "description": "Постквантовая криптография, устойчивая к атакам квантовых компьютеров (Kyber, Dilithium)",
+    "features": {
+      "quantum": "Квантовая устойчивость",
+      "kyber": "Kyber",
+      "dilithium": "Dilithium"
+    },
+    "tabs": {
+      "kyber": "Kyber (KEM)",
+      "dilithium": "Dilithium (подпись)"
+    },
+    "labels": {
+      "securityLevel": "Уровень безопасности",
+      "sharedSecret": "Общий секрет",
+      "ciphertext": "Шифротекст",
+      "decapsulatedSecret": "Декапсулированный секрет",
+      "messageToSign": "Сообщение для подписи",
+      "signature": "Подпись"
+    },
+    "selects": {
+      "kyber512": "Kyber512",
+      "kyber768": "Kyber768",
+      "kyber1024": "Kyber1024",
+      "dilithium2": "Dilithium2",
+      "dilithium3": "Dilithium3",
+      "dilithium5": "Dilithium5"
+    },
+    "actions": {
+      "generateKyberKeys": "Сгенерировать ключи Kyber",
+      "encapsulate": "Инкапсулировать (создать общий секрет)",
+      "decapsulate": "Декапсулировать",
+      "generateDilithiumKeys": "Сгенерировать ключи Dilithium",
+      "signMessage": "Подписать сообщение",
+      "verifySignature": "Проверить подпись"
+    },
+    "placeholders": {
+      "enterMessage": "Введите сообщение..."
+    },
+    "messages": {
+      "keysGeneratedLevel": "✓ Ключи сгенерированы (уровень: {level})",
+      "secretsMatch": "✓ Секреты совпадают!",
+      "valid": "✅ Действительно",
+      "invalid": "❌ Недействительно"
+    },
+    "toasts": {
+      "kyberKeysGenerated": "Ключи Kyber сгенерированы",
+      "kyberKeyGenerationError": "Ошибка генерации ключей Kyber:",
+      "keyGenerationFailed": "Не удалось сгенерировать ключи",
+      "pleaseGenerateKeysFirst": "Пожалуйста, сначала сгенерируйте ключи",
+      "sharedSecretEncapsulated": "Общий секрет инкапсулирован",
+      "encapsulationError": "Ошибка инкапсуляции:",
+      "decapsulationError": "Ошибка декапсуляции:",
+      "dilithiumKeysGenerated": "Ключи Dilithium сгенерированы",
+      "dilithiumKeyGenerationError": "Ошибка генерации ключей Dilithium:",
+      "signingError": "Ошибка подписания:",
+      "verificationError": "Ошибка проверки:"
+    }
+  },
+  "stream": {
+    "title": "Потоковый шифр",
+    "description": "Высокоскоростные потоковые шифры, включая ChaCha20 и Salsa20",
+    "labels": {
+      "algorithm": "Алгоритм",
+      "encoding": "Кодировка",
+      "nonceMode": "Режим Nonce",
+      "key": "Ключ",
+      "nonce": "Nonce",
+      "counter": "Счетчик"
+    },
+    "algorithms": {
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "encodings": {
+      "base64": "BASE64",
+      "hex": "HEX"
+    },
+    "nonce": {
+      "standard": "Стандартный",
+      "extended": "Расширенный"
+    },
+    "placeholders": {
+      "key": "Введите ключ",
+      "nonce": "Введите Nonce",
+      "input": "Ввод",
+      "output": "Результат появится здесь",
+      "nonceExtended": "Введите расширенный Nonce"
+    },
+    "actions": {
+      "encrypt": "Шифровать",
+      "decrypt": "Расшифровать",
+      "copy": "Копировать",
+      "clear": "Очистить"
+    },
+    "features": {
+      "fast": "Быстрое шифрование",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "errors": {
+      "nonceRequired": "Требуется Nonce"
+    }
+  },
+  "sha3": {
+    "title": "Хеш-функция SHA-3",
+    "description": "Secure Hash Algorithm 3 — новейший представитель семейства Secure Hash Algorithm"
+  },
+  "des": {
+    "title": "Шифрование DES",
+    "description": "Стандарт шифрования данных (DES) — устаревший алгоритм симметричного шифрования с ключом 56 бит",
+    "features": {
+      "legacy": "Устаревшая поддержка"
+    }
+  },
+  "tripledes": {
+    "title": "Тройной DES (3DES)",
+    "description": "Triple Data Encryption Standard — повышенная безопасность благодаря тройному шифрованию",
+    "features": {
+      "triple": "Тройное шифрование"
+    }
+  },
+  "rc4": {
+    "title": "Потоковый шифр RC4",
+    "description": "RC4 (Rivest Cipher 4) — потоковый шифр с переменной длиной ключа",
+    "features": {
+      "stream": "Потоковый шифр",
+      "fast": "Быстрое шифрование"
+    }
+  },
+  "rabbit": {
+    "title": "Потоковый шифр Rabbit",
+    "description": "Высокопроизводительный потоковый шифр, оптимизированный для программных реализаций",
+    "features": {
+      "stream": "Потоковый шифр",
+      "fast": "Быстрое шифрование"
+    }
+  },
+  "blake2": {
+    "title": "Хеш-функция BLAKE2",
+    "description": "Быстрая криптографическая хеш-функция, быстрее MD5, SHA-1, SHA-2 и SHA-3",
+    "features": {
+      "fast": "Быстрое хеширование"
+    }
+  },
+  "ecies": {
+    "title": "Шифрование ECIES",
+    "description": "Схема шифрования на эллиптических кривых (ECIES) — гибридный подход, объединяющий ECC и симметричное шифрование",
+    "features": {
+      "ecc": "Криптография на эллиптических кривых",
+      "integrated": "Интегрированная схема"
+    }
   }
 }

@@ -84,7 +84,7 @@ export class FileStreamManager {
    * Convert chunks back to a Blob/File
    */
   chunksToBlob(chunks: Uint8Array[], mimeType?: string): Blob {
-    return new Blob(chunks, { type: mimeType || 'application/octet-stream' });
+    return new Blob(chunks as BlobPart[], { type: mimeType || 'application/octet-stream' });
   }
 
   /**
@@ -243,10 +243,10 @@ export class StreamingEncryptionProcessor implements FileStreamProcessor {
       const encrypted = await crypto.subtle.encrypt(
         {
           name: this.algorithm.split('-')[0], // Extract base algorithm name
-          iv: chunkIv,
+          iv: chunkIv as BufferSource,
         },
         this.key,
-        chunk.data
+        chunk.data as BufferSource
       );
 
       return new Uint8Array(encrypted);
@@ -296,10 +296,10 @@ export class StreamingDecryptionProcessor implements FileStreamProcessor {
       const decrypted = await crypto.subtle.decrypt(
         {
           name: this.algorithm.split('-')[0],
-          iv: chunkIv,
+          iv: chunkIv as BufferSource,
         },
         this.key,
-        chunk.data
+        chunk.data as BufferSource
       );
 
       return new Uint8Array(decrypted);

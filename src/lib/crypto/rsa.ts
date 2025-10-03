@@ -76,7 +76,7 @@ export async function importRsaPublicKey(
   const buffer = base64ToUint8(base64);
   return crypto.subtle.importKey(
     "spki",
-    buffer,
+    buffer as BufferSource,
     {
       name: "RSA-OAEP",
       hash,
@@ -94,7 +94,7 @@ export async function importRsaPrivateKey(
   const buffer = base64ToUint8(base64);
   return crypto.subtle.importKey(
     "pkcs8",
-    buffer,
+    buffer as BufferSource,
     {
       name: "RSA-OAEP",
       hash,
@@ -114,7 +114,7 @@ export async function rsaEncrypt(
       name: "RSA-OAEP",
     },
     publicKey,
-    data,
+    data as BufferSource,
   );
   return uint8ToBase64(new Uint8Array(encrypted));
 }
@@ -130,7 +130,7 @@ export async function rsaDecrypt(
         name: "RSA-OAEP",
       },
       privateKey,
-      data,
+      data as BufferSource,
     );
     return cryptoUtils.uint8ArrayToString(new Uint8Array(decrypted));
   } catch (error) {

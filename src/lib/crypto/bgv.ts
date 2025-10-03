@@ -126,7 +126,7 @@ export function generateBgvKeyPair(
   const a = sampleUniformPolynomial(params.n, params.q);
   const e = sampleSmallPolynomial(params.n);
   const as = polyMul(a, s, params);
-  const b = polySub(polyMul(a, s, params), e, params).map((coef) =>
+  const b = polySub(polyMul(a, s, params), e, params.q).map((coef) =>
     modQ(-coef, params.q),
   );
   const pk: BgvPublicKey = { a, b };
@@ -328,7 +328,7 @@ export async function generateBgvKeyPairWithProgress(
 
   onProgress?.(0.4, "Computing public key polynomial arithmetic...");
   const as = polyMul(a, s, params);
-  const b = polySub(polyMul(a, s, params), e, params).map((coef) =>
+  const b = polySub(polyMul(a, s, params), e, params.q).map((coef) =>
     modQ(-coef, params.q),
   );
   const pk: BgvPublicKey = { a, b };

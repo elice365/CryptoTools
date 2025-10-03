@@ -7,12 +7,10 @@ export const defaultLocale: Locale = "ko";
 
 export default getRequestConfig(async ({ locale }) => {
   // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale as any)) {
-    locale = defaultLocale;
-  }
+  const validLocale = locale && locales.includes(locale as any) ? locale : defaultLocale;
 
   return {
-    locale,
-    messages: (await import(`./messages/${locale}.json`)).default,
+    locale: validLocale,
+    messages: (await import(`./messages/${validLocale}.json`)).default,
   };
 });

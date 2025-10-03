@@ -49,6 +49,8 @@
     "mode": "Mode",
     "generate": "Generate",
     "verify": "Verify",
+    "publicKey": "Public Key",
+    "privateKey": "Private Key",
     "back": "Back to Tools",
     "start": "Get Started",
     "realTimeProcessing": "Real-time Processing",
@@ -64,7 +66,13 @@
     "experimental": "experimental",
     "selectFile": "Select File",
     "changeFile": "Change File",
-    "removeFile": "Remove File"
+    "removeFile": "Remove File",
+    "encoding": "Encoding",
+    "iv": "IV (Initialization Vector)",
+    "enterText": "Enter text...",
+    "generateKeys": "Generate Keys",
+    "encryptionDecryption": "Encryption & Decryption",
+    "hash": "Hash"
   },
   "base64": {
     "title": "Base64 Encoder/Decoder",
@@ -209,6 +217,7 @@
     "privateKey": "Private Key",
     "notice": "All encryption operations are processed locally in your browser",
     "rsa": {
+      "description": "RSA public key cryptosystem - secure data encryption and digital signatures",
       "generated": "RSA key pair generated successfully",
       "encrypted": "RSA encryption completed",
       "decrypted": "RSA decryption completed",
@@ -217,6 +226,7 @@
       "privatePlaceholder": "RSA Private Key (PEM format)"
     },
     "ecc": {
+      "description": "Elliptic Curve Cryptography (ECC) - same security as RSA with smaller key sizes",
       "generated": "ECC key pair generated successfully",
       "encrypted": "ECC encryption completed",
       "decrypted": "ECC decryption completed",
@@ -398,5 +408,275 @@
     "signatureGenerated": "Signature generated successfully",
     "signingFailed": "Signing failed",
     "signatureGenerationFailed": "Signature generation failed"
+  },
+  "bgv": {
+    "title": "BGV Homomorphic Encryption",
+    "description": "BGV homomorphic encryption supporting operations on encrypted data",
+    "features": {
+      "homomorphic": "Homomorphic Operations",
+      "compute": "Encrypted State Computation"
+    },
+    "sections": {
+      "encryptionDecryption": "Encryption & Decryption",
+      "homomorphicOperations": "Homomorphic Operations"
+    },
+    "labels": {
+      "ciphertext1": "Ciphertext 1",
+      "ciphertext2": "Ciphertext 2",
+      "resultEncrypted": "Result (Encrypted)"
+    },
+    "placeholders": {
+      "textOrCiphertext": "Enter text or ciphertext...",
+      "firstCiphertext": "Enter first ciphertext...",
+      "secondCiphertext": "Enter second ciphertext..."
+    },
+    "actions": {
+      "generateKeys": "Generate BGV Keys",
+      "add": "Add",
+      "multiply": "Multiply"
+    },
+    "toasts": {
+      "keysGenerated": "BGV keys generated",
+      "keyGenerationFailed": "Key generation failed",
+      "textEncrypted": "Text encrypted",
+      "textDecrypted": "Text decrypted",
+      "pleaseGenerateKeysFirst": "Please generate keys first",
+      "pleaseEnterCiphertextToDecrypt": "Please enter ciphertext to decrypt",
+      "pleaseEnterTwoCiphertextsToAdd": "Please enter two ciphertexts to add",
+      "pleaseEnterTwoCiphertextsToMultiply": "Please enter two ciphertexts to multiply",
+      "keysRequiredForParameters": "Keys are required for parameters",
+      "additionFailed": "Addition failed",
+      "multiplicationFailed": "Multiplication failed",
+      "ciphertextsAdded": "Ciphertexts added (homomorphic)",
+      "ciphertextsMultiplied": "Ciphertexts multiplied (homomorphic)"
+    }
+  },
+  "elgamal": {
+    "title": "ElGamal Encryption",
+    "description": "ElGamal asymmetric encryption based on discrete logarithm problem",
+    "features": {
+      "asymmetric": "Asymmetric Keys"
+    },
+    "sections": {
+      "encryptionDecryption": "Encryption & Decryption"
+    },
+    "labels": {
+      "bitLength": "Bit Length"
+    },
+    "selects": {
+      "bits256": "256 bits",
+      "bits512": "512 bits",
+      "bits1024": "1024 bits",
+      "bits2048": "2048 bits"
+    },
+    "toasts": {
+      "keyGenerationError": "Key generation error:",
+      "pleaseGenerateKeysFirst": "Please generate keys first",
+      "pleaseEnterCiphertextToDecrypt": "Please enter ciphertext to decrypt",
+      "encryptionError": "Encryption error:",
+      "decryptionError": "Decryption error:"
+    }
+  },
+  "paillier": {
+    "title": "Paillier Encryption",
+    "description": "Paillier probabilistic encryption with additive homomorphic properties",
+    "features": {
+      "probabilistic": "Probabilistic Encryption",
+      "additive": "Additive Homomorphism"
+    },
+    "sections": {
+      "encryptionDecryption": "Encryption & Decryption",
+      "encryptDecryptNumbers": "Encrypt and decrypt numbers",
+      "homomorphicOperations": "Homomorphic Operations",
+      "performAdditiveOperations": "Perform additive operations on encrypted numbers"
+    },
+    "labels": {
+      "numberCiphertext": "Number / Ciphertext",
+      "ciphertext1": "Ciphertext 1",
+      "ciphertext2": "Ciphertext 2 (for addition)",
+      "scalar": "Scalar (for multiplication)",
+      "resultEncrypted": "Result (Encrypted)"
+    },
+    "placeholders": {
+      "enterNumberOrCiphertext": "Enter number or ciphertext...",
+      "enterFirstCiphertext": "Enter first ciphertext...",
+      "enterSecondCiphertext": "Enter second ciphertext...",
+      "enterScalarNumber": "Enter scalar number..."
+    },
+    "actions": {
+      "generateKeys": "Generate Paillier Keys",
+      "addC1C2": "Add C1 + C2",
+      "multiplyC1Scalar": "Multiply C1 × Scalar"
+    },
+    "toasts": {
+      "keysGenerated": "Paillier keys generated",
+      "keyGenerationError": "Key generation error:",
+      "keyGenerationFailed": "Key generation failed",
+      "pleaseGenerateKeysFirst": "Please generate keys first",
+      "numberEncrypted": "Number encrypted",
+      "invalidNumberOrEncryptionFailed": "Invalid number or encryption failed",
+      "numberDecrypted": "Number decrypted",
+      "pleaseEnterCiphertextToDecrypt": "Please enter ciphertext to decrypt",
+      "pleaseEnterTwoCiphertextsToAdd": "Please enter two ciphertexts to add",
+      "keysAreRequired": "Keys are required",
+      "additionFailed": "Addition failed",
+      "ciphertextsAdded": "Ciphertexts added (homomorphic)",
+      "pleaseEnterCiphertextAndScalar": "Please enter ciphertext and scalar",
+      "multiplicationFailed": "Multiplication failed",
+      "ciphertextMultiplied": "Ciphertext multiplied by scalar (homomorphic)"
+    }
+  },
+  "pqc": {
+    "title": "Post-Quantum Cryptography",
+    "description": "Post-quantum cryptography resistant to quantum computer attacks (Kyber, Dilithium)",
+    "features": {
+      "quantum": "Quantum Resistance",
+      "kyber": "Kyber",
+      "dilithium": "Dilithium"
+    },
+    "tabs": {
+      "kyber": "Kyber (KEM)",
+      "dilithium": "Dilithium (Signature)"
+    },
+    "labels": {
+      "securityLevel": "Security Level",
+      "sharedSecret": "Shared Secret",
+      "ciphertext": "Ciphertext",
+      "decapsulatedSecret": "Decapsulated Secret",
+      "messageToSign": "Message to Sign",
+      "signature": "Signature"
+    },
+    "selects": {
+      "kyber512": "Kyber512",
+      "kyber768": "Kyber768",
+      "kyber1024": "Kyber1024",
+      "dilithium2": "Dilithium2",
+      "dilithium3": "Dilithium3",
+      "dilithium5": "Dilithium5"
+    },
+    "actions": {
+      "generateKyberKeys": "Generate Kyber Keys",
+      "encapsulate": "Encapsulate (Generate Shared Secret)",
+      "decapsulate": "Decapsulate",
+      "generateDilithiumKeys": "Generate Dilithium Keys",
+      "signMessage": "Sign Message",
+      "verifySignature": "Verify Signature"
+    },
+    "placeholders": {
+      "enterMessage": "Enter message..."
+    },
+    "messages": {
+      "keysGeneratedLevel": "✓ Keys generated (Level: {level})",
+      "secretsMatch": "✓ Secrets match!",
+      "valid": "✅ Valid",
+      "invalid": "❌ Invalid"
+    },
+    "toasts": {
+      "kyberKeysGenerated": "Kyber keys generated",
+      "kyberKeyGenerationError": "Kyber key generation error:",
+      "keyGenerationFailed": "Key generation failed",
+      "pleaseGenerateKeysFirst": "Please generate keys first",
+      "sharedSecretEncapsulated": "Shared secret encapsulated",
+      "encapsulationError": "Encapsulation error:",
+      "decapsulationError": "Decapsulation error:",
+      "dilithiumKeysGenerated": "Dilithium keys generated",
+      "dilithiumKeyGenerationError": "Dilithium key generation error:",
+      "signingError": "Signing error:",
+      "verificationError": "Verification error:"
+    }
+  },
+  "stream": {
+    "title": "Stream Cipher",
+    "description": "High-speed stream ciphers including ChaCha20 and Salsa20",
+    "labels": {
+      "algorithm": "Algorithm",
+      "encoding": "Encoding",
+      "nonceMode": "Nonce Mode",
+      "key": "Key",
+      "nonce": "Nonce",
+      "counter": "Counter"
+    },
+    "algorithms": {
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "encodings": {
+      "base64": "BASE64",
+      "hex": "HEX"
+    },
+    "nonce": {
+      "standard": "Standard",
+      "extended": "Extended"
+    },
+    "placeholders": {
+      "key": "Enter key",
+      "nonce": "Enter nonce",
+      "input": "Input",
+      "output": "Result will appear here",
+      "nonceExtended": "Enter extended nonce"
+    },
+    "actions": {
+      "encrypt": "Encrypt",
+      "decrypt": "Decrypt",
+      "copy": "Copy",
+      "clear": "Clear"
+    },
+    "features": {
+      "fast": "Fast Encryption",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "errors": {
+      "nonceRequired": "Nonce is required"
+    }
+  },
+  "des": {
+    "title": "DES Encryption",
+    "description": "Data Encryption Standard (DES) - 56-bit legacy encryption algorithm",
+    "features": {
+      "legacy": "Legacy Support"
+    }
+  },
+  "tripledes": {
+    "title": "Triple DES (3DES)",
+    "description": "Triple Data Encryption Standard - Enhanced security with triple encryption",
+    "features": {
+      "triple": "Triple Encryption"
+    }
+  },
+  "rc4": {
+    "title": "RC4 Stream Cipher",
+    "description": "Rivest Cipher 4 - Variable key-length stream cipher",
+    "features": {
+      "stream": "Stream Cipher",
+      "fast": "Fast Encryption"
+    }
+  },
+  "rabbit": {
+    "title": "Rabbit Stream Cipher",
+    "description": "High-performance stream cipher optimized for software implementations",
+    "features": {
+      "stream": "Stream Cipher",
+      "fast": "Fast Encryption"
+    }
+  },
+  "sha3": {
+    "title": "SHA-3 Hash Function",
+    "description": "Secure Hash Algorithm 3 - Latest member of the Secure Hash Algorithm family"
+  },
+  "blake2": {
+    "title": "BLAKE2 Hash Function",
+    "description": "Fast cryptographic hash function, faster than MD5, SHA-1, SHA-2, and SHA-3",
+    "features": {
+      "fast": "Fast Hashing"
+    }
+  },
+  "ecies": {
+    "title": "ECIES Encryption",
+    "description": "Elliptic Curve Integrated Encryption Scheme - Hybrid encryption combining ECC and symmetric encryption",
+    "features": {
+      "ecc": "Elliptic Curve Cryptography",
+      "integrated": "Integrated Scheme"
+    }
   }
 }

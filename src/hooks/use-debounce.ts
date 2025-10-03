@@ -56,12 +56,12 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
     trailing = true,
   } = { ...DEFAULT_DEBOUNCE_CONFIG, ...config };
 
-  const lastCallTime = useRef<number>();
+  const lastCallTime = useRef<number | undefined>(undefined);
   const lastInvokeTime = useRef<number>(0);
-  const timerId = useRef<NodeJS.Timeout>();
-  const lastArgs = useRef<Parameters<T>>();
-  const lastThis = useRef<any>();
-  const result = useRef<ReturnType<T>>();
+  const timerId = useRef<NodeJS.Timeout | undefined>(undefined);
+  const lastArgs = useRef<Parameters<T> | undefined>(undefined);
+  const lastThis = useRef<any>(undefined);
+  const result = useRef<ReturnType<T> | undefined>(undefined);
   const [isPendingState, setIsPendingState] = useState(false);
 
   const invokeFunc = useCallback((time: number) => {

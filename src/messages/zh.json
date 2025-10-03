@@ -49,6 +49,8 @@
     "mode": "模式",
     "generate": "生成",
     "verify": "验证",
+    "publicKey": "公钥",
+    "privateKey": "私钥",
     "back": "返回工具",
     "start": "开始使用",
     "realTimeProcessing": "实时处理",
@@ -64,7 +66,13 @@
     "experimental": "experimental",
     "selectFile": "选择文件",
     "changeFile": "更改文件",
-    "removeFile": "移除文件"
+    "removeFile": "移除文件",
+    "encoding": "编码",
+    "enterText": "请输入文本",
+    "hash": "哈希",
+    "iv": "IV（初始化向量）",
+    "generateKeys": "生成密钥",
+    "encryptionDecryption": "加密和解密"
   },
   "actions": {
     "encrypt": "加密",
@@ -223,7 +231,8 @@
       "decrypted": "RSA decryption completed",
       "generate": "Generate RSA Keys",
       "publicPlaceholder": "RSA Public Key (PEM format)",
-      "privatePlaceholder": "RSA Private Key (PEM format)"
+      "privatePlaceholder": "RSA Private Key (PEM format)",
+      "description": "RSA 公钥密码系统 - 安全的数据加密和数字签名"
     },
     "ecc": {
       "generated": "ECC key pair generated successfully",
@@ -232,7 +241,8 @@
       "generate": "Generate ECC Keys",
       "publicPlaceholder": "ECC Public Key",
       "privatePlaceholder": "ECC Private Key",
-      "recipientPlaceholder": "Recipient Public Key"
+      "recipientPlaceholder": "Recipient Public Key",
+      "description": "椭圆曲线密码学（ECC）- 以更小的密钥尺寸提供与 RSA 相同的安全性"
     },
     "elgamal": {
       "generated": "ElGamal key pair generated successfully",
@@ -371,17 +381,14 @@
     "dark": "深色模式",
     "system": "系统设置"
   },
-  "actions": {
-    "encrypt": "加密",
-    "decrypt": "解密",
-    "copy": "复制",
-    "clear": "清除",
-    "processing": "处理中...",
-    "encode": "编码",
-    "decode": "解码"
-  },
   "messages": {
-    "copied": "已复制到剪贴板"
+    "copied": "已复制到剪贴板",
+    "keyGenerated": "加密密钥已生成",
+    "keysGenerated": "密钥生成完成",
+    "ivGenerated": "IV已生成",
+    "encrypted": "加密完成",
+    "decrypted": "解密完成",
+    "hashGenerated": "哈希生成完成"
   },
   "errors": {
     "invalidInput": "无效输入",
@@ -407,5 +414,275 @@
     "signatureGenerated": "签名生成成功",
     "signingFailed": "签名失败",
     "signatureGenerationFailed": "签名生成失败"
+  },
+  "bgv": {
+    "title": "BGV 同态加密",
+    "description": "BGV 同态加密支持对加密数据进行操作",
+    "features": {
+      "homomorphic": "同态操作",
+      "compute": "加密状态计算"
+    },
+    "sections": {
+      "encryptionDecryption": "加密与解密",
+      "homomorphicOperations": "同态操作"
+    },
+    "labels": {
+      "ciphertext1": "密文 1",
+      "ciphertext2": "密文 2",
+      "resultEncrypted": "结果 (已加密)"
+    },
+    "placeholders": {
+      "textOrCiphertext": "输入文本或密文...",
+      "firstCiphertext": "输入第一个密文...",
+      "secondCiphertext": "输入第二个密文..."
+    },
+    "actions": {
+      "generateKeys": "生成 BGV 密钥",
+      "add": "添加",
+      "multiply": "乘法"
+    },
+    "toasts": {
+      "keysGenerated": "BGV 密钥已生成",
+      "keyGenerationFailed": "密钥生成失败",
+      "textEncrypted": "文本已加密",
+      "textDecrypted": "文本已解密",
+      "pleaseGenerateKeysFirst": "请先生成密钥",
+      "pleaseEnterCiphertextToDecrypt": "请输入要解密的密文",
+      "pleaseEnterTwoCiphertextsToAdd": "请输入两个要相加的密文",
+      "pleaseEnterTwoCiphertextsToMultiply": "请输入两个要相乘的密文",
+      "keysRequiredForParameters": "参数需要密钥",
+      "additionFailed": "添加失败",
+      "multiplicationFailed": "乘法失败",
+      "ciphertextsAdded": "密文已添加 (同态)",
+      "ciphertextsMultiplied": "密文已相乘 (同态)"
+    }
+  },
+  "elgamal": {
+    "title": "ElGamal 加密",
+    "description": "基于离散对数问题的 ElGamal 非对称加密",
+    "features": {
+      "asymmetric": "非对称密钥"
+    },
+    "sections": {
+      "encryptionDecryption": "加密与解密"
+    },
+    "labels": {
+      "bitLength": "比特长度"
+    },
+    "selects": {
+      "bits256": "256 比特",
+      "bits512": "512 比特",
+      "bits1024": "1024 比特",
+      "bits2048": "2048 比特"
+    },
+    "toasts": {
+      "keyGenerationError": "密钥生成错误:",
+      "pleaseGenerateKeysFirst": "请先生成密钥",
+      "pleaseEnterCiphertextToDecrypt": "请输入要解密的密文",
+      "encryptionError": "加密错误:",
+      "decryptionError": "解密错误:"
+    }
+  },
+  "paillier": {
+    "title": "Paillier 加密",
+    "description": "具有加性同态属性的 Paillier 概率加密",
+    "features": {
+      "probabilistic": "概率加密",
+      "additive": "加性同态"
+    },
+    "sections": {
+      "encryptionDecryption": "加密与解密",
+      "encryptDecryptNumbers": "加密和解密数字",
+      "homomorphicOperations": "同态操作",
+      "performAdditiveOperations": "对加密数字执行加性操作"
+    },
+    "labels": {
+      "numberCiphertext": "数字 / 密文",
+      "ciphertext1": "密文 1",
+      "ciphertext2": "密文 2 (用于加法)",
+      "scalar": "标量 (用于乘法)",
+      "resultEncrypted": "结果 (已加密)"
+    },
+    "placeholders": {
+      "enterNumberOrCiphertext": "输入数字或密文...",
+      "enterFirstCiphertext": "输入第一个密文...",
+      "enterSecondCiphertext": "输入第二个密文...",
+      "enterScalarNumber": "输入标量数字..."
+    },
+    "actions": {
+      "generateKeys": "生成 Paillier 密钥",
+      "addC1C2": "添加 C1 + C2",
+      "multiplyC1Scalar": "乘以 C1 × 标量"
+    },
+    "toasts": {
+      "keysGenerated": "Paillier 密钥已生成",
+      "keyGenerationError": "密钥生成错误:",
+      "keyGenerationFailed": "密钥生成失败",
+      "pleaseGenerateKeysFirst": "请先生成密钥",
+      "numberEncrypted": "数字已加密",
+      "invalidNumberOrEncryptionFailed": "无效数字或加密失败",
+      "numberDecrypted": "数字已解密",
+      "pleaseEnterCiphertextToDecrypt": "请输入要解密的密文",
+      "pleaseEnterTwoCiphertextsToAdd": "请输入两个要相加的密文",
+      "keysAreRequired": "需要密钥",
+      "additionFailed": "添加失败",
+      "ciphertextsAdded": "密文已添加 (同态)",
+      "pleaseEnterCiphertextAndScalar": "请输入密文和标量",
+      "multiplicationFailed": "乘法失败",
+      "ciphertextMultiplied": "密文已乘以标量 (同态)"
+    }
+  },
+  "pqc": {
+    "title": "后量子密码学",
+    "description": "抗量子计算机攻击的后量子密码学（Kyber、Dilithium）",
+    "features": {
+      "quantum": "量子抗性",
+      "kyber": "Kyber",
+      "dilithium": "Dilithium"
+    },
+    "tabs": {
+      "kyber": "Kyber (密钥封装)",
+      "dilithium": "Dilithium (数字签名)"
+    },
+    "labels": {
+      "securityLevel": "安全级别",
+      "sharedSecret": "共享密钥",
+      "ciphertext": "密文",
+      "decapsulatedSecret": "解封装密钥",
+      "messageToSign": "待签名消息",
+      "signature": "签名"
+    },
+    "selects": {
+      "kyber512": "Kyber512",
+      "kyber768": "Kyber768",
+      "kyber1024": "Kyber1024",
+      "dilithium2": "Dilithium2",
+      "dilithium3": "Dilithium3",
+      "dilithium5": "Dilithium5"
+    },
+    "actions": {
+      "generateKyberKeys": "生成 Kyber 密钥",
+      "encapsulate": "封装（生成共享密钥）",
+      "decapsulate": "解封装",
+      "generateDilithiumKeys": "生成 Dilithium 密钥",
+      "signMessage": "签名消息",
+      "verifySignature": "验证签名"
+    },
+    "placeholders": {
+      "enterMessage": "输入消息..."
+    },
+    "messages": {
+      "keysGeneratedLevel": "✓ 密钥已生成（级别：{level}）",
+      "secretsMatch": "✓ 密钥匹配！",
+      "valid": "✅ 有效",
+      "invalid": "❌ 无效"
+    },
+    "toasts": {
+      "kyberKeysGenerated": "Kyber 密钥已生成",
+      "kyberKeyGenerationError": "Kyber 密钥生成错误：",
+      "keyGenerationFailed": "密钥生成失败",
+      "pleaseGenerateKeysFirst": "请先生成密钥",
+      "sharedSecretEncapsulated": "共享密钥已封装",
+      "encapsulationError": "封装错误：",
+      "decapsulationError": "解封装错误：",
+      "dilithiumKeysGenerated": "Dilithium 密钥已生成",
+      "dilithiumKeyGenerationError": "Dilithium 密钥生成错误：",
+      "signingError": "签名错误：",
+      "verificationError": "验证错误："
+    }
+  },
+  "stream": {
+    "title": "流密码",
+    "description": "高速流密码，包括ChaCha20和Salsa20",
+    "labels": {
+      "algorithm": "算法",
+      "encoding": "编码",
+      "nonceMode": "Nonce 模式",
+      "key": "密钥",
+      "nonce": "Nonce",
+      "counter": "计数器"
+    },
+    "algorithms": {
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "encodings": {
+      "base64": "BASE64",
+      "hex": "HEX"
+    },
+    "nonce": {
+      "standard": "标准",
+      "extended": "扩展"
+    },
+    "placeholders": {
+      "key": "输入密钥",
+      "nonce": "输入 Nonce",
+      "input": "输入",
+      "output": "结果将显示在此处",
+      "nonceExtended": "输入扩展 Nonce"
+    },
+    "actions": {
+      "encrypt": "加密",
+      "decrypt": "解密",
+      "copy": "复制",
+      "clear": "清除"
+    },
+    "features": {
+      "fast": "快速加密",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "errors": {
+      "nonceRequired": "需要 Nonce"
+    }
+  },
+  "des": {
+    "title": "DES加密",
+    "description": "数据加密标准(DES) - 56位传统加密算法",
+    "features": {
+      "legacy": "传统支持"
+    }
+  },
+  "tripledes": {
+    "title": "Triple DES (3DES)",
+    "description": "三重数据加密标准 - 通过三重加密增强安全性",
+    "features": {
+      "triple": "三重加密"
+    }
+  },
+  "rc4": {
+    "title": "RC4流密码",
+    "description": "Rivest Cipher 4 - 可变密钥长度流密码",
+    "features": {
+      "stream": "流密码",
+      "fast": "快速加密"
+    }
+  },
+  "rabbit": {
+    "title": "Rabbit流密码",
+    "description": "针对软件实现优化的高性能流密码",
+    "features": {
+      "stream": "流密码",
+      "fast": "快速加密"
+    }
+  },
+  "sha3": {
+    "title": "SHA-3哈希函数",
+    "description": "安全哈希算法3 - 安全哈希算法系列的最新成员"
+  },
+  "blake2": {
+    "title": "BLAKE2哈希函数",
+    "description": "快速密码学哈希函数，比MD5、SHA-1、SHA-2和SHA-3更快",
+    "features": {
+      "fast": "快速哈希"
+    }
+  },
+  "ecies": {
+    "title": "ECIES加密",
+    "description": "椭圆曲线集成加密方案 - 结合ECC和对称加密的混合加密",
+    "features": {
+      "ecc": "椭圆曲线密码学",
+      "integrated": "集成方案"
+    }
   }
 }

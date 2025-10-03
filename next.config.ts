@@ -29,6 +29,8 @@ const nextConfig: NextConfig = {
         ...config.resolve.fallback,
         crypto: false, // 브라우저 crypto API 사용
         stream: false,
+        fs: false,
+        path: false,
         buffer: require.resolve("buffer"),
         process: require.resolve("process/browser"),
       };
@@ -88,7 +90,6 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/webp", "image/avif"],
     dangerouslyAllowSVG: false,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // 압축 및 성능

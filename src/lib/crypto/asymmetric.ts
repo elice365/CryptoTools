@@ -104,7 +104,7 @@ export class AsymmetricCrypto {
           name: "RSA-OAEP",
         },
         publicKey,
-        data,
+        data as BufferSource,
       );
 
       const result = cryptoUtils.bytesToHex(new Uint8Array(encrypted));
@@ -161,7 +161,7 @@ export class AsymmetricCrypto {
           name: "RSA-OAEP",
         },
         privateKey,
-        encryptedData,
+        encryptedData as BufferSource,
       );
 
       const result = cryptoUtils.uint8ArrayToString(new Uint8Array(decrypted));
@@ -273,7 +273,7 @@ export class AsymmetricCrypto {
           hash: "SHA-256",
         },
         privateKey,
-        data,
+        data as BufferSource,
       );
 
       const result = cryptoUtils.bytesToHex(new Uint8Array(signature));
@@ -330,8 +330,8 @@ export class AsymmetricCrypto {
           hash: "SHA-256",
         },
         publicKey,
-        signatureData,
-        data,
+        signatureData as BufferSource,
+        data as BufferSource,
       );
 
       logger.info("ECDSA signature verification completed", {
@@ -388,7 +388,7 @@ export class AsymmetricCrypto {
           saltLength: 32,
         },
         privateKey,
-        data,
+        data as BufferSource,
       );
 
       const result = cryptoUtils.bytesToHex(new Uint8Array(signature));

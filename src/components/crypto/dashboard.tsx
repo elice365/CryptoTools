@@ -9,6 +9,18 @@ import { SymmetricTool } from "@/components/crypto/symmetric-tool";
 import { AsymmetricTool } from "@/components/crypto/asymmetric-tool";
 import { EncodingTools } from "@/components/crypto/encoding-tools";
 import { FileStreamingTools } from "@/components/crypto/file-streaming-tools";
+import { BgvTool } from "@/components/crypto/bgv-tool";
+import { ElgamalTool } from "@/components/crypto/elgamal-tool";
+import { PaillierTool } from "@/components/crypto/paillier-tool";
+import { PqcTool } from "@/components/crypto/pqc-tool";
+import { StreamTool } from "@/components/crypto/stream-tool";
+import { DesTool } from "@/components/crypto/des-tool";
+import { TripleDesTool } from "@/components/crypto/tripledes-tool";
+import { Rc4Tool } from "@/components/crypto/rc4-tool";
+import { RabbitTool } from "@/components/crypto/rabbit-tool";
+import { Sha3Tool } from "@/components/crypto/sha3-tool";
+import { Blake2Tool } from "@/components/crypto/blake2-tool";
+import { EciesTool } from "@/components/crypto/ecies-tool";
 import { ThemeToggle } from "@/components/crypto/theme-toggle";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import {
@@ -56,6 +68,18 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
       asymmetric: <AsymmetricTool />,
       encoding: <EncodingTools />,
       files: <FileStreamingTools />,
+      bgv: <BgvTool />,
+      elgamal: <ElgamalTool />,
+      paillier: <PaillierTool />,
+      pqc: <PqcTool />,
+      stream: <StreamTool />,
+      des: <DesTool />,
+      tripledes: <TripleDesTool />,
+      rc4: <Rc4Tool />,
+      rabbit: <RabbitTool />,
+      sha3: <Sha3Tool />,
+      blake2: <Blake2Tool />,
+      ecies: <EciesTool />,
     };
 
     return TOOL_IDS.map((toolId) => {
@@ -81,7 +105,7 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
     ? tools.find((tool) => tool.id === activeCategory) ?? null
     : null;
 
-  const navigationTools = useMemo<ToolDefinition[]>(() => {
+  const navigationTools = useMemo<Omit<ToolDefinition, "component">[]>(() => {
     return TOOL_IDS.map((toolId) => {
       const config = TOOL_DEFINITIONS[toolId];
       const Icon = config.icon;
@@ -96,16 +120,29 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
         features: config.features.map((feature) =>
           feature.key ? t(feature.key) : feature.raw ?? "",
         ),
-      } satisfies ToolDefinition;
+      } satisfies Omit<ToolDefinition, "component">;
     });
   }, [t]);
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
+      {/* Header */}
+      <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6">
+          <div className="flex items-center gap-2">
+            <Shield className="h-6 w-6 text-primary" />
+            <h1 className="text-lg font-semibold text-foreground sm:text-xl">
+              {t("app.title")}
+            </h1>
+          </div>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <LocaleSwitcher />
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
 
-
-
-      <main className="mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 gap-8 px-6 py-10 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start lg:gap-10">
+      <main className="mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 gap-4 px-4 py-6 sm:gap-6 sm:px-6 sm:py-8 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start lg:gap-10 lg:py-10">
 
 
         {/* Sidebar Navigation */}
@@ -135,10 +172,10 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
                   variant={isActive ? "default" : "ghost"}
                   onClick={() => setActiveCategory(isActive ? null : tool.id)}
                   className={cn(
-                    "group relative flex w-full min-h-[72px] items-stretch justify-between gap-3 overflow-hidden rounded-2xl border border-transparent px-4 py-3.5 text-left text-sm leading-relaxed transition-all",
+                    "group relative flex w-full min-h-[72px] items-stretch justify-between gap-3 overflow-hidden rounded-2xl border border-transparent px-4 py-3.5 text-left text-sm leading-relaxed transition-all duration-200",
                     isActive
                       ? "bg-primary text-primary-foreground shadow-lg"
-                      : "bg-card/80 text-muted-foreground hover:border-border/70 hover:bg-primary/10 hover:text-foreground",
+                      : "bg-card/80 text-muted-foreground hover:border-primary/30 hover:bg-primary/[0.08] hover:text-foreground hover:shadow-md",
                   )}
                 >
                   <span className="flex items-start gap-3 text-left">
@@ -172,30 +209,33 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
           </nav>
         </aside>
 
-        <section className="flex min-w-0 flex-1 flex-col gap-10">
+        <section className="flex min-w-0 flex-1 flex-col gap-6 sm:gap-8 lg:gap-10">
           {/* Hero Section */}
-          <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-card/80 p-8 shadow-xl transition-colors">
+          <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/80 p-4 shadow-xl transition-colors sm:rounded-3xl sm:p-6 lg:p-8">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.12),_transparent_45%)] dark:bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.22),_transparent_50%)]" />
-            <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-              <div className="max-w-2xl space-y-4">
-                <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
+              <div className="max-w-2xl space-y-3 sm:space-y-4">
+                <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl">
                   {t("app.welcome")}
                 </h2>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
                   {t("app.welcomeDescription")}
                 </p>
-                <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/80 px-4 py-2">
-                    <Shield className="h-4 w-4 text-primary" />
-                    {t("app.features.security.title")}
+                <div className="flex flex-wrap gap-2 text-xs sm:gap-3 sm:text-sm text-muted-foreground">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background/80 px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2">
+                    <Shield className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
+                    <span className="hidden sm:inline">{t("app.features.security.title")}</span>
+                    <span className="sm:hidden">보안</span>
                   </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/80 px-4 py-2">
-                    <Zap className="h-4 w-4 text-primary" />
-                    {t("app.features.realtime.title")}
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background/80 px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2">
+                    <Zap className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
+                    <span className="hidden sm:inline">{t("app.features.realtime.title")}</span>
+                    <span className="sm:hidden">실시간</span>
                   </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/80 px-4 py-2">
-                    <Globe className="h-4 w-4 text-primary" />
-                    {t("app.features.multilingual.title")}
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background/80 px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2">
+                    <Globe className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
+                    <span className="hidden sm:inline">{t("app.features.multilingual.title")}</span>
+                    <span className="sm:hidden">다국어</span>
                   </span>
                 </div>
               </div>
@@ -204,46 +244,46 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
 
           {activeTool ? (
             <Card className="overflow-hidden border-border/60 bg-card/80 shadow-xl">
-              <CardHeader className="border-b border-border/60 bg-background/70 px-8 py-6">
-                <div className="flex flex-wrap items-center gap-5">
+              <CardHeader className="border-b border-border/60 bg-background/70 px-4 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-5">
                   {(() => {
                     const Icon = activeTool.icon;
                     return (
                       <span
                         className={cn(
-                          "flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg",
+                          "flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-lg sm:h-14 sm:w-14 sm:rounded-2xl",
                           activeTool.color,
                         )}
                       >
-                        <Icon className="h-6 w-6" />
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                       </span>
                     );
                   })()}
                   <div className="min-w-0 flex-1">
-                    <CardTitle className="text-2xl font-semibold text-foreground">
+                    <CardTitle className="text-lg font-semibold text-foreground sm:text-xl lg:text-2xl">
                       {activeTool.title}
                     </CardTitle>
-                    <CardDescription className="text-base text-muted-foreground">
+                    <CardDescription className="text-sm text-muted-foreground sm:text-base">
                       {activeTool.description}
                     </CardDescription>
                   </div>
                   <Button
                     variant="outline"
                     onClick={() => setActiveCategory(null)}
-                    className="rounded-2xl border-border bg-background/80 text-muted-foreground transition hover:text-foreground"
+                    className="rounded-xl border-border bg-background/80 text-sm text-muted-foreground transition hover:text-foreground sm:rounded-2xl"
                   >
                     ← {t("common.back")}
                   </Button>
                 </div>
               </CardHeader>
-              <CardContent className="bg-background/60 p-8">
+              <CardContent className="bg-background/60 p-4 sm:p-6 lg:p-8">
                 {activeTool.component}
               </CardContent>
             </Card>
           ) : (
             <>
               {/* Tool Grid */}
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
                 {navigationTools.map((tool) => {
                   const Icon = tool.icon;
                   return (
@@ -296,31 +336,31 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
               </div>
 
               {/* Feature Highlights */}
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                <Card className="border-border/60 bg-card/80 p-6 text-center shadow-lg transition hover:-translate-y-1 hover:shadow-xl">
-                  <Shield className="mx-auto h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold text-foreground">
+              <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3 md:gap-6">
+                <Card className="border-border/60 bg-card/80 p-4 text-center shadow-lg transition hover:-translate-y-1 hover:shadow-xl sm:p-5 lg:p-6">
+                  <Shield className="mx-auto h-10 w-10 text-primary sm:h-12 sm:w-12" />
+                  <h3 className="mt-3 text-lg font-semibold text-foreground sm:mt-4 sm:text-xl">
                     {t("app.features.security.title")}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                     {t("app.features.security.description")}
                   </p>
                 </Card>
-                <Card className="border-border/60 bg-card/80 p-6 text-center shadow-lg transition hover:-translate-y-1 hover:shadow-xl">
-                  <Zap className="mx-auto h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold text-foreground">
+                <Card className="border-border/60 bg-card/80 p-4 text-center shadow-lg transition hover:-translate-y-1 hover:shadow-xl sm:p-5 lg:p-6">
+                  <Zap className="mx-auto h-10 w-10 text-primary sm:h-12 sm:w-12" />
+                  <h3 className="mt-3 text-lg font-semibold text-foreground sm:mt-4 sm:text-xl">
                     {t("app.features.realtime.title")}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                     {t("app.features.realtime.description")}
                   </p>
                 </Card>
-                <Card className="border-border/60 bg-card/80 p-6 text-center shadow-lg transition hover:-translate-y-1 hover:shadow-xl">
-                  <Globe className="mx-auto h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold text-foreground">
+                <Card className="border-border/60 bg-card/80 p-4 text-center shadow-lg transition hover:-translate-y-1 hover:shadow-xl sm:p-5 lg:p-6">
+                  <Globe className="mx-auto h-10 w-10 text-primary sm:h-12 sm:w-12" />
+                  <h3 className="mt-3 text-lg font-semibold text-foreground sm:mt-4 sm:text-xl">
                     {t("app.features.multilingual.title")}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                     {t("app.features.multilingual.description")}
                   </p>
                 </Card>
@@ -329,13 +369,13 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
           )}
         </section>
       </main>
-      <footer className="border-t border-border/60 bg-background/80 py-10">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-6 text-center">
-          <div className="flex items-center gap-3 rounded-2xl border border-border/60 bg-card/60 px-4 py-2 text-sm text-muted-foreground">
-            <Shield className="h-4 w-4 text-primary" />
+      <footer className="border-t border-border/60 bg-background/80 py-6 sm:py-8 lg:py-10">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-3 px-4 text-center sm:gap-4 sm:px-6">
+          <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/60 px-3 py-1.5 text-xs text-muted-foreground sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-2 sm:text-sm">
+            <Shield className="h-3.5 w-3.5 text-primary sm:h-4 sm:w-4" />
             {t("app.footer")}
           </div>
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
             {t("app.footerDescription")}
           </p>
         </div>

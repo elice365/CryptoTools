@@ -49,6 +49,8 @@
     "mode": "Mode",
     "generate": "Generate",
     "verify": "Verifikasi",
+    "publicKey": "Kunci Publik",
+    "privateKey": "Kunci Privat",
     "back": "Kembali ke Alat",
     "start": "Mulai",
     "realTimeProcessing": "Pemrosesan Real-time",
@@ -64,7 +66,13 @@
     "experimental": "experimental",
     "selectFile": "Pilih File",
     "changeFile": "Ubah File",
-    "removeFile": "Hapus File"
+    "removeFile": "Hapus File",
+    "encoding": "Pengkodean",
+    "enterText": "Masukkan teks...",
+    "hash": "Hash",
+    "iv": "IV (Inisialisasi Vektor)",
+    "generateKeys": "Hasilkan Kunci",
+    "encryptionDecryption": "Enkripsi & Dekripsi"
   },
   "base64": {
     "title": "Encoder/Decoder Base64",
@@ -98,10 +106,16 @@
     "description": "Generate nilai hash menggunakan berbagai algoritma",
     "algorithms": {
       "sha1": "SHA-1",
+      "sha224": "SHA-224",
       "sha256": "SHA-256",
       "sha384": "SHA-384",
       "sha512": "SHA-512",
-      "blake2": "BLAKE2"
+      "sha3-224": "SHA3-224",
+      "sha3-256": "SHA3-256",
+      "sha3-384": "SHA3-384",
+      "sha3-512": "SHA3-512",
+      "blake2b": "BLAKE2b",
+      "blake2s": "BLAKE2s"
     },
     "actions": {
       "completed": "Hash berhasil di-generate",
@@ -110,7 +124,15 @@
       "verificationFailed": "Nilai hash tidak cocok. ❌",
       "selectFileAndGenerateHash": "Pilih file untuk generate hash",
       "generateHash": "Generate Hash",
-      "compareHashes": "Bandingkan Hash"
+      "compareHashes": "Bandingkan Hash",
+      "generate": "Generate Hash"
+    },
+    "labels": {
+      "algorithm": "Algoritma",
+      "outputFormat": "Format Output",
+      "fileInput": "Input File",
+      "textPlaceholder": "Masukkan teks untuk di-hash...",
+      "resultPlaceholder": "Hasil hash akan muncul di sini"
     },
     "errors": {
       "inputRequired": "Silakan masukkan teks untuk di-hash",
@@ -200,7 +222,8 @@
       "decrypted": "Dekripsi RSA selesai",
       "generate": "Generate Kunci RSA",
       "publicPlaceholder": "Kunci Publik RSA (format PEM)",
-      "privatePlaceholder": "Kunci Privat RSA (format PEM)"
+      "privatePlaceholder": "Kunci Privat RSA (format PEM)",
+      "description": "Kriptosistem kunci publik RSA - enkripsi data dan tanda tangan digital yang aman"
     },
     "ecc": {
       "generated": "Pasangan kunci ECC berhasil di-generate",
@@ -209,7 +232,8 @@
       "generate": "Generate Kunci ECC",
       "publicPlaceholder": "Kunci Publik ECC",
       "privatePlaceholder": "Kunci Privat ECC",
-      "recipientPlaceholder": "Kunci Publik Penerima"
+      "recipientPlaceholder": "Kunci Publik Penerima",
+      "description": "Kriptografi Kurva Eliptik (ECC) - keamanan setara dengan RSA tetapi dengan ukuran kunci yang lebih kecil"
     },
     "elgamal": {
       "generated": "Pasangan kunci ElGamal berhasil di-generate",
@@ -357,9 +381,9 @@
     "decrypt": "Dekripsi",
     "copy": "Salin",
     "clear": "Hapus",
-    "processing": "Memproses...",
-    "encode": "Enkode",
-    "decode": "Dekode"
+    "processing": "Memproses",
+    "encode": "Encode",
+    "decode": "Decode"
   },
   "messages": {
     "copied": "Disalin ke clipboard"
@@ -388,5 +412,275 @@
     "signatureGenerated": "Signature berhasil di-generate",
     "signingFailed": "Penandatanganan gagal",
     "signatureGenerationFailed": "Generate signature gagal"
+  },
+  "bgv": {
+    "title": "Enkripsi Homomorfik BGV",
+    "description": "Enkripsi homomorfik BGV mendukung operasi pada data terenkripsi",
+    "features": {
+      "homomorphic": "Operasi Homomorfik",
+      "compute": "Komputasi Keadaan Terenkripsi"
+    },
+    "sections": {
+      "encryptionDecryption": "Enkripsi & Dekripsi",
+      "homomorphicOperations": "Operasi Homomorfik"
+    },
+    "labels": {
+      "ciphertext1": "Ciphertext 1",
+      "ciphertext2": "Ciphertext 2",
+      "resultEncrypted": "Hasil (Terenskripsi)"
+    },
+    "placeholders": {
+      "textOrCiphertext": "Masukkan teks atau ciphertext...",
+      "firstCiphertext": "Masukkan ciphertext pertama...",
+      "secondCiphertext": "Masukkan ciphertext kedua..."
+    },
+    "actions": {
+      "generateKeys": "Hasilkan Kunci BGV",
+      "add": "Tambah",
+      "multiply": "Kali"
+    },
+    "toasts": {
+      "keysGenerated": "Kunci BGV berhasil dibuat",
+      "keyGenerationFailed": "Pembuatan kunci gagal",
+      "textEncrypted": "Teks berhasil dienkripsi",
+      "textDecrypted": "Teks berhasil didekripsi",
+      "pleaseGenerateKeysFirst": "Harap buat kunci terlebih dahulu",
+      "pleaseEnterCiphertextToDecrypt": "Harap masukkan ciphertext untuk didekripsi",
+      "pleaseEnterTwoCiphertextsToAdd": "Harap masukkan dua ciphertext untuk ditambahkan",
+      "pleaseEnterTwoCiphertextsToMultiply": "Harap masukkan dua ciphertext untuk dikalikan",
+      "keysRequiredForParameters": "Kunci diperlukan untuk parameter",
+      "additionFailed": "Penambahan gagal",
+      "multiplicationFailed": "Perkalian gagal",
+      "ciphertextsAdded": "Ciphertext berhasil ditambahkan (homomorfik)",
+      "ciphertextsMultiplied": "Ciphertext berhasil dikalikan (homomorfik)"
+    }
+  },
+  "elgamal": {
+    "title": "Enkripsi ElGamal",
+    "description": "Enkripsi asimetris ElGamal berdasarkan masalah logaritma diskrit",
+    "features": {
+      "asymmetric": "Kunci Asimetris"
+    },
+    "sections": {
+      "encryptionDecryption": "Enkripsi & Dekripsi"
+    },
+    "labels": {
+      "bitLength": "Panjang Bit"
+    },
+    "selects": {
+      "bits256": "256 bit",
+      "bits512": "512 bit",
+      "bits1024": "1024 bit",
+      "bits2048": "2048 bit"
+    },
+    "toasts": {
+      "keyGenerationError": "Kesalahan pembuatan kunci:",
+      "pleaseGenerateKeysFirst": "Harap buat kunci terlebih dahulu",
+      "pleaseEnterCiphertextToDecrypt": "Harap masukkan ciphertext untuk didekripsi",
+      "encryptionError": "Kesalahan enkripsi:",
+      "decryptionError": "Kesalahan dekripsi:"
+    }
+  },
+  "paillier": {
+    "title": "Enkripsi Paillier",
+    "description": "Enkripsi probabilistik Paillier dengan properti homomorfik aditif",
+    "features": {
+      "probabilistic": "Enkripsi Probabilistik",
+      "additive": "Homomorfisme Aditif"
+    },
+    "sections": {
+      "encryptionDecryption": "Enkripsi & Dekripsi",
+      "encryptDecryptNumbers": "Enkripsi dan dekripsi angka",
+      "homomorphicOperations": "Operasi Homomorfik",
+      "performAdditiveOperations": "Lakukan operasi aditif pada angka terenkripsi"
+    },
+    "labels": {
+      "numberCiphertext": "Angka / Ciphertext",
+      "ciphertext1": "Ciphertext 1",
+      "ciphertext2": "Ciphertext 2 (untuk penambahan)",
+      "scalar": "Skalar (untuk perkalian)",
+      "resultEncrypted": "Hasil (Terenskripsi)"
+    },
+    "placeholders": {
+      "enterNumberOrCiphertext": "Masukkan angka atau ciphertext...",
+      "enterFirstCiphertext": "Masukkan ciphertext pertama...",
+      "enterSecondCiphertext": "Masukkan ciphertext kedua...",
+      "enterScalarNumber": "Masukkan angka skalar..."
+    },
+    "actions": {
+      "generateKeys": "Hasilkan Kunci Paillier",
+      "addC1C2": "Tambah C1 + C2",
+      "multiplyC1Scalar": "Kalikan C1 × Skalar"
+    },
+    "toasts": {
+      "keysGenerated": "Kunci Paillier berhasil dibuat",
+      "keyGenerationError": "Kesalahan pembuatan kunci:",
+      "keyGenerationFailed": "Pembuatan kunci gagal",
+      "pleaseGenerateKeysFirst": "Harap buat kunci terlebih dahulu",
+      "numberEncrypted": "Angka berhasil dienkripsi",
+      "invalidNumberOrEncryptionFailed": "Angka tidak valid atau enkripsi gagal",
+      "numberDecrypted": "Angka berhasil didekripsi",
+      "pleaseEnterCiphertextToDecrypt": "Harap masukkan ciphertext untuk didekripsi",
+      "pleaseEnterTwoCiphertextsToAdd": "Harap masukkan dua ciphertext untuk ditambahkan",
+      "keysAreRequired": "Kunci diperlukan",
+      "additionFailed": "Penambahan gagal",
+      "ciphertextsAdded": "Ciphertext berhasil ditambahkan (homomorfik)",
+      "pleaseEnterCiphertextAndScalar": "Harap masukkan ciphertext dan skalar",
+      "multiplicationFailed": "Perkalian gagal",
+      "ciphertextMultiplied": "Ciphertext dikalikan dengan skalar (homomorfik)"
+    }
+  },
+  "pqc": {
+    "title": "Kriptografi Pasca-Kuantum",
+    "description": "Kriptografi pasca-kuantum yang tahan terhadap serangan komputer kuantum (Kyber, Dilithium)",
+    "features": {
+      "quantum": "Ketahanan Kuantum",
+      "kyber": "Kyber",
+      "dilithium": "Dilithium"
+    },
+    "tabs": {
+      "kyber": "Kyber (KEM)",
+      "dilithium": "Dilithium (Tanda Tangan)"
+    },
+    "labels": {
+      "securityLevel": "Tingkat Keamanan",
+      "sharedSecret": "Rahasia Bersama",
+      "ciphertext": "Ciphertext",
+      "decapsulatedSecret": "Rahasia Setelah Dekapsulasi",
+      "messageToSign": "Pesan untuk Ditandatangani",
+      "signature": "Tanda Tangan"
+    },
+    "selects": {
+      "kyber512": "Kyber512",
+      "kyber768": "Kyber768",
+      "kyber1024": "Kyber1024",
+      "dilithium2": "Dilithium2",
+      "dilithium3": "Dilithium3",
+      "dilithium5": "Dilithium5"
+    },
+    "actions": {
+      "generateKyberKeys": "Hasilkan Kunci Kyber",
+      "encapsulate": "Enkapsulasi (Buat Rahasia Bersama)",
+      "decapsulate": "Dekapsulasi",
+      "generateDilithiumKeys": "Hasilkan Kunci Dilithium",
+      "signMessage": "Tandatangani Pesan",
+      "verifySignature": "Verifikasi Tanda Tangan"
+    },
+    "placeholders": {
+      "enterMessage": "Masukkan pesan..."
+    },
+    "messages": {
+      "keysGeneratedLevel": "✓ Kunci berhasil dibuat (Level: {level})",
+      "secretsMatch": "✓ Rahasia cocok!",
+      "valid": "✅ Valid",
+      "invalid": "❌ Tidak valid"
+    },
+    "toasts": {
+      "kyberKeysGenerated": "Kunci Kyber berhasil dibuat",
+      "kyberKeyGenerationError": "Kesalahan pembuatan kunci Kyber:",
+      "keyGenerationFailed": "Pembuatan kunci gagal",
+      "pleaseGenerateKeysFirst": "Harap buat kunci terlebih dahulu",
+      "sharedSecretEncapsulated": "Rahasia bersama berhasil dienkapsulasi",
+      "encapsulationError": "Kesalahan enkapsulasi:",
+      "decapsulationError": "Kesalahan dekapsulasi:",
+      "dilithiumKeysGenerated": "Kunci Dilithium berhasil dibuat",
+      "dilithiumKeyGenerationError": "Kesalahan pembuatan kunci Dilithium:",
+      "signingError": "Kesalahan penandatanganan:",
+      "verificationError": "Kesalahan verifikasi:"
+    }
+  },
+  "stream": {
+    "title": "Cipher Aliran",
+    "description": "Cipher aliran berkecepatan tinggi termasuk ChaCha20 dan Salsa20",
+    "labels": {
+      "algorithm": "Algoritma",
+      "encoding": "Pengkodean",
+      "nonceMode": "Mode Nonce",
+      "key": "Kunci",
+      "nonce": "Nonce",
+      "counter": "Penghitung"
+    },
+    "algorithms": {
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "encodings": {
+      "base64": "BASE64",
+      "hex": "HEX"
+    },
+    "nonce": {
+      "standard": "Standar",
+      "extended": "Diperpanjang"
+    },
+    "placeholders": {
+      "key": "Masukkan kunci",
+      "nonce": "Masukkan nonce",
+      "input": "Masukan",
+      "output": "Hasil akan muncul di sini",
+      "nonceExtended": "Masukkan nonce diperpanjang"
+    },
+    "actions": {
+      "encrypt": "Enkripsi",
+      "decrypt": "Dekripsi",
+      "copy": "Salin",
+      "clear": "Bersihkan"
+    },
+    "features": {
+      "fast": "Enkripsi Cepat",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "errors": {
+      "nonceRequired": "Nonce diperlukan"
+    }
+  },
+  "des": {
+    "title": "Enkripsi DES",
+    "description": "Data Encryption Standard (DES) - Algoritma enkripsi lama 56-bit",
+    "features": {
+      "legacy": "Dukungan Lama"
+    }
+  },
+  "tripledes": {
+    "title": "Triple DES (3DES)",
+    "description": "Triple Data Encryption Standard - Keamanan yang ditingkatkan dengan enkripsi tiga kali",
+    "features": {
+      "triple": "Enkripsi Tiga Kali"
+    }
+  },
+  "rc4": {
+    "title": "RC4 Stream Cipher",
+    "description": "Rivest Cipher 4 - Stream cipher dengan panjang kunci variabel",
+    "features": {
+      "stream": "Stream Cipher",
+      "fast": "Enkripsi Cepat"
+    }
+  },
+  "rabbit": {
+    "title": "Rabbit Stream Cipher",
+    "description": "Stream cipher berkinerja tinggi yang dioptimalkan untuk implementasi perangkat lunak",
+    "features": {
+      "stream": "Stream Cipher",
+      "fast": "Enkripsi Cepat"
+    }
+  },
+  "sha3": {
+    "title": "Fungsi Hash SHA-3",
+    "description": "Secure Hash Algorithm 3 - Anggota terbaru dari keluarga Algoritma Hash Aman"
+  },
+  "blake2": {
+    "title": "Fungsi Hash BLAKE2",
+    "description": "Fungsi hash kriptografi cepat, lebih cepat dari MD5, SHA-1, SHA-2, dan SHA-3",
+    "features": {
+      "fast": "Hashing Cepat"
+    }
+  },
+  "ecies": {
+    "title": "Enkripsi ECIES",
+    "description": "Elliptic Curve Integrated Encryption Scheme - Enkripsi hibrid yang menggabungkan ECC dan enkripsi simetris",
+    "features": {
+      "ecc": "Kriptografi Kurva Eliptik",
+      "integrated": "Skema Terintegrasi"
+    }
   }
 }

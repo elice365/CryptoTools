@@ -39,9 +39,26 @@ const MAX_CACHE_AGE = 1800000; // 30 minutes
 const sensitiveDataRefs = new WeakSet();
 
 let kyberModulePromise: Promise<
-  typeof import("crystals-kyber-js/esm/mod.js")
+  typeof import("crystals-kyber-js")
 > | null = null;
 let dilithiumInstancePromise: Promise<DilithiumInterface> | null = null;
+
+function toDilithiumKind(level: DilithiumLevel): number {
+  switch (level) {
+    case 2:
+      return 0;
+    case 3:
+      return 1;
+    case 5:
+      return 2;
+    default:
+      throw createPQCError(
+        `Unsupported Dilithium level: ${level}`,
+        'DILITHIUM_LEVEL_UNSUPPORTED',
+        { level }
+      );
+  }
+}
 
 export type KyberLevel = 512 | 768 | 1024;
 export type DilithiumLevel = 2 | 3 | 5;
@@ -157,7 +174,7 @@ async function loadKyber() {
           { missing: 'WebAssembly' }
         );
       }
-      kyberModulePromise = import("crystals-kyber-js/esm/mod.js");
+      kyberModulePromise = import("crystals-kyber-js");
     }
     const result = await kyberModulePromise;
     endPerformanceMetric(metric);
@@ -172,10 +189,16 @@ async function loadKyber() {
   }
 }
 
-async function loadDilithium() {
+async function loadDilithium(): Promise<DilithiumInterface> {
   const metric = startPerformanceMetric('dilithium-module-load');
-  try {
-    if (!moduleCache.dilithium) {
+  if (dilithiumInstancePromise) {
+    moduleCache.lastAccess.set('dilithium', Date.now());
+    endPerformanceMetric(metric);
+    return dilithiumInstancePromise;
+  }
+
+  dilithiumInstancePromise = (async () => {
+    try {
       const capabilities = detectBrowserCapabilities();
       if (!capabilities.cryptoRandom) {
         throw createPQCError(
@@ -184,23 +207,86 @@ async function loadDilithium() {
           { missing: 'crypto.getRandomValues' }
         );
       }
-      const module = await import("dilithium-crystals-js/dist/dilithium.min.js");
-      moduleCache.dilithium = module.createDilithium();
-      moduleCache.lastAccess.set('dilithium', Date.now());
-    } else {
-      moduleCache.lastAccess.set('dilithium', Date.now());
+
+      if (typeof window === 'undefined') {
+        throw createPQCError(
+          'Dilithium module can only be loaded in the browser',
+          'ENVIRONMENT_UNSUPPORTED'
+        );
+      }
+
+      const [{ createDilithium }] = await Promise.all([
+        import("dilithium-crystals-js/dist/dilithium.min.js"),
+      ]);
+
+      const assetPrefix =
+        (typeof window !== 'undefined' && (window as any).__NEXT_DATA__?.assetPrefix) ??
+        process.env.NEXT_PUBLIC_ASSET_PREFIX ??
+        "";
+
+      const normalizedPrefix = typeof assetPrefix === 'string'
+        ? assetPrefix.replace(/\/$/, "")
+        : "";
+
+      const wasmRelativePath = normalizedPrefix
+        ? `${normalizedPrefix}/dilithium.wasm`
+        : "/dilithium.wasm";
+
+      const wasmPath = normalizedPrefix.startsWith("http")
+        ? `${normalizedPrefix}/dilithium.wasm`
+        : new URL(
+            wasmRelativePath.startsWith("/") ? wasmRelativePath : `/${wasmRelativePath}`,
+            window.location.origin,
+          ).toString();
+
+      const chromeObj = (window as any).chrome ?? ((window as any).chrome = {});
+      const runtime = chromeObj.runtime ?? (chromeObj.runtime = {});
+      const originalGetURL: ((path: string) => string) | undefined = runtime.getURL?.bind(runtime);
+
+      runtime.getURL = (path: string) => {
+        if (path === 'dilithium.wasm' || path.endsWith('/dilithium.wasm')) {
+          return wasmPath;
+        }
+
+        if (normalizedPrefix && !normalizedPrefix.startsWith('http')) {
+          const cleaned = path.startsWith('/') ? path.slice(1) : path;
+          return `${normalizedPrefix}/${cleaned}`;
+        }
+
+        if (normalizedPrefix && normalizedPrefix.startsWith('http')) {
+          const cleaned = path.startsWith('/') ? path : `/${path}`;
+          return `${normalizedPrefix}${cleaned}`;
+        }
+
+        return path.startsWith('/') ? path : `/${path}`;
+      };
+
+      try {
+        const module = await (createDilithium as () => Promise<DilithiumInterface> )();
+
+        moduleCache.lastAccess.set('dilithium', Date.now());
+        return module;
+      } finally {
+        if (originalGetURL) {
+          runtime.getURL = originalGetURL;
+        } else {
+          delete runtime.getURL;
+        }
+      }
+    } catch (error) {
+      console.error('[Dilithium] Error during module loading or initialization:', error);
+      dilithiumInstancePromise = null; // Clear promise on failure to allow retry
+      throw createPQCError(
+        'Failed to load or initialize Dilithium module. Ensure all dependencies are met and environment is compatible.',
+        'MODULE_LOAD_FAILED',
+        { originalError: error }
+      );
+    } finally {
+      endPerformanceMetric(metric);
     }
-    const result = await moduleCache.dilithium;
-    endPerformanceMetric(metric);
-    return result;
-  } catch (error) {
-    endPerformanceMetric(metric);
-    throw createPQCError(
-      'Failed to load Dilithium module',
-      'MODULE_LOAD_FAILED',
-      { originalError: error }
-    );
-  }
+  })();
+
+  return dilithiumInstancePromise;
 }
 
 // Enhanced Kyber instance creation with caching and validation
@@ -426,7 +512,21 @@ export async function dilithiumGenerateKeyPair(
   level: DilithiumLevel = 2,
 ): Promise<DilithiumKeyPair> {
   const dilithium = await loadDilithium();
-  const { publicKey, privateKey } = dilithium.generateKeys(level);
+  if (!dilithium) {
+    throw createPQCError('Dilithium module not loaded', 'MODULE_NOT_LOADED');
+  }
+
+  const kind = toDilithiumKind(level);
+  const { result, publicKey, privateKey } = dilithium.generateKeys(kind);
+
+  if (result !== 0 || !publicKey || !privateKey) {
+    throw createPQCError(
+      'Dilithium key generation failed',
+      'KEYGEN_FAILED',
+      { level, kind, result }
+    );
+  }
+
   return {
     publicKey: encodeBytes(publicKey, "base64"),
     privateKey: encodeBytes(privateKey, "base64"),
@@ -440,12 +540,27 @@ export async function dilithiumSign(
   encoding: KeyEncoding = "base64",
 ): Promise<DilithiumSignature> {
   const dilithium = await loadDilithium();
+  if (!dilithium) {
+    throw createPQCError('Dilithium module not loaded', 'MODULE_NOT_LOADED');
+  }
+
   const messageBytes = cryptoUtils.stringToUint8Array(message);
   const privKeyBytes = decodeToBytes(privateKey, encoding);
-  const result = dilithium.sign(messageBytes, privKeyBytes, level);
+  const kind = toDilithiumKind(level);
+
+  const { result, signature } = dilithium.sign(messageBytes, privKeyBytes, kind);
+
+  if (result !== 0 || !signature) {
+    throw createPQCError(
+      'Dilithium signing failed',
+      'SIGN_FAILED',
+      { level, kind, result }
+    );
+  }
+
   return {
-    signature: encodeBytes(result.signature, "base64"),
-    message: encodeBytes(result.message, "base64"),
+    signature: encodeBytes(signature, "base64"),
+    message,
   };
 }
 
@@ -457,16 +572,23 @@ export async function dilithiumVerify(
   encoding: KeyEncoding = "base64",
 ): Promise<boolean> {
   const dilithium = await loadDilithium();
+  if (!dilithium) {
+    throw createPQCError('Dilithium module not loaded', 'MODULE_NOT_LOADED');
+  }
+
   const messageBytes = cryptoUtils.stringToUint8Array(message);
   const signatureBytes = decodeToBytes(signature, encoding);
   const publicKeyBytes = decodeToBytes(publicKey, encoding);
-  const result = dilithium.verify(
+  const kind = toDilithiumKind(level);
+
+  const { result } = dilithium.verify(
     signatureBytes,
     messageBytes,
     publicKeyBytes,
-    level,
+    kind,
   );
-  return result.valid;
+
+  return result === 0;
 }
 
 // Batch processing utilities for improved performance

@@ -278,7 +278,7 @@ export function AdvancedCryptoTools() {
 
     try {
       if (system === "paillier") {
-        let results;
+        let results: any;
         if (useWebWorkers && workerSupported) {
           // Use Web Worker for benchmarking
           results = await cryptoWorkerManager.paillierBenchmark(
@@ -306,7 +306,7 @@ ${useWebWorkers && workerSupported ? "(Web Worker)" : "(Main Thread)"}`;
 
         setPaillierResult(benchmarkText);
       } else {
-        let results;
+        let results: any;
         if (useWebWorkers && workerSupported) {
           // Use Web Worker for BGV benchmarking
           results = await cryptoWorkerManager.bgvBenchmark(

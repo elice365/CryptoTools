@@ -41,7 +41,7 @@ function parseWordArray(
 
 function outputFromWordArray(
   CryptoJS: typeof import("crypto-js"),
-  wordArray: import("crypto-js").WordArray,
+  wordArray: any,
   encoding: "hex" | "base64",
 ) {
   if (encoding === "hex") {
@@ -79,6 +79,7 @@ export interface AesOptions {
 export interface SymmetricResult {
   cipherText: string;
   iv?: string;
+  nonce?: string;
   authTag?: string;
   encoding: "hex" | "base64";
 }
@@ -209,7 +210,7 @@ export async function aesEncrypt(
     const data = cryptoUtils.stringToUint8Array(text);
     const cryptoKey = await crypto.subtle.importKey(
       "raw",
-      keyBytes,
+      keyBytes as BufferSource,
       { name: "AES-GCM" },
       false,
       ["encrypt"],
@@ -220,12 +221,12 @@ export async function aesEncrypt(
     const encrypted = await crypto.subtle.encrypt(
       {
         name: "AES-GCM",
-        iv: ivBytes,
-        additionalData,
+        iv: ivBytes as BufferSource,
+        additionalData: additionalData as BufferSource | undefined,
         tagLength: 128,
       },
       cryptoKey,
-      data,
+      data as BufferSource,
     );
     const cipherBytes = new Uint8Array(encrypted);
     return {
@@ -238,7 +239,7 @@ export async function aesEncrypt(
   const CryptoJS = await loadCryptoJS();
   const key = parseWordArray(CryptoJS, options.key, options.keyEncoding);
 
-  let ivWordArray: import("crypto-js").WordArray | undefined;
+  let ivWordArray: any | undefined;
   let ivString: string | undefined = options.iv;
 
   if (options.mode !== "ecb") {
@@ -295,7 +296,7 @@ export async function aesDecrypt(
     const cipherBytes = base64ToUint8(cipherText);
     const cryptoKey = await crypto.subtle.importKey(
       "raw",
-      keyBytes,
+      keyBytes as BufferSource,
       { name: "AES-GCM" },
       false,
       ["decrypt"],
@@ -304,14 +305,14 @@ export async function aesDecrypt(
       const decrypted = await crypto.subtle.decrypt(
         {
           name: "AES-GCM",
-          iv: ivBytes,
+          iv: ivBytes as BufferSource,
           additionalData: options.aad
-            ? cryptoUtils.stringToUint8Array(options.aad)
+            ? (cryptoUtils.stringToUint8Array(options.aad) as BufferSource)
             : undefined,
           tagLength: 128,
         },
         cryptoKey,
-        cipherBytes,
+        cipherBytes as BufferSource,
       );
       return cryptoUtils.uint8ArrayToString(new Uint8Array(decrypted));
     } catch (error) {
@@ -360,6 +361,7 @@ interface LegacyCipherOptions {
   ivEncoding?: KeyEncoding;
   outputEncoding?: "hex" | "base64";
   mode?: "cbc" | "ecb";
+  padding?: PaddingScheme;
 }
 
 export async function desEncrypt(
@@ -370,7 +372,7 @@ export async function desEncrypt(
   const key = parseWordArray(CryptoJS, options.key, options.keyEncoding);
   const outputEncoding = options.outputEncoding ?? "base64";
   let iv = options.iv;
-  let ivWordArray: import("crypto-js").WordArray | undefined;
+  let ivWordArray: any | undefined;
   if (options.mode !== "ecb") {
     if (options.iv) {
       ivWordArray = parseWordArray(CryptoJS, options.iv, options.ivEncoding);
@@ -440,7 +442,7 @@ export async function tripleDesEncrypt(
   const key = parseWordArray(CryptoJS, options.key, options.keyEncoding);
   const outputEncoding = options.outputEncoding ?? "base64";
   let iv = options.iv;
-  let ivWordArray: import("crypto-js").WordArray | undefined;
+  let ivWordArray: any | undefined;
   if (options.mode !== "ecb") {
     if (options.iv) {
       ivWordArray = parseWordArray(CryptoJS, options.iv, options.ivEncoding);
@@ -640,9 +642,8 @@ export async function chacha20Encrypt(
         : uint8ToBase64(nonceBytes);
   }
 
-  const cipher = chacha20(adjustedKey, nonceBytes);
   const plaintext = utf8ToBytes(text);
-  const ciphertext = cipher.encrypt(plaintext);
+  const ciphertext = chacha20(adjustedKey, nonceBytes, plaintext);
 
   const outputEncoding = options.outputEncoding ?? "base64";
   const result: SymmetricResult = {
@@ -682,8 +683,7 @@ export async function chacha20Decrypt(
     options.outputEncoding === "hex" ? "hex" : "base64",
   );
 
-  const cipher = chacha20(adjustedKey, adjustedNonce);
-  const decrypted = cipher.decrypt(cipherBytes);
+  const decrypted = chacha20(adjustedKey, adjustedNonce, cipherBytes);
 
   return bytesToUtf8(decrypted);
 }
@@ -718,9 +718,8 @@ export async function salsa20Encrypt(
         : uint8ToBase64(nonceBytes);
   }
 
-  const cipher = salsa20(adjustedKey, nonceBytes);
   const plaintext = utf8ToBytes(text);
-  const ciphertext = cipher.encrypt(plaintext);
+  const ciphertext = salsa20(adjustedKey, nonceBytes, plaintext);
 
   const outputEncoding = options.outputEncoding ?? "base64";
   const result: SymmetricResult = {
@@ -760,8 +759,7 @@ export async function salsa20Decrypt(
     options.outputEncoding === "hex" ? "hex" : "base64",
   );
 
-  const cipher = salsa20(adjustedKey, adjustedNonce);
-  const decrypted = cipher.decrypt(cipherBytes);
+  const decrypted = salsa20(adjustedKey, adjustedNonce, cipherBytes);
 
   return bytesToUtf8(decrypted);
 }

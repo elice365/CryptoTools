@@ -49,6 +49,8 @@
     "mode": "モード",
     "generate": "生成",
     "verify": "検証",
+    "publicKey": "公開鍵",
+    "privateKey": "秘密鍵",
     "back": "ツールに戻る",
     "start": "始める",
     "realTimeProcessing": "リアルタイム処理",
@@ -64,7 +66,13 @@
     "experimental": "experimental",
     "selectFile": "ファイル選択",
     "changeFile": "ファイル変更",
-    "removeFile": "ファイル削除"
+    "removeFile": "ファイル削除",
+    "encoding": "エンコーディング",
+    "enterText": "テキストを入力してください",
+    "hash": "ハッシュ",
+    "iv": "IV（初期化ベクトル）",
+    "generateKeys": "キー生成",
+    "encryptionDecryption": "暗号化と復号化"
   },
   "actions": {
     "encrypt": "暗号化",
@@ -223,7 +231,8 @@
       "decrypted": "RSA復号化が完了しました",
       "generate": "RSAキーを生成",
       "publicPlaceholder": "RSA公開キー（PEM形式）",
-      "privatePlaceholder": "RSA秘密キー（PEM形式）"
+      "privatePlaceholder": "RSA秘密キー（PEM形式）",
+      "description": "RSA公開鍵暗号方式 - 安全なデータ暗号化とデジタル署名"
     },
     "ecc": {
       "generated": "ECCキーペアが生成されました",
@@ -232,7 +241,8 @@
       "generate": "ECCキーを生成",
       "publicPlaceholder": "ECC公開キー",
       "privatePlaceholder": "ECC秘密キー",
-      "recipientPlaceholder": "受信者の公開キー"
+      "recipientPlaceholder": "受信者の公開キー",
+      "description": "楕円曲線暗号（ECC） - RSAと同等の安全性をより小さな鍵サイズで実現"
     },
     "elgamal": {
       "generated": "ElGamalキーペアが生成されました",
@@ -371,17 +381,14 @@
     "dark": "ダークモード",
     "system": "システム設定"
   },
-  "actions": {
-    "encrypt": "暗号化",
-    "decrypt": "復号化",
-    "copy": "コピー",
-    "clear": "クリア",
-    "processing": "処理中...",
-    "encode": "エンコード",
-    "decode": "デコード"
-  },
   "messages": {
-    "copied": "クリップボードにコピーしました"
+    "copied": "クリップボードにコピーしました",
+    "keyGenerated": "暗号化キーが生成されました",
+    "keysGenerated": "キー生成完了",
+    "ivGenerated": "IVが生成されました",
+    "encrypted": "暗号化完了",
+    "decrypted": "復号化完了",
+    "hashGenerated": "ハッシュ生成完了"
   },
   "errors": {
     "invalidInput": "無効な入力",
@@ -407,5 +414,280 @@
     "signatureGenerated": "署名が正常に生成されました",
     "signingFailed": "署名に失敗しました",
     "signatureGenerationFailed": "署名生成に失敗しました"
+  },
+  "bgv": {
+    "title": "BGV準同型暗号",
+    "description": "暗号化されたデータに対する演算をサポートするBGV準同型暗号",
+    "features": {
+      "homomorphic": "準同型演算",
+      "compute": "暗号化状態計算"
+    },
+    "sections": {
+      "encryptionDecryption": "暗号化と復号",
+      "homomorphicOperations": "準同型演算"
+    },
+    "labels": {
+      "ciphertext1": "暗号文1",
+      "ciphertext2": "暗号文2",
+      "resultEncrypted": "結果 (暗号化済み)"
+    },
+    "placeholders": {
+      "textOrCiphertext": "テキストまたは暗号文を入力してください...",
+      "firstCiphertext": "最初の暗号文を入力してください...",
+      "secondCiphertext": "2番目の暗号文を入力してください..."
+    },
+    "actions": {
+      "generateKeys": "BGVキーを生成",
+      "add": "追加",
+      "multiply": "乗算"
+    },
+    "toasts": {
+      "keysGenerated": "BGVキーが生成されました",
+      "keyGenerationFailed": "キー生成に失敗しました",
+      "textEncrypted": "テキストが暗号化されました",
+      "textDecrypted": "テキストが復号されました",
+      "pleaseGenerateKeysFirst": "まずキーを生成してください",
+      "pleaseEnterCiphertextToDecrypt": "復号する暗号文を入力してください",
+      "pleaseEnterTwoCiphertextsToAdd": "追加する2つの暗号文を入力してください",
+      "pleaseEnterTwoCiphertextsToMultiply": "乗算する2つの暗号文を入力してください",
+      "keysRequiredForParameters": "パラメータにはキーが必要です",
+      "additionFailed": "追加に失敗しました",
+      "multiplicationFailed": "乗算に失敗しました",
+      "ciphertextsAdded": "暗号文が追加されました (準同型)",
+      "ciphertextsMultiplied": "暗号文が乗算されました (準同型)"
+    }
+  },
+  "elgamal": {
+    "title": "ElGamal暗号",
+    "description": "離散対数問題に基づくElGamal非対称暗号",
+    "features": {
+      "asymmetric": "非対称鍵"
+    },
+    "sections": {
+      "encryptionDecryption": "暗号化と復号"
+    },
+    "labels": {
+      "bitLength": "ビット長"
+    },
+    "selects": {
+      "bits256": "256ビット",
+      "bits512": "512ビット",
+      "bits1024": "1024ビット",
+      "bits2048": "2048ビット"
+    },
+    "toasts": {
+      "keyGenerationError": "キー生成エラー:",
+      "pleaseGenerateKeysFirst": "まずキーを生成してください",
+      "pleaseEnterCiphertextToDecrypt": "復号する暗号文を入力してください",
+      "encryptionError": "暗号化エラー:",
+      "decryptionError": "復号エラー:"
+    }
+  },
+  "paillier": {
+    "title": "Paillier暗号",
+    "description": "加法準同型性を持つPaillier確率的暗号",
+    "features": {
+      "probabilistic": "確率的暗号",
+      "additive": "加法準同型性"
+    },
+    "sections": {
+      "encryptionDecryption": "暗号化と復号",
+      "encryptDecryptNumbers": "数値の暗号化と復号",
+      "homomorphicOperations": "準同型演算",
+      "performAdditiveOperations": "暗号化された数値に対する加法演算を実行"
+    },
+    "labels": {
+      "numberCiphertext": "数値 / 暗号文",
+      "ciphertext1": "暗号文1",
+      "ciphertext2": "暗号文2 (加算用)",
+      "scalar": "スカラー (乗算用)",
+      "resultEncrypted": "結果 (暗号化済み)"
+    },
+    "placeholders": {
+      "enterNumberOrCiphertext": "数値または暗号文を入力してください...",
+      "enterFirstCiphertext": "最初の暗号文を入力してください...",
+      "enterSecondCiphertext": "2番目の暗号文を入力してください...",
+      "enterScalarNumber": "スカラー値を入力してください..."
+    },
+    "actions": {
+      "generateKeys": "Paillierキーを生成",
+      "addC1C2": "C1 + C2を追加",
+      "multiplyC1Scalar": "C1 × スカラーを乗算"
+    },
+    "toasts": {
+      "keysGenerated": "Paillierキーが生成されました",
+      "keyGenerationError": "キー生成エラー:",
+      "keyGenerationFailed": "キー生成に失敗しました",
+      "pleaseGenerateKeysFirst": "まずキーを生成してください",
+      "numberEncrypted": "数値が暗号化されました",
+      "invalidNumberOrEncryptionFailed": "無効な数値または暗号化に失敗しました",
+      "numberDecrypted": "数値が復号されました",
+      "pleaseEnterCiphertextToDecrypt": "復号する暗号文を入力してください",
+      "pleaseEnterTwoCiphertextsToAdd": "追加する2つの暗号文を入力してください",
+      "keysAreRequired": "キーが必要です",
+      "additionFailed": "追加に失敗しました",
+      "ciphertextsAdded": "暗号文が追加されました (準同型)",
+      "pleaseEnterCiphertextAndScalar": "暗号文とスカラーを入力してください",
+      "multiplicationFailed": "乗算に失敗しました",
+      "ciphertextMultiplied": "暗号文がスカラーで乗算されました (準同型)"
+    }
+  },
+  "pqc": {
+    "title": "ポスト量子暗号",
+    "description": "量子コンピュータ攻撃に耐性のあるポスト量子暗号 (Kyber, Dilithium)",
+    "features": {
+      "quantum": "量子耐性",
+      "kyber": "Kyber",
+      "dilithium": "Dilithium"
+    },
+    "tabs": {
+      "kyber": "Kyber (KEM)",
+      "dilithium": "Dilithium (署名)"
+    },
+    "labels": {
+      "securityLevel": "セキュリティレベル",
+      "sharedSecret": "共有秘密",
+      "ciphertext": "暗号文",
+      "decapsulatedSecret": "復号化された秘密",
+      "messageToSign": "署名するメッセージ",
+      "signature": "署名"
+    },
+    "selects": {
+      "kyber512": "Kyber512",
+      "kyber768": "Kyber768",
+      "kyber1024": "Kyber1024",
+      "dilithium2": "Dilithium2",
+      "dilithium3": "Dilithium3",
+      "dilithium5": "Dilithium5"
+    },
+    "actions": {
+      "generateKyberKeys": "Kyberキーを生成",
+      "encapsulate": "カプセル化 (共有秘密を生成)",
+      "decapsulate": "復号化",
+      "generateDilithiumKeys": "Dilithiumキーを生成",
+      "signMessage": "メッセージに署名",
+      "verifySignature": "署名を検証"
+    },
+    "placeholders": {
+      "enterMessage": "メッセージを入力してください..."
+    },
+    "messages": {
+      "keysGeneratedLevel": "✓ キー生成済み (レベル: {level})",
+      "secretsMatch": "✓ 秘密が一致しました！",
+      "valid": "✅ 有効",
+      "invalid": "❌ 無効"
+    },
+    "toasts": {
+      "kyberKeysGenerated": "Kyberキーが生成されました",
+      "kyberKeyGenerationError": "Kyberキー生成エラー:",
+      "keyGenerationFailed": "キー生成に失敗しました",
+      "pleaseGenerateKeysFirst": "まずキーを生成してください",
+      "sharedSecretEncapsulated": "共有秘密がカプセル化されました",
+      "encapsulationError": "カプセル化エラー:",
+      "encapsulationFailed": "カプセル化に失敗しました",
+      "sharedSecretDecapsulated": "復号化された秘密",
+      "decapsulationError": "復号化エラー:",
+      "decapsulationFailed": "復号化に失敗しました",
+      "pleaseEncapsulateFirst": "まずカプセル化してください",
+      "dilithiumKeysGenerated": "Dilithiumキーが生成されました",
+      "dilithiumKeyGenerationError": "Dilithiumキー生成エラー:",
+      "messageSigned": "メッセージに署名しました",
+      "signingError": "署名エラー:",
+      "verificationError": "検証エラー:"
+    }
+  },
+  "stream": {
+    "title": "ストリーム暗号",
+    "description": "ChaCha20、Salsa20など高速ストリーム暗号",
+    "labels": {
+      "algorithm": "アルゴリズム",
+      "encoding": "エンコーディング",
+      "nonceMode": "Nonceモード",
+      "key": "キー",
+      "nonce": "Nonce",
+      "counter": "カウンター"
+    },
+    "algorithms": {
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "encodings": {
+      "base64": "BASE64",
+      "hex": "HEX"
+    },
+    "nonce": {
+      "standard": "標準",
+      "extended": "拡張"
+    },
+    "placeholders": {
+      "key": "キーを入力",
+      "nonce": "Nonceを入力",
+      "input": "入力",
+      "output": "結果がここに表示されます",
+      "nonceExtended": "拡張Nonceを入力"
+    },
+    "actions": {
+      "encrypt": "暗号化",
+      "decrypt": "復号",
+      "copy": "コピー",
+      "clear": "クリア"
+    },
+    "features": {
+      "fast": "高速暗号化",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "errors": {
+      "nonceRequired": "Nonceが必要です"
+    }
+  },
+  "des": {
+    "title": "DES暗号化",
+    "description": "データ暗号化標準（DES）- 56ビットレガシー暗号化アルゴリズム",
+    "features": {
+      "legacy": "レガシーサポート"
+    }
+  },
+  "tripledes": {
+    "title": "Triple DES (3DES)",
+    "description": "トリプルデータ暗号化標準 - トリプル暗号化による強化されたセキュリティ",
+    "features": {
+      "triple": "トリプル暗号化"
+    }
+  },
+  "rc4": {
+    "title": "RC4ストリーム暗号",
+    "description": "Rivest Cipher 4 - 可変鍵長ストリーム暗号",
+    "features": {
+      "stream": "ストリーム暗号",
+      "fast": "高速暗号化"
+    }
+  },
+  "rabbit": {
+    "title": "Rabbitストリーム暗号",
+    "description": "ソフトウェア実装に最適化された高性能ストリーム暗号",
+    "features": {
+      "stream": "ストリーム暗号",
+      "fast": "高速暗号化"
+    }
+  },
+  "sha3": {
+    "title": "SHA-3ハッシュ関数",
+    "description": "セキュアハッシュアルゴリズム3 - セキュアハッシュアルゴリズムファミリーの最新メンバー"
+  },
+  "blake2": {
+    "title": "BLAKE2ハッシュ関数",
+    "description": "高速暗号化ハッシュ関数、MD5、SHA-1、SHA-2、SHA-3より高速",
+    "features": {
+      "fast": "高速ハッシング"
+    }
+  },
+  "ecies": {
+    "title": "ECIES暗号化",
+    "description": "楕円曲線統合暗号化スキーム - ECCと対称暗号化を組み合わせたハイブリッド暗号化",
+    "features": {
+      "ecc": "楕円曲線暗号",
+      "integrated": "統合スキーム"
+    }
   }
 }

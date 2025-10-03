@@ -140,9 +140,9 @@ export function AsymmetricTools() {
     }
   };
 
-  const handleEccGenerate = () => {
-    const pair = generateEccKeyPair();
-    const exported = exportEccKeyPair(pair);
+  const handleEccGenerate = async () => {
+    const pair = await generateEccKeyPair();
+    const exported = await exportEccKeyPair(pair);
     setEccKeys(exported);
     setEccRecipientKey(exported.publicKey);
     toast.success(t("asymmetric.ecc.generated"));

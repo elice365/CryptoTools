@@ -1,5 +1,5 @@
 {
-  "name": "base64",
+  "name": "cryptotools",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,16 +12,21 @@
   "dependencies": {
     "@noble/ciphers": "^2.0.1",
     "@noble/hashes": "^2.0.1",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-progress": "^1.1.7",
     "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.2.6",
     "@radix-ui/react-tabs": "^1.1.13",
     "@stablelib/chacha20poly1305": "^2.0.1",
     "@stablelib/x25519": "^2.0.1",
     "@types/crypto-js": "^4.2.2",
     "buffer": "^6.0.3",
     "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "crypto-js": "^4.2.0",
     "crystals-kyber-js": "^2.5.0",
     "dilithium-crystals-js": "^1.1.3",

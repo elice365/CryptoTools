@@ -64,7 +64,15 @@
     "experimental": "실험적",
     "selectFile": "파일 선택",
     "changeFile": "파일 변경",
-    "removeFile": "파일 제거"
+    "removeFile": "파일 제거",
+    "encoding": "인코딩",
+    "enterText": "텍스트를 입력하세요",
+    "hash": "해시",
+    "iv": "IV (초기화 벡터)",
+    "generateKeys": "키 생성",
+    "encryptionDecryption": "암호화 및 복호화",
+    "publicKey": "공개 키",
+    "privateKey": "개인 키"
   },
   "actions": {
     "encrypt": "암호화",
@@ -221,6 +229,7 @@
     "privateKey": "개인키",
     "notice": "모든 암호화 작업은 브라우저에서 로컬로 처리됩니다",
     "rsa": {
+      "description": "RSA 공개키 암호화 시스템 - 안전한 데이터 암호화 및 디지털 서명",
       "generated": "RSA 키가 생성되었습니다",
       "encrypted": "RSA 암호화가 완료되었습니다",
       "decrypted": "RSA 복호화가 완료되었습니다",
@@ -229,6 +238,7 @@
       "privatePlaceholder": "RSA 개인키 (PEM 형식)"
     },
     "ecc": {
+      "description": "타원곡선 암호화(ECC) - RSA 대비 작은 키 크기로 동일한 보안 수준 제공",
       "generated": "ECC 키가 생성되었습니다",
       "encrypted": "ECC 암호화가 완료되었습니다",
       "decrypted": "ECC 복호화가 완료되었습니다",
@@ -367,7 +377,6 @@
       "fileReadFailed": "파일 읽기 실패"
     }
   },
-
   "theme": {
     "toggle": "테마 변경",
     "label": "테마 변경",
@@ -376,7 +385,13 @@
     "system": "시스템 설정"
   },
   "messages": {
-    "copied": "클립보드에 복사되었습니다"
+    "copied": "클립보드에 복사되었습니다",
+    "keyGenerated": "암호화 키 생성됨",
+    "keysGenerated": "키 생성 완료",
+    "ivGenerated": "IV 생성됨",
+    "encrypted": "암호화 완료",
+    "decrypted": "복호화 완료",
+    "hashGenerated": "해시 생성 완료"
   },
   "errors": {
     "invalidInput": "잘못된 입력",
@@ -402,5 +417,282 @@
     "signatureGenerated": "서명이 생성되었습니다",
     "signingFailed": "서명 실패",
     "signatureGenerationFailed": "서명 생성 실패"
+  },
+  "bgv": {
+    "title": "BGV 동형 암호화",
+    "description": "암호화된 데이터에 대한 연산을 지원하는 BGV 동형 암호화",
+    "features": {
+      "homomorphic": "동형 연산",
+      "compute": "암호화 상태 연산"
+    },
+    "sections": {
+      "encryptionDecryption": "암호화 및 복호화",
+      "homomorphicOperations": "동형 연산"
+    },
+    "labels": {
+      "ciphertext1": "암호문 1",
+      "ciphertext2": "암호문 2",
+      "resultEncrypted": "결과 (암호화됨)"
+    },
+    "placeholders": {
+      "textOrCiphertext": "텍스트 또는 암호문을 입력하세요...",
+      "firstCiphertext": "첫 번째 암호문을 입력하세요...",
+      "secondCiphertext": "두 번째 암호문을 입력하세요..."
+    },
+    "actions": {
+      "generateKeys": "BGV 키 생성",
+      "add": "더하기",
+      "multiply": "곱하기"
+    },
+    "toasts": {
+      "keysGenerated": "BGV 키가 생성되었습니다",
+      "keyGenerationFailed": "키 생성 실패",
+      "textEncrypted": "텍스트 암호화 완료",
+      "textDecrypted": "텍스트 복호화 완료",
+      "pleaseGenerateKeysFirst": "먼저 키를 생성해주세요",
+      "pleaseEnterCiphertextToDecrypt": "복호화할 암호문을 입력해주세요",
+      "pleaseEnterTwoCiphertextsToAdd": "더할 암호문 두 개를 입력해주세요",
+      "pleaseEnterTwoCiphertextsToMultiply": "곱할 암호문 두 개를 입력해주세요",
+      "keysRequiredForParameters": "매개변수에 키가 필요합니다",
+      "additionFailed": "더하기 실패",
+      "multiplicationFailed": "곱하기 실패",
+      "ciphertextsAdded": "암호문 더하기 완료 (동형)",
+      "ciphertextsMultiplied": "암호문 곱하기 완료 (동형)"
+    }
+  },
+  "elgamal": {
+    "title": "ElGamal 암호화",
+    "description": "이산 대수 문제 기반 ElGamal 비대칭 암호화",
+    "features": {
+      "asymmetric": "비대칭 키"
+    },
+    "sections": {
+      "encryptionDecryption": "암호화 및 복호화"
+    },
+    "labels": {
+      "bitLength": "비트 길이"
+    },
+    "selects": {
+      "bits256": "256 비트",
+      "bits512": "512 비트",
+      "bits1024": "1024 비트",
+      "bits2048": "2048 비트"
+    },
+    "toasts": {
+      "keyGenerationError": "키 생성 오류:",
+      "pleaseGenerateKeysFirst": "먼저 키를 생성해주세요",
+      "pleaseEnterCiphertextToDecrypt": "복호화할 암호문을 입력해주세요",
+      "encryptionError": "암호화 오류:",
+      "decryptionError": "복호화 오류:"
+    }
+  },
+  "paillier": {
+    "title": "Paillier 암호화",
+    "description": "가산 동형성을 지원하는 Paillier 확률적 암호화",
+    "features": {
+      "probabilistic": "확률적 암호화",
+      "additive": "가산 동형성"
+    },
+    "sections": {
+      "encryptionDecryption": "암호화 및 복호화",
+      "encryptDecryptNumbers": "숫자 암호화 및 복호화",
+      "homomorphicOperations": "동형 연산",
+      "performAdditiveOperations": "암호화된 숫자에 대한 가산 연산 수행"
+    },
+    "labels": {
+      "numberCiphertext": "숫자 / 암호문",
+      "ciphertext1": "암호문 1",
+      "ciphertext2": "암호문 2 (덧셈용)",
+      "scalar": "스칼라 (곱셈용)",
+      "resultEncrypted": "결과 (암호화됨)"
+    },
+    "placeholders": {
+      "enterNumberOrCiphertext": "숫자 또는 암호문을 입력하세요...",
+      "enterFirstCiphertext": "첫 번째 암호문을 입력하세요...",
+      "enterSecondCiphertext": "두 번째 암호문을 입력하세요...",
+      "enterScalarNumber": "스칼라 숫자를 입력하세요..."
+    },
+    "actions": {
+      "generateKeys": "Paillier 키 생성",
+      "addC1C2": "C1 + C2 더하기",
+      "multiplyC1Scalar": "C1 × 스칼라 곱하기"
+    },
+    "toasts": {
+      "keysGenerated": "Paillier 키가 생성되었습니다",
+      "keyGenerationError": "키 생성 오류:",
+      "keyGenerationFailed": "키 생성 실패",
+      "pleaseGenerateKeysFirst": "먼저 키를 생성해주세요",
+      "numberEncrypted": "숫자 암호화 완료",
+      "invalidNumberOrEncryptionFailed": "잘못된 숫자 또는 암호화 실패",
+      "numberDecrypted": "숫자 복호화 완료",
+      "pleaseEnterCiphertextToDecrypt": "복호화할 암호문을 입력해주세요",
+      "pleaseEnterTwoCiphertextsToAdd": "더할 암호문 두 개를 입력해주세요",
+      "keysAreRequired": "키가 필요합니다",
+      "additionFailed": "더하기 실패",
+      "ciphertextsAdded": "암호문 더하기 완료 (동형)",
+      "pleaseEnterCiphertextAndScalar": "암호문과 스칼라를 입력해주세요",
+      "multiplicationFailed": "곱하기 실패",
+      "ciphertextMultiplied": "암호문 곱하기 완료 (동형)"
+    }
+  },
+  "pqc": {
+    "title": "양자 후 암호",
+    "description": "양자 컴퓨터 공격에 안전한 양자 후 암호화 (Kyber, Dilithium)",
+    "features": {
+      "quantum": "양자 내성",
+      "kyber": "Kyber",
+      "dilithium": "Dilithium"
+    },
+    "tabs": {
+      "kyber": "Kyber (KEM)",
+      "dilithium": "Dilithium (서명)"
+    },
+    "labels": {
+      "securityLevel": "보안 수준",
+      "sharedSecret": "공유 비밀",
+      "ciphertext": "암호문",
+      "decapsulatedSecret": "캡슐화 해제된 비밀",
+      "messageToSign": "서명할 메시지",
+      "signature": "서명"
+    },
+    "selects": {
+      "kyber512": "Kyber512",
+      "kyber768": "Kyber768",
+      "kyber1024": "Kyber1024",
+      "dilithium2": "Dilithium2",
+      "dilithium3": "Dilithium3",
+      "dilithium5": "Dilithium5"
+    },
+    "actions": {
+      "generateKyberKeys": "Kyber 키 생성",
+      "encapsulate": "캡슐화 (공유 비밀 생성)",
+      "decapsulate": "캡슐화 해제",
+      "generateDilithiumKeys": "Dilithium 키 생성",
+      "signMessage": "메시지 서명",
+      "verifySignature": "서명 검증"
+    },
+    "placeholders": {
+      "enterMessage": "메시지를 입력하세요..."
+    },
+    "messages": {
+      "keysGeneratedLevel": "✓ 키 생성됨 (레벨: {level})",
+      "secretsMatch": "✓ 비밀 일치!",
+      "valid": "✅ 유효",
+      "invalid": "❌ 유효하지 않음"
+    },
+    "toasts": {
+      "kyberKeysGenerated": "Kyber 키 생성됨",
+      "kyberKeyGenerationError": "Kyber 키 생성 오류:",
+      "keyGenerationFailed": "키 생성 실패",
+      "pleaseGenerateKeysFirst": "먼저 키를 생성해주세요",
+      "sharedSecretEncapsulated": "공유 비밀 캡슐화됨",
+      "encapsulationError": "캡슐화 오류:",
+      "encapsulationFailed": "캡슐화 실패",
+      "sharedSecretDecapsulated": "캡슐화 해제된 비밀",
+      "decapsulationError": "캡슐화 해제 오류:",
+      "decapsulationFailed": "캡슐화 해제 실패",
+      "pleaseEncapsulateFirst": "먼저 캡슐화해주세요",
+      "dilithiumKeysGenerated": "Dilithium 키 생성됨",
+      "dilithiumKeyGenerationError": "Dilithium 키 생성 오류:",
+      "messageSigned": "메시지 서명됨",
+      "signingError": "서명 오류:",
+      "verificationError": "검증 오류:"
+    }
+  },
+  "stream": {
+    "title": "스트림 암호",
+    "description": "ChaCha20, Salsa20 등 고속 스트림 암호화",
+    "labels": {
+      "algorithm": "알고리즘",
+      "encoding": "인코딩",
+      "nonceMode": "논스 모드",
+      "key": "키",
+      "nonce": "논스",
+      "counter": "카운터"
+    },
+    "algorithms": {
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "encodings": {
+      "base64": "BASE64",
+      "hex": "HEX"
+    },
+    "nonce": {
+      "standard": "표준",
+      "extended": "확장"
+    },
+    "placeholders": {
+      "key": "키 입력",
+      "nonce": "논스 입력",
+      "input": "입력",
+      "output": "결과가 여기에 표시됩니다",
+      "nonceExtended": "확장 논스 입력"
+    },
+    "actions": {
+      "encrypt": "암호화",
+      "decrypt": "복호화",
+      "copy": "복사",
+      "clear": "지우기",
+      "encrypted": "암호화 완료",
+      "decrypted": "복호화 완료"
+    },
+    "features": {
+      "fast": "고속 암호화",
+      "chacha20": "ChaCha20",
+      "salsa20": "Salsa20"
+    },
+    "errors": {
+      "nonceRequired": "논스가 필요합니다"
+    }
+  },
+  "des": {
+    "title": "DES 암호화",
+    "description": "데이터 암호화 표준(DES) - 56비트 레거시 암호화 알고리즘",
+    "features": {
+      "legacy": "레거시 지원"
+    }
+  },
+  "tripledes": {
+    "title": "Triple DES (3DES)",
+    "description": "3중 데이터 암호화 표준 - 3중 암호화로 향상된 보안",
+    "features": {
+      "triple": "3중 암호화"
+    }
+  },
+  "rc4": {
+    "title": "RC4 스트림 암호",
+    "description": "Rivest Cipher 4 - 가변 키 길이 스트림 암호",
+    "features": {
+      "stream": "스트림 암호",
+      "fast": "고속 암호화"
+    }
+  },
+  "rabbit": {
+    "title": "Rabbit 스트림 암호",
+    "description": "소프트웨어 구현에 최적화된 고성능 스트림 암호",
+    "features": {
+      "stream": "스트림 암호",
+      "fast": "고속 암호화"
+    }
+  },
+  "sha3": {
+    "title": "SHA-3 해시 함수",
+    "description": "보안 해시 알고리즘 3 - 보안 해시 알고리즘 패밀리의 최신 멤버"
+  },
+  "blake2": {
+    "title": "BLAKE2 해시 함수",
+    "description": "빠른 암호화 해시 함수, MD5, SHA-1, SHA-2, SHA-3보다 빠름",
+    "features": {
+      "fast": "고속 해싱"
+    }
+  },
+  "ecies": {
+    "title": "ECIES 암호화",
+    "description": "타원 곡선 통합 암호화 방식 - ECC와 대칭 암호화를 결합한 하이브리드 암호화",
+    "features": {
+      "ecc": "타원 곡선 암호",
+      "integrated": "통합 방식"
+    }
   }
 }

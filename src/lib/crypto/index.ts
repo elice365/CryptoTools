@@ -10,6 +10,26 @@
 // export * from "./bgv";
 // export * from "./pqc";
 export * from "./shared";
+
+// Export needed types from hashing module
+export type HashEncoding = "hex" | "base64";
+export type HashAlgorithm = "sha1" | "sha224" | "sha256" | "sha384" | "sha512" | "sha3-224" | "sha3-256" | "sha3-384" | "sha3-512" | "blake2b" | "blake2s";
+
+// Export needed types for stream ciphers
+export type StreamCipherOptions = {
+  key: string;
+  nonce?: string;
+  counter?: number;
+  outputEncoding?: "hex" | "base64";
+  extendedNonce?: boolean;
+};
+export type StreamCipherResult = {
+  cipherText: string;
+  nonce?: string;
+  iv?: string;
+  authTag?: string;
+  encoding?: "hex" | "base64";
+};
 export {
   type AesMode,
   type AesOptions,
@@ -323,14 +343,16 @@ export const base64ToString = (input: string) => {
   }
 };
 
-export const fileToBase64 = async (file: File): Promise<string> => {
+export const fileToBase64 = async (file: File): Promise<{ base64: string; mime: string }> => {
   return new Promise((resolve) => {
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
-      resolve(result.split(',')[1] || result);
+      const [mimeType, base64Data] = result.split(',');
+      const mime = mimeType?.replace('data:', '').replace(';base64', '') || file.type || 'application/octet-stream';
+      resolve({ base64: base64Data || result, mime });
     };
-    reader.onerror = () => resolve("[File reading error]");
+    reader.onerror = () => resolve({ base64: "[File reading error]", mime: file.type || 'application/octet-stream' });
     reader.readAsDataURL(file);
   });
 };
@@ -517,6 +539,79 @@ export const exportAesKey = async (key: CryptoKey, encoding: string = "base64") 
 };
 
 // Type exports
-export type HashAlgorithm = "sha1" | "sha256" | "sha384" | "sha512" | "blake2b" | "blake2s";
 export type SymmetricAlgorithm = "AES-GCM" | "AES-CTR" | "ChaCha20";
 export type AsymmetricAlgorithm = "RSA" | "ECC";
+
+// ECC types
+export interface ExportedEccKeyPair {
+  publicKey: string;
+  privateKey: string;
+}
+
+export interface EciesCipher {
+  ephemeralPublicKey: string;
+  iv: string;
+  ciphertext: string;
+  mac: string;
+}
+
+// ElGamal types
+export interface ElGamalCipher {
+  c1: string;
+  c2: string;
+}
+
+export interface ElGamalParameters {
+  p: bigint;
+  g: bigint;
+}
+
+export interface ElGamalKeyPair {
+  publicKey: bigint;
+  privateKey: bigint;
+  params: ElGamalParameters;
+}
+
+// ElGamal stub implementations (module under development)
+export const generateElGamalParameters = (bits = 2048): ElGamalParameters => {
+  return { p: BigInt(0), g: BigInt(0) };
+};
+
+export const generateElGamalKeyPair = (params?: ElGamalParameters): ElGamalKeyPair => {
+  const defaultParams = params || { p: BigInt(0), g: BigInt(0) };
+  return { publicKey: BigInt(0), privateKey: BigInt(0), params: defaultParams };
+};
+
+export const importElGamalKey = (key: string, encoding?: string) => {
+  return BigInt(0);
+};
+
+// RSA stub implementations (module under development)
+export const importRsaPublicKey = (key: string) => {
+  return key;
+};
+
+export const importRsaPrivateKey = (key: string) => {
+  return key;
+};
+
+export const rsaEncrypt = (plaintext: string, publicKey: string) => {
+  return "[암호화 모듈 준비 중]";
+};
+
+export const rsaDecrypt = (ciphertext: string, privateKey: string) => {
+  return "[암호화 모듈 준비 중]";
+};
+
+// More ElGamal stubs
+export const exportElGamalKey = (key: any) => {
+  return "";
+};
+
+export const elgamalEncrypt = (params: ElGamalParameters, publicKey: bigint, plaintext: string, encoding: string) => {
+  return { c1: "", c2: "" };
+};
+
+export const elgamalDecrypt = (params: ElGamalParameters, privateKey: bigint, cipher: ElGamalCipher) => {
+  return "[암호화 모듈 준비 중]";
+};

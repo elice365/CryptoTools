@@ -73,7 +73,7 @@ export function HashTools() {
       if (file) {
         output = await hashFile(file, algorithm, encoding);
       } else {
-        output = hashString(input, algorithm, encoding);
+        output = await hashString(input, algorithm, encoding);
       }
       setResult(output);
       toast.success(t("hash.actions.completed"));

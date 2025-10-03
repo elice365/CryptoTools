@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://cryptotools.dev";
+const DEFAULT_SITE_URL = "https://crypto.elice.pro";
 
 function normalizeUrl(url: string) {
   return url.endsWith("/") ? url.slice(0, -1) : url;
@@ -10,4 +10,8 @@ export function getSiteUrl(): string {
     return normalizeUrl(envUrl.trim());
   }
   return DEFAULT_SITE_URL;
+}
+
+export function getMetadataBase(): URL {
+  return new URL(getSiteUrl());
 }

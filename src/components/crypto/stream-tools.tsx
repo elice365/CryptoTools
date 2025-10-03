@@ -55,7 +55,7 @@ export function StreamTools() {
     extendedNonce: useExtendedNonce,
   });
 
-  const handleEncrypt = () => {
+  const handleEncrypt = async () => {
     if (!key) {
       toast.error(t("errors.keyRequired"));
       return;
@@ -64,9 +64,9 @@ export function StreamTools() {
     try {
       let result: StreamCipherResult;
       if (algorithm === "chacha20") {
-        result = chacha20Encrypt(input, buildOptions());
+        result = await chacha20Encrypt(input, buildOptions());
       } else {
-        result = salsa20Encrypt(input, buildOptions());
+        result = await salsa20Encrypt(input, buildOptions());
       }
       setOutput(result.cipherText);
       if (!nonce && result.nonce) {
@@ -80,7 +80,7 @@ export function StreamTools() {
     }
   };
 
-  const handleDecrypt = () => {
+  const handleDecrypt = async () => {
     if (!key) {
       toast.error(t("errors.keyRequired"));
       return;
@@ -93,9 +93,9 @@ export function StreamTools() {
     try {
       let result: string;
       if (algorithm === "chacha20") {
-        result = chacha20Decrypt(input, buildOptions());
+        result = await chacha20Decrypt(input, buildOptions());
       } else {
-        result = salsa20Decrypt(input, buildOptions());
+        result = await salsa20Decrypt(input, buildOptions());
       }
       setOutput(result);
       toast.success(t("stream.actions.decrypted"));
@@ -139,8 +139,8 @@ export function StreamTools() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="chacha20">ChaCha20</SelectItem>
-                <SelectItem value="salsa20">Salsa20</SelectItem>
+                <SelectItem value="chacha20">{t("stream.algorithms.chacha20")}</SelectItem>
+                <SelectItem value="salsa20">{t("stream.algorithms.salsa20")}</SelectItem>
               </SelectContent>
             </Select>
           </div>

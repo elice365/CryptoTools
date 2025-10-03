@@ -1,25 +1,76 @@
+import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 
-import { SymmetricTool } from "@/components/crypto/symmetric-tool";
-import { locales, type Locale } from "@/i18n";
-import { buildToolMetadata } from "@/lib/tool-seo";
-import type { ToolId } from "@/lib/tool-config";
+import { ToolDetail } from "@/components/crypto/tool-detail";
+import { locales } from "@/i18n";
+import {
+  TOOL_DEFINITIONS,
+  type ToolId,
+} from "@/lib/tool-config";
+import { getMetadataBase } from "@/lib/seo";
 
 const TOOL_ID: ToolId = "symmetric";
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return buildToolMetadata(locale, TOOL_ID);
+  const config = TOOL_DEFINITIONS[TOOL_ID];
+  const t = await getTranslations({ locale });
+
+  const title = t(config.titleKey);
+  const description = t(config.descriptionKey);
+  const badge = t(config.badgeKey);
+  const appTitle = t("app.title");
+  const featureKeywords = config.features
+    .map((feature) => (feature.key ? t(feature.key) : feature.raw ?? ""))
+    .filter(Boolean);
+
+  const metadataBase = getMetadataBase();
+
+  return {
+    metadataBase,
+    title: `${title} | ${appTitle}`,
+    description,
+    keywords: Array.from(new Set([title, appTitle, TOOL_ID, ...featureKeywords])),
+    alternates: {
+      canonical: `/${locale}/${TOOL_ID}`,
+    },
+    openGraph: {
+      title: `${title} | ${appTitle}`,
+      description,
+      locale,
+      type: "website",
+      url: `/${locale}/${TOOL_ID}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | ${appTitle}`,
+      description,
+      creator: badge,
+    },
+  };
 }
 
-export default function SymmetricPage() {
-  return <SymmetricTool />;
+export function generateStaticParams() {
+  return locales.map((locale) => ({
+    locale,
+  }));
+}
+
+export default async function SymmetricPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  return (
+    <ToolDetail
+      toolId={TOOL_ID}
+      locale={locale}
+    />
+  );
 }
