@@ -42,6 +42,7 @@ export async function generateMetadata({
     .filter(Boolean);
 
   const metadataBase = getMetadataBase();
+  const siteUrl = metadataBase.origin;
 
   return {
     metadataBase,
@@ -49,14 +50,14 @@ export async function generateMetadata({
     description,
     keywords: Array.from(new Set([title, appTitle, ALIAS_SLUG, ...featureKeywords])),
     alternates: {
-      canonical: `/${locale}/${ALIAS_SLUG}`,
+      canonical: `${siteUrl}/${locale}/${ALIAS_SLUG}`,
     },
     openGraph: {
       title: `${title} | ${appTitle}`,
       description,
       locale,
       type: "website",
-      url: `/${locale}/${ALIAS_SLUG}`,
+      url: `${siteUrl}/${locale}/${ALIAS_SLUG}`,
     },
     twitter: {
       card: "summary_large_image",
