@@ -83,7 +83,7 @@ export async function generateMetadata({
   // Generate alternate language links
   const languages: Record<string, string> = {};
   for (const loc of locales) {
-    languages[loc] = `/${loc}/${tool}`;
+    languages[loc] = `${siteUrl}/${loc}/${tool}`;
   }
 
   return {
@@ -95,7 +95,7 @@ export async function generateMetadata({
     creator: "CryptoTools",
     publisher: "CryptoTools",
     alternates: {
-      canonical: `/${locale}/${tool}`,
+      canonical: `${siteUrl}/${locale}/${tool}`,
       languages,
     },
     openGraph: {
