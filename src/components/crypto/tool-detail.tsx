@@ -3,28 +3,14 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
-import { useMemo, type ComponentType } from "react";
+import { useEffect, useMemo } from "react";
 
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { ThemeToggle } from "@/components/crypto/theme-toggle";
-import { Base64Tool } from "@/components/crypto/base64-tool";
-import { HashTool } from "@/components/crypto/hash-tool";
-import { SymmetricTool } from "@/components/crypto/symmetric-tool";
-import { AsymmetricTool } from "@/components/crypto/asymmetric-tool";
-import { EncodingTools } from "@/components/crypto/encoding-tools";
-import { FileStreamingTools } from "@/components/crypto/file-streaming-tools";
-import { BgvTool } from "@/components/crypto/bgv-tool";
-import { ElgamalTool } from "@/components/crypto/elgamal-tool";
-import { PaillierTool } from "@/components/crypto/paillier-tool";
-import { PqcTool } from "@/components/crypto/pqc-tool";
-import { StreamTool } from "@/components/crypto/stream-tool";
-import { DesTool } from "@/components/crypto/des-tool";
-import { TripleDesTool } from "@/components/crypto/tripledes-tool";
-import { Rc4Tool } from "@/components/crypto/rc4-tool";
-import { RabbitTool } from "@/components/crypto/rabbit-tool";
-import { Sha3Tool } from "@/components/crypto/sha3-tool";
-import { Blake2Tool } from "@/components/crypto/blake2-tool";
-import { EciesTool } from "@/components/crypto/ecies-tool";
+import {
+  TOOL_COMPONENTS,
+  preloadToolComponent,
+} from "@/components/crypto/tool-registry";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -45,27 +31,6 @@ type ToolDetailProps = {
   toolId: ToolId;
   locale: string;
   alias?: ToolAlias;
-};
-
-const TOOL_COMPONENTS: Record<ToolId, ComponentType<any>> = {
-  base64: Base64Tool,
-  hash: HashTool,
-  symmetric: SymmetricTool,
-  asymmetric: AsymmetricTool,
-  encoding: EncodingTools,
-  files: FileStreamingTools,
-  bgv: BgvTool,
-  elgamal: ElgamalTool,
-  paillier: PaillierTool,
-  pqc: PqcTool,
-  stream: StreamTool,
-  des: DesTool,
-  tripledes: TripleDesTool,
-  rc4: Rc4Tool,
-  rabbit: RabbitTool,
-  sha3: Sha3Tool,
-  blake2: Blake2Tool,
-  ecies: EciesTool,
 };
 
 export function ToolDetail({ toolId, locale, alias }: ToolDetailProps) {
@@ -90,6 +55,10 @@ export function ToolDetail({ toolId, locale, alias }: ToolDetailProps) {
 
   const ToolComponent = TOOL_COMPONENTS[toolId];
   const toolProps = alias?.initialProps ?? {};
+
+  useEffect(() => {
+    preloadToolComponent(toolId);
+  }, [toolId, preloadToolComponent]);
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
@@ -175,7 +144,7 @@ export function ToolDetail({ toolId, locale, alias }: ToolDetailProps) {
             </div>
           </div>
 
-          <ToolComponent {...toolProps} />
+          {ToolComponent ? <ToolComponent {...toolProps} /> : null}
         </section>
 
         <section className="grid grid-cols-1 gap-6 md:grid-cols-2">

@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { getTranslations } from 'next-intl/server';
 
 // Image metadata
 export const alt = 'CryptoTools - Professional Cryptographic Toolkit';
@@ -8,8 +9,20 @@ export const size = {
 };
 export const contentType = 'image/png';
 
+interface OgImageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
 // Image generation
-export default async function OgImage() {
+export default async function OgImage({ params }: OgImageProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'app' });
+
+  const title = t('title');
+  const description = t('description');
+
   return new ImageResponse(
     (
       <div
@@ -80,7 +93,7 @@ export default async function OgImage() {
               display: 'flex',
             }}
           >
-            CryptoTools
+            {title}
           </div>
 
           {/* Subtitle */}
@@ -89,9 +102,13 @@ export default async function OgImage() {
               fontSize: 32,
               color: '#94a3b8',
               display: 'flex',
+              textAlign: 'center',
+              maxWidth: 900,
+              paddingLeft: 40,
+              paddingRight: 40,
             }}
           >
-            Professional Cryptographic Toolkit
+            {description}
           </div>
 
           {/* Feature badges */}

@@ -1,26 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useMemo, useState, type ElementType, type ReactNode } from "react";
-import { Sparkles, Shield, Zap, Globe, ChevronRight, Play } from "lucide-react";
-import { Base64Tool } from "@/components/crypto/base64-tool";
-import { HashTool } from "@/components/crypto/hash-tool";
-import { SymmetricTool } from "@/components/crypto/symmetric-tool";
-import { AsymmetricTool } from "@/components/crypto/asymmetric-tool";
-import { EncodingTools } from "@/components/crypto/encoding-tools";
-import { FileStreamingTools } from "@/components/crypto/file-streaming-tools";
-import { BgvTool } from "@/components/crypto/bgv-tool";
-import { ElgamalTool } from "@/components/crypto/elgamal-tool";
-import { PaillierTool } from "@/components/crypto/paillier-tool";
-import { PqcTool } from "@/components/crypto/pqc-tool";
-import { StreamTool } from "@/components/crypto/stream-tool";
-import { DesTool } from "@/components/crypto/des-tool";
-import { TripleDesTool } from "@/components/crypto/tripledes-tool";
-import { Rc4Tool } from "@/components/crypto/rc4-tool";
-import { RabbitTool } from "@/components/crypto/rabbit-tool";
-import { Sha3Tool } from "@/components/crypto/sha3-tool";
-import { Blake2Tool } from "@/components/crypto/blake2-tool";
-import { EciesTool } from "@/components/crypto/ecies-tool";
+import { useCallback, useEffect, useMemo, useState, type ElementType } from "react";
+import { Shield, Zap, Globe, ChevronRight, Play } from "lucide-react";
+import {
+  TOOL_COMPONENTS,
+  preloadToolComponent,
+  type ToolEntryComponent,
+} from "@/components/crypto/tool-registry";
 import { ThemeToggle } from "@/components/crypto/theme-toggle";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import {
@@ -41,7 +28,7 @@ import {
 
 const heroAccent = "bg-gradient-to-br from-primary/25 via-primary/5 to-transparent";
 
-type ToolDefinition = {
+type ToolSummary = {
   id: ToolId;
   icon: ElementType;
   color: string;
@@ -49,7 +36,10 @@ type ToolDefinition = {
   title: string;
   description: string;
   features: string[];
-  component: ReactNode;
+};
+
+type ToolDefinition = ToolSummary & {
+  component: ToolEntryComponent;
 };
 
 type CryptoDashboardProps = {
@@ -60,28 +50,7 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
   const t = useTranslations();
   const [activeCategory, setActiveCategory] = useState<ToolId | null>(initialTool);
 
-  const tools = useMemo<ToolDefinition[]>(() => {
-    const componentMap: Record<ToolId, ReactNode> = {
-      base64: <Base64Tool />,
-      hash: <HashTool />,
-      symmetric: <SymmetricTool />,
-      asymmetric: <AsymmetricTool />,
-      encoding: <EncodingTools />,
-      files: <FileStreamingTools />,
-      bgv: <BgvTool />,
-      elgamal: <ElgamalTool />,
-      paillier: <PaillierTool />,
-      pqc: <PqcTool />,
-      stream: <StreamTool />,
-      des: <DesTool />,
-      tripledes: <TripleDesTool />,
-      rc4: <Rc4Tool />,
-      rabbit: <RabbitTool />,
-      sha3: <Sha3Tool />,
-      blake2: <Blake2Tool />,
-      ecies: <EciesTool />,
-    };
-
+  const toolSummaries = useMemo<ToolSummary[]>(() => {
     return TOOL_IDS.map((toolId) => {
       const config = TOOL_DEFINITIONS[toolId];
       const Icon = config.icon;
@@ -96,33 +65,51 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
         features: config.features.map((feature) =>
           feature.key ? t(feature.key) : feature.raw ?? "",
         ),
-        component: componentMap[toolId],
-      } satisfies ToolDefinition;
+      } satisfies ToolSummary;
     });
   }, [t]);
+
+  const tools = useMemo<ToolDefinition[]>(() => {
+    return toolSummaries.map((summary) => ({
+      ...summary,
+      component: TOOL_COMPONENTS[summary.id],
+    }));
+  }, [toolSummaries]);
 
   const activeTool = activeCategory
     ? tools.find((tool) => tool.id === activeCategory) ?? null
     : null;
 
-  const navigationTools = useMemo<Omit<ToolDefinition, "component">[]>(() => {
-    return TOOL_IDS.map((toolId) => {
-      const config = TOOL_DEFINITIONS[toolId];
-      const Icon = config.icon;
+  const navigationTools = toolSummaries;
 
-      return {
-        id: toolId,
-        icon: Icon,
-        color: config.gradient,
-        badge: t(config.badgeKey),
-        title: t(config.titleKey),
-        description: t(config.descriptionKey),
-        features: config.features.map((feature) =>
-          feature.key ? t(feature.key) : feature.raw ?? "",
-        ),
-      } satisfies Omit<ToolDefinition, "component">;
-    });
-  }, [t]);
+  useEffect(() => {
+    if (initialTool) {
+      preloadToolComponent(initialTool);
+    }
+  }, [initialTool]);
+
+  const handleSelectTool = useCallback(
+    (toolId: ToolId) => {
+      setActiveCategory((current) => {
+        if (current === toolId) {
+          return null;
+        }
+
+        preloadToolComponent(toolId);
+        return toolId;
+      });
+    },
+    [preloadToolComponent],
+  );
+
+  const handlePreloadTool = useCallback(
+    (toolId: ToolId) => {
+      preloadToolComponent(toolId);
+    },
+    [preloadToolComponent],
+  );
+
+  const ActiveToolComponent = activeTool?.component;
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
@@ -170,7 +157,8 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
                 <Button
                   key={tool.id}
                   variant={isActive ? "default" : "ghost"}
-                  onClick={() => setActiveCategory(isActive ? null : tool.id)}
+                  onClick={() => handleSelectTool(tool.id)}
+                  onMouseEnter={() => handlePreloadTool(tool.id)}
                   className={cn(
                     "group relative flex w-full min-h-[72px] items-stretch justify-between gap-3 overflow-hidden rounded-2xl border border-transparent px-4 py-3.5 text-left text-sm leading-relaxed transition-all duration-200",
                     isActive
@@ -277,7 +265,7 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
                 </div>
               </CardHeader>
               <CardContent className="bg-background/60 p-4 sm:p-6 lg:p-8">
-                {activeTool.component}
+                {ActiveToolComponent ? <ActiveToolComponent /> : null}
               </CardContent>
             </Card>
           ) : (
@@ -290,7 +278,8 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
                     <Card
                       key={tool.id}
                       className="group h-full cursor-pointer overflow-hidden border-border/60 bg-card/80 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl"
-                      onClick={() => setActiveCategory(tool.id)}
+                      onClick={() => handleSelectTool(tool.id)}
+                      onMouseEnter={() => handlePreloadTool(tool.id)}
                     >
                       <div className={cn("relative h-32 bg-gradient-to-br", tool.color)}>
                         <div className="absolute inset-0 bg-black/15 dark:bg-black/30" />
@@ -324,7 +313,14 @@ export function CryptoDashboard({ initialTool = null }: CryptoDashboardProps) {
                             </span>
                           ))}
                         </div>
-                        <Button className="w-full rounded-2xl bg-primary text-primary-foreground shadow-lg transition hover:bg-primary/90">
+                        <Button
+                          className="w-full rounded-2xl bg-primary text-primary-foreground shadow-lg transition hover:bg-primary/90"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            handleSelectTool(tool.id);
+                          }}
+                          onMouseEnter={() => handlePreloadTool(tool.id)}
+                        >
                           <Play className="mr-2 h-4 w-4" />
                           {t("common.start")}
                           <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

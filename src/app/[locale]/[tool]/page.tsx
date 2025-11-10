@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 
 import { ToolDetail } from "@/components/crypto/tool-detail";
-import { locales } from "@/i18n";
+import { locales, type Locale } from "@/i18n";
 import {
   TOOL_ALIAS_LOOKUP,
   TOOL_DEFINITIONS,
@@ -11,7 +11,12 @@ import {
   TOOL_ROUTE_LOOKUP,
   type ToolId,
 } from "@/lib/tool-config";
-import { getMetadataBase } from "@/lib/seo";
+import { getMetadataBase, getSiteUrl } from "@/lib/seo";
+import { getSEOKeywords } from "@/lib/seo-keywords";
+import {
+  generateToolStructuredData,
+  generateHowToStructuredData,
+} from "@/lib/structured-data";
 
 interface ToolPageParams {
   locale: string;
@@ -35,7 +40,6 @@ export async function generateMetadata({
   }
 
   const config = TOOL_DEFINITIONS[routeToolId];
-  // No need to check for aliasInfo here, as aliases will have their own pages
   const t = await getTranslations({ locale });
   const title = t(config.titleKey);
   const description = t(config.descriptionKey);
@@ -46,27 +50,91 @@ export async function generateMetadata({
     .filter(Boolean);
 
   const metadataBase = getMetadataBase();
+  const siteUrl = getSiteUrl();
+
+  // Get SEO keywords for this tool and locale
+  const seoKeywords = getSEOKeywords(routeToolId, locale as Locale);
+
+  // Combine all keywords
+  const allKeywords = Array.from(
+    new Set([title, appTitle, tool, badge, ...featureKeywords, ...seoKeywords])
+  );
+
+  // Generate structured data
+  const toolStructuredData = generateToolStructuredData(
+    routeToolId,
+    locale as Locale,
+    title,
+    description
+  );
+
+  const howToData = generateHowToStructuredData(
+    routeToolId,
+    locale as Locale,
+    title
+  );
+
+  // Combine structured data
+  const structuredDataArray: any[] = [toolStructuredData];
+  if (howToData) {
+    structuredDataArray.push(howToData);
+  }
+
+  // Generate alternate language links
+  const languages: Record<string, string> = {};
+  for (const loc of locales) {
+    languages[loc] = `/${loc}/${tool}`;
+  }
 
   return {
     metadataBase,
     title: `${title} | ${appTitle}`,
     description,
-    keywords: Array.from(new Set([title, appTitle, tool, ...featureKeywords])),
+    keywords: allKeywords,
+    authors: [{ name: "CryptoTools" }],
+    creator: "CryptoTools",
+    publisher: "CryptoTools",
     alternates: {
       canonical: `/${locale}/${tool}`,
+      languages,
     },
     openGraph: {
       title: `${title} | ${appTitle}`,
       description,
-      locale,
+      locale: locale,
       type: "website",
-      url: `/${locale}/${tool}`,
+      url: `${siteUrl}/${locale}/${tool}`,
+      siteName: "CryptoTools",
+      images: [
+        {
+          url: `${siteUrl}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${title} - CryptoTools`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${title} | ${appTitle}`,
       description,
-      creator: badge,
+      creator: "@CryptoTools",
+      images: [`${siteUrl}/opengraph-image`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    other: {
+      "application-name": "CryptoTools",
+      "structured-data": JSON.stringify(structuredDataArray),
     },
   };
 }
@@ -92,13 +160,52 @@ export default async function ToolPage({
     notFound();
   }
 
-  // No need to check for aliasEntry here, as aliases will have their own pages
+  // Generate structured data for SEO
+  const config = TOOL_DEFINITIONS[baseToolId];
+  const t = await getTranslations({ locale });
+  const title = t(config.titleKey);
+  const description = t(config.descriptionKey);
+
+  const toolStructuredData = generateToolStructuredData(
+    baseToolId,
+    locale as Locale,
+    title,
+    description
+  );
+
+  const howToData = generateHowToStructuredData(
+    baseToolId,
+    locale as Locale,
+    title
+  );
+
+  // Import breadcrumb function
+  const { generateBreadcrumbStructuredData } = await import("@/lib/structured-data");
+  const breadcrumbData = generateBreadcrumbStructuredData(
+    locale as Locale,
+    baseToolId,
+    title
+  );
 
   return (
-    <ToolDetail
-      toolId={baseToolId as ToolId}
-      locale={locale}
-      // No alias prop needed here
-    />
+    <>
+      {/* JSON-LD Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
+      />
+      {howToData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToData) }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+      />
+
+      <ToolDetail toolId={baseToolId as ToolId} locale={locale} />
+    </>
   );
 }
