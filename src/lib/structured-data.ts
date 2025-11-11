@@ -507,7 +507,7 @@ function getToolHowToSteps(toolId: ToolId, locale: Locale): any[] | null {
 
   if (!commonTools.includes(toolId)) return null;
 
-  const steps: Record<Locale, Record<ToolId, any[]>> = {
+  const steps: Record<Locale, Partial<Record<ToolId, any[]>>> = {
     en: {
       base64: [
         {
@@ -577,20 +577,6 @@ function getToolHowToSteps(toolId: ToolId, locale: Locale): any[] | null {
           text: "Use the public key to encrypt data",
         },
       ],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
     },
     // Add other locales as needed
     ko: {
@@ -662,20 +648,6 @@ function getToolHowToSteps(toolId: ToolId, locale: Locale): any[] | null {
           text: "공개키를 사용하여 데이터를 암호화하세요",
         },
       ],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
     },
     ja: {
       base64: [
@@ -746,20 +718,6 @@ function getToolHowToSteps(toolId: ToolId, locale: Locale): any[] | null {
           text: "公開鍵を使用してデータを暗号化します",
         },
       ],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
     },
     ru: {
       base64: [
@@ -830,20 +788,6 @@ function getToolHowToSteps(toolId: ToolId, locale: Locale): any[] | null {
           text: "Используйте открытый ключ для шифрования данных",
         },
       ],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
     },
     id: {
       base64: [
@@ -914,20 +858,6 @@ function getToolHowToSteps(toolId: ToolId, locale: Locale): any[] | null {
           text: "Gunakan kunci publik untuk mengenkripsi data",
         },
       ],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
     },
     zh: {
       base64: [
@@ -998,22 +928,8 @@ function getToolHowToSteps(toolId: ToolId, locale: Locale): any[] | null {
           text: "使用公钥加密数据",
         },
       ],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
     },
   };
 
-  return steps[locale][toolId];
+  return steps[locale]?.[toolId] ?? null;
 }

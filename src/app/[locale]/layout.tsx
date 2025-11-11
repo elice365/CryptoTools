@@ -107,7 +107,7 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "website",
-      locale: locale === "ko" ? "ko_KR" : locale === "ja" ? "ja_JP" : locale === "zh" ? "zh_CN" : locale === "ru" ? "ru_RU" : locale === "id" ? "id_ID" : "en_US",
+      locale: ({ ko: "ko_KR", ja: "ja_JP", zh: "zh_CN", ru: "ru_RU", id: "id_ID" } as Record<string, string>)[locale] ?? "en_US",
       url: `${SITE_URL}/${locale}`,
       title,
       description,
