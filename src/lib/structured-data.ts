@@ -507,7 +507,7 @@ function getToolHowToSteps(toolId: ToolId, locale: Locale): any[] | null {
 
   if (!commonTools.includes(toolId)) return null;
 
-  const steps: Record<Locale, Record<ToolId, any[]>> = {
+  const steps: Record<Locale, Partial<Record<ToolId, any[]>>> = {
     en: {
       base64: [
         {
@@ -577,123 +577,359 @@ function getToolHowToSteps(toolId: ToolId, locale: Locale): any[] | null {
           text: "Use the public key to encrypt data",
         },
       ],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
     },
     // Add other locales as needed
     ko: {
-      base64: [],
-      hash: [],
-      symmetric: [],
-      asymmetric: [],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
+      base64: [
+        {
+          "@type": "HowToStep",
+          name: "텍스트 입력",
+          text: "인코딩 또는 디코딩할 텍스트를 입력 필드에 입력하세요",
+        },
+        {
+          "@type": "HowToStep",
+          name: "작업 선택",
+          text: "인코딩 또는 디코딩 중 원하는 작업을 선택하세요",
+        },
+        {
+          "@type": "HowToStep",
+          name: "결과 확인",
+          text: "결과가 실시간으로 즉시 표시됩니다",
+        },
+      ],
+      hash: [
+        {
+          "@type": "HowToStep",
+          name: "알고리즘 선택",
+          text: "해시 알고리즘을 선택하세요 (SHA-256, SHA-512 등)",
+        },
+        {
+          "@type": "HowToStep",
+          name: "데이터 입력",
+          text: "해시할 텍스트를 입력하거나 파일을 업로드하세요",
+        },
+        {
+          "@type": "HowToStep",
+          name: "해시 생성",
+          text: "해시가 자동으로 생성됩니다",
+        },
+      ],
+      symmetric: [
+        {
+          "@type": "HowToStep",
+          name: "키 생성",
+          text: "안전한 암호화 키를 생성하세요",
+        },
+        {
+          "@type": "HowToStep",
+          name: "데이터 입력",
+          text: "암호화할 텍스트를 입력하세요",
+        },
+        {
+          "@type": "HowToStep",
+          name: "암호화",
+          text: "암호화 버튼을 클릭하여 암호화된 결과를 받으세요",
+        },
+      ],
+      asymmetric: [
+        {
+          "@type": "HowToStep",
+          name: "키 생성",
+          text: "공개키와 개인키 쌍을 생성하세요",
+        },
+        {
+          "@type": "HowToStep",
+          name: "데이터 입력",
+          text: "암호화할 텍스트를 입력하세요",
+        },
+        {
+          "@type": "HowToStep",
+          name: "암호화",
+          text: "공개키를 사용하여 데이터를 암호화하세요",
+        },
+      ],
     },
     ja: {
-      base64: [],
-      hash: [],
-      symmetric: [],
-      asymmetric: [],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
+      base64: [
+        {
+          "@type": "HowToStep",
+          name: "テキスト入力",
+          text: "エンコードまたはデコードするテキストを入力フィールドに入力します",
+        },
+        {
+          "@type": "HowToStep",
+          name: "操作選択",
+          text: "エンコードまたはデコードを選択します",
+        },
+        {
+          "@type": "HowToStep",
+          name: "結果確認",
+          text: "結果がリアルタイムで即座に表示されます",
+        },
+      ],
+      hash: [
+        {
+          "@type": "HowToStep",
+          name: "アルゴリズム選択",
+          text: "ハッシュアルゴリズムを選択します（SHA-256、SHA-512など）",
+        },
+        {
+          "@type": "HowToStep",
+          name: "データ入力",
+          text: "ハッシュ化するテキストを入力するか、ファイルをアップロードします",
+        },
+        {
+          "@type": "HowToStep",
+          name: "ハッシュ生成",
+          text: "ハッシュが自動的に生成されます",
+        },
+      ],
+      symmetric: [
+        {
+          "@type": "HowToStep",
+          name: "キー生成",
+          text: "安全な暗号化キーを生成します",
+        },
+        {
+          "@type": "HowToStep",
+          name: "データ入力",
+          text: "暗号化するテキストを入力します",
+        },
+        {
+          "@type": "HowToStep",
+          name: "暗号化",
+          text: "暗号化ボタンをクリックして暗号化された結果を取得します",
+        },
+      ],
+      asymmetric: [
+        {
+          "@type": "HowToStep",
+          name: "キー生成",
+          text: "公開鍵と秘密鍵のペアを生成します",
+        },
+        {
+          "@type": "HowToStep",
+          name: "データ入力",
+          text: "暗号化するテキストを入力します",
+        },
+        {
+          "@type": "HowToStep",
+          name: "暗号化",
+          text: "公開鍵を使用してデータを暗号化します",
+        },
+      ],
     },
     ru: {
-      base64: [],
-      hash: [],
-      symmetric: [],
-      asymmetric: [],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
+      base64: [
+        {
+          "@type": "HowToStep",
+          name: "Введите текст",
+          text: "Введите текст для кодирования или декодирования в поле ввода",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Выберите операцию",
+          text: "Выберите кодирование или декодирование",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Получите результат",
+          text: "Результат появится мгновенно в реальном времени",
+        },
+      ],
+      hash: [
+        {
+          "@type": "HowToStep",
+          name: "Выберите алгоритм",
+          text: "Выберите алгоритм хеширования (SHA-256, SHA-512 и т.д.)",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Введите данные",
+          text: "Введите текст или загрузите файл для хеширования",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Создайте хеш",
+          text: "Хеш будет создан автоматически",
+        },
+      ],
+      symmetric: [
+        {
+          "@type": "HowToStep",
+          name: "Создайте ключ",
+          text: "Создайте безопасный ключ шифрования",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Введите данные",
+          text: "Введите текст для шифрования",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Зашифруйте",
+          text: "Нажмите зашифровать, чтобы получить зашифрованный результат",
+        },
+      ],
+      asymmetric: [
+        {
+          "@type": "HowToStep",
+          name: "Создайте ключи",
+          text: "Создайте пару открытого и закрытого ключей",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Введите данные",
+          text: "Введите текст для шифрования",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Зашифруйте",
+          text: "Используйте открытый ключ для шифрования данных",
+        },
+      ],
     },
     id: {
-      base64: [],
-      hash: [],
-      symmetric: [],
-      asymmetric: [],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
+      base64: [
+        {
+          "@type": "HowToStep",
+          name: "Masukkan teks",
+          text: "Masukkan teks yang ingin Anda encode atau decode di kolom input",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Pilih operasi",
+          text: "Pilih apakah Anda ingin encode atau decode",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Dapatkan hasil",
+          text: "Hasilnya akan muncul secara instan dalam waktu nyata",
+        },
+      ],
+      hash: [
+        {
+          "@type": "HowToStep",
+          name: "Pilih algoritma",
+          text: "Pilih algoritma hash (SHA-256, SHA-512, dll.)",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Masukkan data",
+          text: "Masukkan teks atau unggah file untuk di-hash",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Buat hash",
+          text: "Hash akan dibuat secara otomatis",
+        },
+      ],
+      symmetric: [
+        {
+          "@type": "HowToStep",
+          name: "Buat kunci",
+          text: "Buat kunci enkripsi yang aman",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Masukkan data",
+          text: "Masukkan teks yang ingin dienkripsi",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Enkripsi",
+          text: "Klik enkripsi untuk mendapatkan hasil terenkripsi",
+        },
+      ],
+      asymmetric: [
+        {
+          "@type": "HowToStep",
+          name: "Buat kunci",
+          text: "Buat pasangan kunci publik dan privat",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Masukkan data",
+          text: "Masukkan teks yang ingin dienkripsi",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Enkripsi",
+          text: "Gunakan kunci publik untuk mengenkripsi data",
+        },
+      ],
     },
     zh: {
-      base64: [],
-      hash: [],
-      symmetric: [],
-      asymmetric: [],
-      encoding: [],
-      files: [],
-      bgv: [],
-      elgamal: [],
-      paillier: [],
-      pqc: [],
-      stream: [],
-      des: [],
-      tripledes: [],
-      rc4: [],
-      rabbit: [],
-      sha3: [],
-      blake2: [],
-      ecies: [],
+      base64: [
+        {
+          "@type": "HowToStep",
+          name: "输入文本",
+          text: "在输入框中输入要编码或解码的文本",
+        },
+        {
+          "@type": "HowToStep",
+          name: "选择操作",
+          text: "选择编码或解码",
+        },
+        {
+          "@type": "HowToStep",
+          name: "查看结果",
+          text: "结果将实时即时显示",
+        },
+      ],
+      hash: [
+        {
+          "@type": "HowToStep",
+          name: "选择算法",
+          text: "选择哈希算法（SHA-256、SHA-512等）",
+        },
+        {
+          "@type": "HowToStep",
+          name: "输入数据",
+          text: "输入要哈希的文本或上传文件",
+        },
+        {
+          "@type": "HowToStep",
+          name: "生成哈希",
+          text: "哈希将自动生成",
+        },
+      ],
+      symmetric: [
+        {
+          "@type": "HowToStep",
+          name: "生成密钥",
+          text: "生成安全的加密密钥",
+        },
+        {
+          "@type": "HowToStep",
+          name: "输入数据",
+          text: "输入要加密的文本",
+        },
+        {
+          "@type": "HowToStep",
+          name: "加密",
+          text: "点击加密以获取加密结果",
+        },
+      ],
+      asymmetric: [
+        {
+          "@type": "HowToStep",
+          name: "生成密钥",
+          text: "生成公钥和私钥对",
+        },
+        {
+          "@type": "HowToStep",
+          name: "输入数据",
+          text: "输入要加密的文本",
+        },
+        {
+          "@type": "HowToStep",
+          name: "加密",
+          text: "使用公钥加密数据",
+        },
+      ],
     },
   };
 
-  return steps[locale][toolId];
+  return steps[locale]?.[toolId] ?? null;
 }

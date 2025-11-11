@@ -8,9 +8,10 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { locales, type Locale } from "@/i18n";
-import { getMetadataBase } from "@/lib/seo";
+import { getMetadataBase, getSiteUrl } from "@/lib/seo";
 
 const METADATA_BASE = getMetadataBase();
+const SITE_URL = getSiteUrl();
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -87,27 +88,27 @@ export async function generateMetadata({
     category: "Security",
     classification: "Cryptography Tools",
     verification: {
-      google: "google-site-verification-code",
+      // google: "google-site-verification-code", // Add your Google Search Console verification code here
       other: {
         "naver-site-verification": "2469b7e557f9e7b210cbd57ea6c5fc6bb3c96724",
       },
     },
     alternates: {
-      canonical: `/${locale}`,
+      canonical: `${SITE_URL}/${locale}`,
       languages: {
-        "ko-KR": "/ko",
-        "en-US": "/en",
-        "ja-JP": "/ja",
-        "zh-CN": "/zh",
-        "ru-RU": "/ru",
-        "id-ID": "/id",
-        "x-default": "/en",
+        "ko-KR": `${SITE_URL}/ko`,
+        "en-US": `${SITE_URL}/en`,
+        "ja-JP": `${SITE_URL}/ja`,
+        "zh-CN": `${SITE_URL}/zh`,
+        "ru-RU": `${SITE_URL}/ru`,
+        "id-ID": `${SITE_URL}/id`,
+        "x-default": `${SITE_URL}/en`,
       },
     },
     openGraph: {
       type: "website",
-      locale: locale === "ko" ? "ko_KR" : locale === "ja" ? "ja_JP" : locale === "zh" ? "zh_CN" : locale === "ru" ? "ru_RU" : locale === "id" ? "id_ID" : "en_US",
-      url: `https://crypto.elice.pro/${locale}`,
+      locale: ({ ko: "ko_KR", ja: "ja_JP", zh: "zh_CN", ru: "ru_RU", id: "id_ID" } as Record<string, string>)[locale] ?? "en_US",
+      url: `${SITE_URL}/${locale}`,
       title,
       description,
       siteName: "CryptoTools",

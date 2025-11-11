@@ -30,6 +30,7 @@ export async function generateMetadata({
     .filter(Boolean);
 
   const metadataBase = getMetadataBase();
+  const siteUrl = metadataBase.origin;
 
   return {
     metadataBase,
@@ -37,14 +38,14 @@ export async function generateMetadata({
     description,
     keywords: Array.from(new Set([title, appTitle, TOOL_ID, ...featureKeywords])),
     alternates: {
-      canonical: `/${locale}/${TOOL_ID}`,
+      canonical: `${siteUrl}/${locale}/${TOOL_ID}`,
     },
     openGraph: {
       title: `${title} | ${appTitle}`,
       description,
       locale,
       type: "website",
-      url: `/${locale}/${TOOL_ID}`,
+      url: `${siteUrl}/${locale}/${TOOL_ID}`,
     },
     twitter: {
       card: "summary_large_image",

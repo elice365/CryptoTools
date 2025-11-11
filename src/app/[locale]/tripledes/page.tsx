@@ -38,6 +38,7 @@ export async function generateMetadata({
   ];
 
   const metadataBase = getMetadataBase();
+  const siteUrl = metadataBase.origin;
 
   return {
     metadataBase,
@@ -45,7 +46,7 @@ export async function generateMetadata({
     description,
     keywords: Array.from(new Set(keywords)),
     alternates: {
-      canonical: `/${locale}/${TOOL_ID}`,
+      canonical: `${siteUrl}/${locale}/${TOOL_ID}`,
       languages: Object.fromEntries(
         locales.map((loc) => [loc, `/${loc}/${TOOL_ID}`])
       ),
@@ -55,7 +56,7 @@ export async function generateMetadata({
       description,
       locale,
       type: "website",
-      url: `/${locale}/${TOOL_ID}`,
+      url: `${siteUrl}/${locale}/${TOOL_ID}`,
     },
     twitter: {
       card: "summary_large_image",
